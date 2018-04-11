@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    /* Basic Options */
     "module": "esnext",
     "target": "es5",
     "lib": [
@@ -22,7 +21,6 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
-    /*"outFile": "./build/app.js",*/
     "paths": {
       "@/*": ["./src/*"],
       "~/*": ["./lib/*"],
