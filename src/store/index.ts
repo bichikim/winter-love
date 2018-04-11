@@ -1,5 +1,5 @@
 import vuexKeg from 'vuex-keg'
-import VueStorage from '~/vuex-storage'
+import VuexStorage from '~/vuex-storage'
 
 export const state = () => ({
 
@@ -17,5 +17,5 @@ export const plugins =  [
       },
     },
   }),
-  VueStorage({}),
+  VuexStorage({}),
 ]
