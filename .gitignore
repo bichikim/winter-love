@@ -1,0 +1,35 @@
+# dependencies
+node_modules
+
+# logs
+npm-debug.log
+yarn-error.log
+test/unit/coverage
+selenium-debug.log
+
+# Nuxt build
+.nuxt
+/src/static/sw.js
+
+# Nuxt generate
+dist
+
+# .lock
+yarn.lock
+package-lock.json
+
+# tests
+tests/e2e/logs
+tests/e2e/screenshots
+tests/e2e/reports
+tests/unit/coverage
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+
+# env config
+defront.config.js
