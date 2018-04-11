@@ -2,7 +2,6 @@ const fs = require('fs-extra')
 const {resolve} = require('path')
 module.exports = async function defaultModule() {
   const root = this.options.rootDir
-  const src = this.options.srcDir
   if(!this.options.build){
     this.options.build = {}
   }
@@ -33,5 +32,7 @@ module.exports = async function defaultModule() {
   this.options.head.meta.concat([{charset: 'utf-8'}])
   this.options.head.link.concat([{rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}])
   this.options.head.titleTemplate = `${title}-%s`
-  this.addPlugin(resolve(src, 'plugins/vuex-init.ts'))
+  this.options.plugins.concat([
+    '@/plugins/vue-plugins',
+  ])
 }

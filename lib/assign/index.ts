@@ -54,7 +54,9 @@ const deepInfinitySave = (
   object[key] = item
 }
 
-export const assignInfinity = (object: {} = {}, sources: {} = {}, options: IAssignOptions = {}) => {
+const assignInfinity = (object: {} = {}, sources: {} = {}, options: IAssignOptions = {}) => {
   forEachRun(object, sources, deepInfinitySave, options)
   return object
 }
+
+export default assignInfinity

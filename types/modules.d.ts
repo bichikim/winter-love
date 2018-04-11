@@ -2,4 +2,4 @@
  *
  * @author Bichi Kim <bichi@live.co.kr>
  */
-declare module 'iview'
+declare module 'element-ui'
