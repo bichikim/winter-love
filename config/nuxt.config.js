@@ -11,6 +11,13 @@ module.exports = {
   modules: [
     '@/modules/default',
     '@/modules/router',
+    '@/modules/store',
     '@/modules/typescript',
   ],
+
+  storeInit: {
+    api: {
+      test: 'hi?',
+    },
+  },
 }
