@@ -15,4 +15,4 @@ declare namespace NodeJS {
 }
 
 // eslint-disable-next-line no-unused-vars
-declare const process: Process
+// declare const process: Process
