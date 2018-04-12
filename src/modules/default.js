@@ -28,21 +28,19 @@ module.exports = async function defaultModule() {
     /*************************************************
      * Set Web worker
      *************************************************/
-    // if(isClient){
-    //   config.module.rules.push({
-    //     test: /\.worker\.js/,
-    //     loader: 'worker-loader',
-    //   })
-    // }
+    if(isClient){
+      config.module.rules.push({
+        test: /\.worker\.js/,
+        loader: 'worker-loader',
+      })
+    }
     /*************************************************
      * Change alias "~" location from ./${srcDir} to ./lib
      *************************************************/
     config.resolve.alias['~'] = resolve(config.resolve.alias['@@'], 'lib')
   })
-  this.options.head.meta.concat([{charset: 'utf-8'}])
-  this.options.head.link.concat([{rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}])
+  this.options.head.meta.push({charset: 'utf-8'})
+  this.options.head.link.push({rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'})
   this.options.head.titleTemplate = `${title}-%s`
-  this.options.plugins.concat([
-    '@/plugins/vue-plugins',
-  ])
+  this.options.plugins.push('@/plugins/vue-plugins')
 }
