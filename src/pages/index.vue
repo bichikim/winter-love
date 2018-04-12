@@ -3,10 +3,10 @@
     <div>
       <app-logo/>
       <h1 class="title">
-        winterlove
+        Test Pad
       </h1>
       <h2 class="subtitle">
-        winterlove project
+        Web testing send box
       </h2>
       <div class="links">
         <a
@@ -18,21 +18,29 @@
           target="_blank"
           class="button--grey">GitHub</a>
       </div>
+      <div>
+        <canvas width="500" height="500"></canvas>
+      </div>
     </div>
   </section>
 </template>
 
 <script>
-import AppLogo from '@/components/AppLogo.vue'
+  /* eslint-disable max-len,max-len */
 
-export default {
-  components: {
-    AppLogo
+  import AppLogo from '@/components/AppLogo.vue'
+
+  export default {
+    components: {
+      AppLogo,
+    },
   }
-}
 </script>
 
 <style>
+  canvas{
+    // background-color: #47494e;
+  }
 .container {
   min-height: 100vh;
   display: flex;

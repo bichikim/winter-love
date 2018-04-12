@@ -8,6 +8,7 @@ module.exports = async function defaultModule() {
   if(!this.options.build.vendor){
     this.options.build.vendor = []
   }
+  const {disableLint = false} = this.options
   const packageJson = await fs.readJson(resolve(root, 'package.json'))
   const {name = 'winter love'} = packageJson
   const {vendor = [], title = name} = packageJson
@@ -16,7 +17,7 @@ module.exports = async function defaultModule() {
     /*************************************************
      * Run ESLint on save
      *************************************************/
-    if(isDev && isClient){
+    if(isDev && isClient && !disableLint){
       config.module.rules.push({
         enforce: 'pre',
         test: /\.(js|ts|vue)$/,
@@ -24,6 +25,15 @@ module.exports = async function defaultModule() {
         exclude: /(node_modules)/,
       })
     }
+    /*************************************************
+     * Set Web worker
+     *************************************************/
+    // if(isClient){
+    //   config.module.rules.push({
+    //     test: /\.worker\.js/,
+    //     loader: 'worker-loader',
+    //   })
+    // }
     /*************************************************
      * Change alias "~" location from ./${srcDir} to ./lib
      *************************************************/

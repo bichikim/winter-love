@@ -7,7 +7,7 @@
 const {join} = require('path')
 const webpack = require('webpack')
 const project = (...dir) => {
-  return join(__dirname, '../../', ...dir)
+  return join(__dirname, '../', ...dir)
 }
 
 const babel = {
