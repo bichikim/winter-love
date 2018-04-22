@@ -19,11 +19,11 @@ module.exports = {
     '@/modules/typescript',
   ],
 
-  disableLint: true,
-
   storeInit: {
     api: {
       test: 'hi?',
     },
   },
+
+  lint: true,
 }

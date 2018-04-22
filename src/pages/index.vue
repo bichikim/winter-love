@@ -1,39 +1,26 @@
-<template>
-  <section class="container">
-    <div>
-      <app-logo/>
-      <h1 class="title">
-        Test Pad
-      </h1>
-      <h2 class="subtitle">
-        Web testing send box
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
-      <div>
-        <canvas width="500" height="500"></canvas>
-      </div>
-    </div>
-  </section>
+<template lang="pug">
+  section.container
+    div
+      app-logo
+      h1.title Test Pad
+      h2.subtitle Web testing send box
+      .links
+        a.button--green(href="https://nuxtjs.org/" target="_blank") Documentation
+        a.button--grey(href="https://github.com/nuxt/nuxt.js" target="_blank") GitHub
+      div
 </template>
 
-<script>
+<script lang="ts">
   /* eslint-disable max-len,max-len */
 
   import AppLogo from '@/components/AppLogo.vue'
-
-  export default {
+  import {Component, Vue} from 'vue-property-decorator'
+  @Component({
     components: {
       AppLogo,
     },
+  })
+  export default class Index extends Vue {
     created(){
 
     }

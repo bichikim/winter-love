@@ -8,7 +8,7 @@ module.exports = async function defaultModule() {
   if(!this.options.build.vendor){
     this.options.build.vendor = []
   }
-  const {disableLint = false} = this.options
+  const {lint = false} = this.options
   const packageJson = await fs.readJson(resolve(root, 'package.json'))
   const {name = 'winter love'} = packageJson
   const {vendor = [], title = name} = packageJson
@@ -17,7 +17,7 @@ module.exports = async function defaultModule() {
     /*************************************************
      * Run ESLint on save
      *************************************************/
-    if(isDev && isClient && !disableLint){
+    if(isDev && isClient && !lint){
       config.module.rules.push({
         enforce: 'pre',
         test: /\.(js|ts|vue)$/,
@@ -43,4 +43,7 @@ module.exports = async function defaultModule() {
   this.options.head.link.push({rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'})
   this.options.head.titleTemplate = `${title}-%s`
   this.options.plugins.push('@/plugins/vue-plugins')
+  this.options.css.push({src: '@/assets/styles/bootstrap.styl', lang: 'stylus'})
+  this.options.css.push('element-ui/lib/theme-chalk/reset.css')
+  this.options.css.push('element-ui/lib/theme-chalk/index.css')
 }
