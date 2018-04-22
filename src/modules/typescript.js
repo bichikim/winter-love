@@ -1,8 +1,3 @@
-/**
- *
- * @author Bichi Kim <bichi@live.co.kr> <bichi@pjfactory.com>
- */
-
 module.exports = function() {
   // Add .ts extension for store, middleware and more
   this.nuxt.options.extensions.push('ts')

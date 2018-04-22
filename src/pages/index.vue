@@ -34,6 +34,9 @@
     components: {
       AppLogo,
     },
+    created(){
+
+    }
   }
 </script>
 
