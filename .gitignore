@@ -6,6 +6,8 @@ npm-debug.log
 yarn-error.log
 test/unit/coverage
 selenium-debug.log
+.nyc_output
+coverage/
 
 # Nuxt build
 .nuxt

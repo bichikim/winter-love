@@ -5,33 +5,46 @@
   "author": "Bichi Kim <bichi@live.co.kr>",
   "private": true,
   "scripts": {
-    "dev": "nuxt -c config/nuxt.config.js",
-    "build": "nuxt build -c config/nuxt.config.js",
-    "start": "nuxt start -c config/nuxt.config.js",
-    "generate": "nuxt generate -c config/nuxt.config.js",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "precommit": "npm run lint"
+    "nps": "nps -c ./config/nps.config.js",
+    "dev": "npm run nps dev",
+    "build": "npm run nps build",
+    "start": "npm run nps start",
+    "generate": "npm run nps generate",
+    "eslint": "npm run nps  eslint",
+    "tslint": "npm run nps  tslints",
+    "precommit": "npm run nps precommit",
+    "test": "karma start config/karma.config.js"
   },
   "vendor": [
-    "lodash",
-    "vuex-keg",
-    "element-ui",
-    "vue-i18n"
+    "~/vuex-storage",
+    "~/assgin"
   ],
+  "ava": {
+    "files": [
+      "**/*.ava.{ts,js}"
+    ],
+    "source": [
+      "**/*.{ts,js}",
+      "!dist/**/*"
+    ]
+  },
   "dependencies": {
-    "element-ui": "^2.3.3",
-    "fs-extra": "^5.0.0",
-    "lodash": "^4.17.5",
-    "nuxt": "^1.4.0",
-    "vue-i18n": "^7.6.0",
-    "vuex-keg": "^0.1.0",
-    "vue-template-compiler": "^2.5.16",
+    "element-ui": "latest",
+    "fs-extra": "latest",
+    "lodash": "latest",
+    "nuxt": "latest",
+    "vue": "^2.5.16",
+    "vue-class-component": "latest",
+    "vue-i18n": "latest",
     "vue-property-decorator": "^6.0.0",
-    "vuex-class": "^0.3.0",
+    "vuex": "^3.0.1",
+    "vuex-class": "latest",
+    "vuex-keg": "^0.1.0",
     "vuexl": "^0.0.14"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.1",
+    "@types/node": "^6.0.107",
+    "babel-eslint": "latest",
     "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
@@ -56,9 +69,11 @@
     "karma-webpack": "^2.0.13",
     "mocha": "^5.0.4",
     "pug": "^2.0.0",
+    "sinon": "^5.0.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "ts-loader": "^3.5.0",
+    "ts-node": "^6.0.2",
     "tslint": "^5.9.1",
     "typescript": "^2.7.2",
     "typescript-eslint-parser": "^14.0.0",

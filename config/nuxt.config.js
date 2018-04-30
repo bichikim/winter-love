@@ -15,7 +15,7 @@ module.exports = {
   modules: [
     '@/modules/default',
     // '@/modules/router',
-    '../lib/store-init',
+    '@/modules/store-init',
     '@/modules/typescript',
   ],
 

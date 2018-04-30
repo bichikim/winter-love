@@ -11,7 +11,7 @@ module.exports = async function defaultModule() {
   const {lint = false} = this.options
   const packageJson = await fs.readJson(resolve(root, 'package.json'))
   const {name = 'winter love'} = packageJson
-  const {vendor = [], title = name} = packageJson
+  const {vendor, title = name} = packageJson
   this.options.build.vendor.concat(vendor)
   this.extendBuild((config, {isDev, isClient}) => {
     /*************************************************

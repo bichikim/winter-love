@@ -32,7 +32,7 @@ module.exports = function(config) {
       './test/unit/specs/**/*.js': ['webpack', 'sourcemap'],
     },
     coverageReporter: {
-      dir : 'coverage/',
+      dir : '../coverage/',
       reporters: [
         {type: 'html', subdir: 'html'},
         {type: 'lcovonly', subdir: 'lcov'},
