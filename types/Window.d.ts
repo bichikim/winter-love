@@ -4,5 +4,12 @@ import Process = NodeJS.Process
 declare interface Window {
   process: Process
   expect: any
+  Worker?: Worker
+  preloadTest?: boolean
+  webkitURL?: URL
   onNuxtReady(callback: () => void)
+}
+
+declare interface URL {
+  createObjectURL: (object: any) => string
 }

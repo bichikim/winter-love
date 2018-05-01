@@ -141,6 +141,7 @@ module.exports = {
       'before': false, 'after': false,
       'overrides': {
         'const' : {before: true, after: true},
+        'let' : {before: true, after: true},
         'from': {before: true, after: true},
         'import': {before: true, after: true},
         'as': {before: true, after: true},
