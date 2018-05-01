@@ -7,6 +7,7 @@
       .links
         a.button--green(href="https://nuxtjs.org/" target="_blank") Documentation
         a.button--grey(href="https://github.com/nuxt/nuxt.js" target="_blank") GitHub
+        a.buuton--grey(@click="onToggleFullScreen") FullScreen
       div
 </template>
 
@@ -15,12 +16,19 @@
 
   import AppLogo from '@/components/AppLogo.vue'
   import {Component, Vue} from 'vue-property-decorator'
+  import {toggleFullScreen} from '~/full-screen'
   @Component({
     components: {
       AppLogo,
     },
   })
   export default class Index extends Vue {
+    isFullScreen: boolean = false
+
+    onToggleFullScreen() {
+      toggleFullScreen(!this.isFullScreen)
+      this.isFullScreen = !this.isFullScreen
+    }
     created(){
 
     }

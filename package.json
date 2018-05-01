@@ -4,6 +4,7 @@
   "description": "winterlove project",
   "author": "Bichi Kim <bichi@live.co.kr>",
   "private": true,
+  "main": "bin/index.js",
   "scripts": {
     "nps": "nps -c ./config/nps.config.js",
     "dev": "nps -c ./config/nps.config.js dev",
@@ -13,21 +14,12 @@
     "eslint": "nps -c ./config/nps.config.js eslint",
     "tslint": "nps -c ./config/nps.config.js tslints",
     "precommit": "nps -c ./config/nps.config.js precommit",
-    "test": "karma start config/karma.config.js"
+    "test:unit": "nps -c ./config/nps.config.js test:unit"
   },
   "vendor": [
     "~/vuex-storage",
     "~/assgin"
   ],
-  "ava": {
-    "files": [
-      "**/*.ava.{ts,js}"
-    ],
-    "source": [
-      "**/*.{ts,js}",
-      "!dist/**/*"
-    ]
-  },
   "dependencies": {
     "element-ui": "latest",
     "fs-extra": "latest",

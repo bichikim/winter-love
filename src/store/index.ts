@@ -17,5 +17,9 @@ export const plugins =  [
       },
     },
   }),
-  VuexStorage({}),
+  VuexStorage({
+    session: {
+      except: [],
+    },
+  }),
 ]

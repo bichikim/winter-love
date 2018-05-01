@@ -3,12 +3,12 @@ import {Store} from 'vuex'
 import assign from '~/assign'
 // saving mutation name
 const CALL_NAME = '__plugin_vuex_storage__'
-const storeExceptOrOnly = (state: any, except = [], only = []) => {
+const storeExceptOrOnly = (state: any, except, only) => {
   let clonedStore = {}
-  if(except.length > 0){
-    clonedStore = cloneDeep(omit(state, except))
-  }else if(only.length > 0){
-    clonedStore = cloneDeep(pick(state, only))
+  if(except){
+    clonedStore = omit(cloneDeep(state), except)
+  }else if(only){
+    clonedStore = pick(cloneDeep(state), only)
   }
   return clonedStore
 }
@@ -26,7 +26,12 @@ export interface IVuexStorageOptions {
   isNuxt?: boolean
 }
 
-export default (options: IVuexStorageOptions) => {
+/**
+ * Save Vuex store in local and session
+ * @param {IVuexStorageOptions} options
+ * @return {(store: Store<any>) => undefined}
+ */
+export default (options: IVuexStorageOptions = {}) => {
   const {session = {}, local = {}, key = 'vuex'} = options
   return (store: Store<any>) => {
     if(!process.browser){
