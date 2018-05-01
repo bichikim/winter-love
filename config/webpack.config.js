@@ -17,7 +17,7 @@ const babel = {
         'browser': [
           '> 1%',
           'last 2 versions',
-          'not ie <= 8',
+          'not ie <= 9',
         ],
       },
     },

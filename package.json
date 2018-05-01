@@ -21,6 +21,7 @@
     "~/assgin"
   ],
   "dependencies": {
+    "animejs": "^2.2.0",
     "element-ui": "latest",
     "fs-extra": "latest",
     "lodash": "latest",
