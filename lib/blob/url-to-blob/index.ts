@@ -1,3 +1,4 @@
+import getBlobType from '../get-blob-type'
 import {IDoneEvent} from '../IDoneEvent'
 import {IHandlerOptions} from '../IHandlerOptions'
 
@@ -12,11 +13,15 @@ export default (
   }
   const {done, error, progress, abort, load} = options
   const request = new XMLHttpRequest()
+  const type = getBlobType(url)
   let resolve, reject
-  request.responseType = 'blob'
+  request.responseType = 'arraybuffer'
 
   request.onloadend = (event: ProgressEvent) => {
-    const payload: IDoneEvent = {...event, result: request.response}
+    const payload: IDoneEvent = {
+      ...event,
+      result: new Blob(request.response, {type}),
+    }
     if(done){
       done(payload)
     }

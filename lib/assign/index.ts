@@ -2,6 +2,8 @@ import forEach from 'lodash/forEach'
 import isArray from 'lodash/isArray'
 import isObject from 'lodash/isObject'
 
+const INFINITY = -1
+
 type TRunner = (
   key: string,
   item: any,
@@ -22,24 +24,29 @@ const forEachRun = (
   runner: TRunner,
   options: IAssignOptions = {},
 ): {} => {
-  const {safeMode = false} = options
-  forEach(sources, (item: any, key: string) => {
-    if(safeMode){
-      const stateData = object[key]
-      if(stateData || stateData === null || stateData === ''){
-        runner(key, item, options, object, sources)
+  const {safeMode = false, limit = INFINITY} = options
+  if(limit !== 0){
+    const _options = {safeMode, limit: limit - 1}
+    forEach(sources, (item: any, key: string) => {
+      if(safeMode){
+        const stateData = object[key]
+        if(stateData || stateData === null || stateData === ''){
+          runner(key, item, _options, object, sources)
+          return true
+        }
         return true
       }
-      return true
-    }
-    runner(key, item, options, object, sources)
-  })
+      runner(key, item, _options, object, sources)
+    })
+    return
+  }
+
   return object
 }
 
 const deepInfinitySave = (
   key: string,
-  item: {},
+  item,
   options: IAssignOptions = {},
   object: {} = {},
 ) => {

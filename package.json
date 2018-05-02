@@ -22,6 +22,7 @@
     "~/assgin"
   ],
   "dependencies": {
+    "@vue/test-utils": "^1.0.0-beta.15",
     "animejs": "^2.2.0",
     "element-ui": "latest",
     "fs-extra": "latest",
@@ -42,6 +43,7 @@
     "@types/es6-shim": "^0.31.36",
     "@types/mocha": "^5.2.0",
     "@types/node": "^8.10.11",
+    "@types/sinon": "^4.3.1",
     "avoriaz": "^6.3.0",
     "babel-eslint": "latest",
     "babel-preset-stage-0": "^6.24.1",

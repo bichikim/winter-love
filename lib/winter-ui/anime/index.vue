@@ -1,15 +1,17 @@
 <template lang="pug">
   .winter-anime
+    div
 </template>
+
 <script lang="ts">
   import {Component, Vue, Prop, Watch} from 'vue-property-decorator'
-  import anime from 'anime'
+  import anime from 'animejs'
   @Component
   export default class  extends Vue {
     // animation rail run animation head ~ last
-    @Prop rail: any[]
+    @Prop({default: () => ([])}) rail: any[]
 
-    @Prop init: any
+    @Prop() init: any
 
     get currentProps() {
       const {rail, init} = this
@@ -36,4 +38,6 @@
 </script>
 <style scoped lang="stylus">
   .winter-anime
+    height 100%
+    width 100%
 </style>
