@@ -1,5 +1,5 @@
 <template lang="pug">
-  .new-line(v-html="contentHtml")
+  .winter-new-line(v-html="contentHtml")
 </template>
 <script lang="ts">
   import {Component, Vue, Prop} from 'vue-property-decorator'
@@ -14,5 +14,5 @@
   }
 </script>
 <style scoped lang="stylus">
-  .new-line
+  .winter-new-line
 </style>

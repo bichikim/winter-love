@@ -1,5 +1,5 @@
 <template lang="pug">
-  .anime
+  .winter-anime
 </template>
 <script lang="ts">
   import {Component, Vue, Prop, Watch} from 'vue-property-decorator'
@@ -35,5 +35,5 @@
   }
 </script>
 <style scoped lang="stylus">
-  .anime
+  .winter-anime
 </style>

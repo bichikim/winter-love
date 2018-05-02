@@ -1,5 +1,5 @@
 <template lang="pug">
-  .button-event-slot
+  .winter-button-event-slot
 </template>
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator'
@@ -9,5 +9,5 @@
   }
 </script>
 <style scoped lang="stylus">
-  .button-event-slot
+  .winter-button-event-slot
 </style>
