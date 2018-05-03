@@ -1,4 +1,4 @@
-#Winter Ui Lazy-trigger
+# Winter Ui Lazy-trigger
 >It render new Lines in string
 >It needs test 
  - Props
