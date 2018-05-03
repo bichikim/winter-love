@@ -8,7 +8,7 @@ const nuxtConfig = require('../config/nuxt.config')
  * @param options.build {boolean}
  * @return {Promise<any>}
  */
-const defront = (options = {}) => {
+const middleware = (options = {}) => {
   const {build = false, config = {}} = options
   const nuxt = new Nuxt({...nuxtConfig, ... config})
   let builder
@@ -35,4 +35,6 @@ const defront = (options = {}) => {
   })
 }
 
-module.exports = defront
+module.exports = {
+  middleware,
+}
