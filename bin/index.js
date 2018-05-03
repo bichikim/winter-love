@@ -2,7 +2,7 @@ const {Nuxt, Builder} = require('nuxt')
 const nuxtConfig = require('../config/nuxt.config')
 
 /**
- * Defront Express middleware
+ * Express middleware
  * @param options {object|null}
  * @param options.config {object}
  * @param options.build {boolean}
