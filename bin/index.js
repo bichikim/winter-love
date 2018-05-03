@@ -35,6 +35,4 @@ const middleware = (options = {}) => {
   })
 }
 
-module.exports = {
-  middleware,
-}
+module.exports = middleware
