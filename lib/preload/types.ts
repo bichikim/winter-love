@@ -9,6 +9,7 @@ export interface ILoadRequestData{
 export interface ILoadOptions extends IImageRequestOptions{
   worker?: Worker
   terminateAfterDone?: boolean
+  withWorker?: boolean
 }
 
 export interface IImageRequestOptions {

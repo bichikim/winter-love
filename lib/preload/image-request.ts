@@ -1,6 +1,5 @@
 import {last} from 'lodash'
 import {IImageRequestOptions} from './types'
-
 export default (options: IImageRequestOptions = {}) => {
   const {url, progress, done} = options
   let type
@@ -11,9 +10,6 @@ export default (options: IImageRequestOptions = {}) => {
       break
     case 'png':
       type = 'image/png'
-      break
-    case 'gif':
-      type = 'image/gif'
       break
     default:
       type = 'application/xml'

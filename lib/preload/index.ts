@@ -1,22 +1,14 @@
-import joinPath from 'join-path'
-import {IDoneEvent} from '~/blob/IDoneEvent'
-import {Load} from './load'
-
-const loader = new Load()
-
-interface IPreloadOptions {
-  done?: (result: IDoneEvent) => any
-  progress?: (result: ProgressEvent) => any
-  src: string
-  basePath?: string
-}
-
 /**
  *
- * @param {IPreloadOptions} request
- * @return {Promise<string>}
+ * @author Bichi Kim <bichi@pjfactory.com>
+ * @copyright PJ Factory Co.
+ * @license Private
  */
-export default (request: IPreloadOptions = {src: ''}): Promise<string> => {
+import joinPath from 'join-path'
+import {Load} from './load'
+import {ILoadRequestData} from './types'
+const loader = new Load()
+export default (request: ILoadRequestData = {}): Promise<string> => {
   const {
     done,
     basePath,

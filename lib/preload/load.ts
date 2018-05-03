@@ -1,17 +1,8 @@
 import uuid from 'uuid'
 import LoadWorker from 'worker-loader!./load.worker'
 import imageRequest from './image-request'
-import {ILoadClassOptions, ILoadOptions, IWorkers} from './types'
-
-const INIT_MAX_WORKER = 2
-
-const workers: IWorkers = {
-  default: [],
-}
-
-export const isSupportWebworker = () => {
-  return Boolean(window.Worker)
-}
+import {ILoadOptions} from './types'
+import {isSupportWebworker} from './util'
 
 const load = (options: ILoadOptions = {}) => {
   const {
@@ -19,9 +10,10 @@ const load = (options: ILoadOptions = {}) => {
     done,
     progress,
     terminateAfterDone = true,
+    withWorker = true,
   } = options
   let {worker} = options
-  if(!isSupportWebworker() || window.preloadTest){
+  if(!isSupportWebworker() || !withWorker){
     console.warn(
       '[preload] this browser do not support Webworker' +
       ' this will affect ui animation speed',
@@ -58,65 +50,6 @@ const load = (options: ILoadOptions = {}) => {
     return new Promise((_resolve) => {
       resolve = _resolve
     })
-  }
-}
-
-export class Load {
-  private _maxWorkers: number
-  private _namespace?: string
-  private _currentWorkerCount: number = 0
-  private _currentWorkerIndex: number = 0
-  private _works: any[] = []
-  private _blobs: {[name: string]: any} = {}
-
-  constructor(options: ILoadClassOptions = {}) {
-    const {namespace, workers = INIT_MAX_WORKER} = options
-    this._maxWorkers = workers
-    if(namespace){
-      if(!workers[namespace]){
-        workers[namespace] = []
-      }
-    }
-    this._namespace = namespace
-  }
-
-  get namespace() {
-    const {_namespace} = this
-    if(!_namespace){
-      return workers.default
-    }
-    return workers[_namespace]
-  }
-
-  get(options: any = {}) {
-    const {url, done, progress} = options
-    const {namespace, _maxWorkers} = this
-    let worker: Worker
-    const _load = (url, progress, done) => {
-      load({
-        worker,
-        url,
-        terminateAfterDone: false,
-        progress,
-        done,
-      })
-    }
-    if(!isSupportWebworker() || window.preloadTest){
-      _load(url, progress, done)
-      return
-    }
-    if(namespace.length < _maxWorkers){
-      worker = new LoadWorker()
-      namespace.push(worker)
-    }else{
-      let nextIndex = this._currentWorkerIndex + 1
-      if(nextIndex >= _maxWorkers){
-        nextIndex = 0
-      }
-      worker = namespace[nextIndex]
-      this._currentWorkerIndex = nextIndex
-    }
-    _load(url, progress, done)
   }
 }
 
