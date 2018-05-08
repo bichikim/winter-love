@@ -1,6 +1,4 @@
-import forEach from 'lodash/forEach'
-import isArray from 'lodash/isArray'
-import isObject from 'lodash/isObject'
+import {forEach, isArray, isObject, isUndefined} from 'lodash'
 
 const INFINITY = -1
 
@@ -30,7 +28,7 @@ const forEachRun = (
     forEach(sources, (item: any, key: string) => {
       if(safeMode){
         const stateData = object[key]
-        if(stateData || stateData === null || stateData === ''){
+        if(!isUndefined(stateData)){
           runner(key, item, _options, object, sources)
           return true
         }

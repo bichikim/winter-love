@@ -8,7 +8,7 @@ module.exports = function options() {
     return
   }
   this.addPlugin(resolve(__dirname, 'vuex-init.ts'))
-  const env = {...storeInit}
+  const env = {...storeInit, isDoneInit: true}
   if(!this.options.env){
     this.options.env = {}
   }
