@@ -1,27 +1,31 @@
 import friebase from 'firebase'
+import {isFunction} from 'lodash'
 
 import 'firebase/firestore'
 
-let isInit: boolean = false
-const PRODUCTION = 'production'
-
 interface IInitializeOptions {
-  apiKey: string
-  authDomain: string
-  projectId: string
+  apiKey: string | ((store: any) => string)
+  authDomain: string | ((store: any) => string)
+  projectId: string | ((store: any) => string)
 }
 
 export default function fireBase(options: IInitializeOptions) {
-  if(!isInit){
-    friebase.initializeApp(options)
-  }else if(process.env.NodeEnv !== PRODUCTION){
-    console.warn('[vuex-keg-firebase] is already called')
-  }
+  const _options = {...options}
 
-  const db = friebase.firestore()
-  isInit = true
+  return (store: any) => {
 
-  return () => () => () => {
-    return db
+    Object.keys(_options).forEach((value, key) => {
+      if(isFunction(value)){
+        _options[key] = value(store)
+      }
+    })
+    friebase.initializeApp(_options)
+    const db = friebase.firestore()
+    return () => (path: string) => {
+      if(path){
+        return db.doc(path)
+      }
+      return db
+    }
   }
 }
