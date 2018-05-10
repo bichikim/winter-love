@@ -13,4 +13,3 @@ declare module 'worker-loader!*' {
 }
 
 declare module 'firebase'
-
