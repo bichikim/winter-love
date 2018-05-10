@@ -9,12 +9,9 @@
         a.button--grey(href="https://github.com/nuxt/nuxt.js" target="_blank") GitHub
         a.buuton--grey(@click="onToggleFullScreen") FullScreen
       div
-        adsense(data-ad-client="ca-pub-XXXXXXXXXXXXXXXX", data-ad-slot="1234567890")
 </template>
 
 <script lang="ts">
-  /* eslint-disable max-len,max-len */
-
   import AppLogo from '@/components/AppLogo.vue'
   import {Component, Vue} from 'vue-property-decorator'
   import {toggleFullScreen} from '~/full-screen'
