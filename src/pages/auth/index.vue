@@ -1,10 +1,35 @@
-<template lang="pug">
-  .auth hello
-</template>
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator'
+  import {Getter as _Getter, Mutation as _Mutation, namespace} from 'vuex-class'
+  import AppLogo from '@/components/AppLogo.vue'
+  const Getter = namespace('api', _Getter)
+  const Mutation = namespace('api', _Mutation)
+
   @Component
   export default class Auth extends Vue {
+
+    @Mutation changeTest: (name: string) => void
+
+    @Mutation changeNoNo: (name: string) => void
+
+    @Getter getTest: (count: number) => string
+
+    myNumber: number = 0
+
+    mounted(){
+      setInterval(() => {
+        this.changeTest(`test ~ ${Math.random()}`)
+      }, 1000)
+      setInterval(() => {
+        this.changeNoNo(`test ~ ${Math.random()}`)
+      }, 500)
+    }
+
+    render(h){
+      return h('div', {
+        class: ['auth'],
+      }, this.getTest(this.myNumber))
+    }
   }
 </script>
 <style scoped lang="stylus">
