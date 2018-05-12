@@ -1,54 +1,8 @@
 import {PluginObject, VueConstructor} from 'vue'
-interface IOptions {
-  prototypeName?: string
-  name?: string
-  src?: string | string[]
-  isRunScriptWithSrc?: boolean
-  loaded?: (src: string) => void
-}
+import load from './load'
+import IOptions from './IOptions'
 
 let installed: boolean = false
-const appendElement = (element: HTMLScriptElement) => {
-  document.querySelector('body').appendChild(element)
-}
-
-export const getAllScript = (): NodeListOf<HTMLScriptElement> => {
-  return document.querySelectorAll('script')
-}
-
-export const findAttribute = (
-  name: string,
-  value: string,
-  nodeList?: NodeListOf<HTMLElement>,
-): Element | undefined => {
-  if(!nodeList){return}
-  const {length} = nodeList
-  if(!nodeList.item) return
-  for(let i = 0; i < length; i += 1){
-    const node = nodeList.item(i)
-    if(node.getAttribute && node.getAttribute(name) === value){
-      return node
-    }
-  }
-}
-
-const load = (src: string, type: string = 'text/javascript'): Promise<string> => {
-  if(findAttribute('script', src, getAllScript())){
-    return Promise.resolve(src)
-  }
-  const script = document.createElement('script')
-  script.type = type
-  script.src = src
-  appendElement(script)
-  return new Promise<string>((resolve, reject) => {
-    script.onload = () => {
-      resolve(src)
-    }
-    script.onerror = (error) => {
-      reject(error)
-    }
-  })
-}
 
 const plugin: PluginObject<IOptions> = {
   install(vue: VueConstructor, options: IOptions = {}) {
@@ -65,7 +19,7 @@ const plugin: PluginObject<IOptions> = {
     vue.prototype[`$${prototypeName}`] = load
     vue.component(name, {
       name,
-      props: ['src'],
+      props: ['src', 'type'],
       data() {
         return {loaded: false}
       },
@@ -76,7 +30,7 @@ const plugin: PluginObject<IOptions> = {
           this.loaded = true
           return
         }
-        this[`$${prototypeName}`](this.src).then((src) => {
+        this[`$${prototypeName}`](this.src, this.type).then((src) => {
           this.loaded = true
           this.$emit(`${name}/loaded`, src)
         }).catch((error) => {
