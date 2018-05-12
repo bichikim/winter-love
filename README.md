@@ -1,6 +1,6 @@
-# winterlove
+# Winter Love
 
-> winterlove project
+> winter-love toy project
 
 ## Build Setup
 
