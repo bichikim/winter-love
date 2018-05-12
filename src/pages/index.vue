@@ -9,6 +9,7 @@
         a.button--grey(href="https://github.com/nuxt/nuxt.js" target="_blank") GitHub
         a.buuton--grey(@click="onToggleFullScreen") FullScreen
       div
+        inject-script(src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js") console.log('hi!?')
 </template>
 
 <script lang="ts">

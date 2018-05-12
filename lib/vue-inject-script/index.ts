@@ -1,7 +1,9 @@
 import {PluginObject, VueConstructor} from 'vue'
 interface IOptions {
   prototypeName?: string
+  name?: string
   src?: string | string[]
+  isRunScriptWithSrc?: boolean
   loaded?: (src: string) => void
 }
 
@@ -15,10 +17,11 @@ export const getAllScript = (): NodeListOf<HTMLScriptElement> => {
 }
 
 export const findAttribute = (
-  nodeList: NodeListOf<Element>,
   name: string,
   value: string,
+  nodeList?: NodeListOf<Element>,
 ): Element | undefined => {
+  if(!nodeList){return}
   const {length} = nodeList
   for(let i = 0; i < length; i += 1){
     const node = nodeList.item(i)
@@ -29,7 +32,7 @@ export const findAttribute = (
 }
 
 const load = (src: string, type: string = 'text/javascript'): Promise<string> => {
-  if(findAttribute(getAllScript(), 'script', src)){
+  if(findAttribute('script', src, getAllScript())){
     return Promise.resolve(src)
   }
   const script = document.createElement('script')
@@ -46,35 +49,61 @@ const load = (src: string, type: string = 'text/javascript'): Promise<string> =>
   })
 }
 
-const vueCdnScript: PluginObject<IOptions> = {
+const plugin: PluginObject<IOptions> = {
   install(vue: VueConstructor, options: IOptions = {}) {
-    const {src, loaded, prototypeName = 'cdnScript'} = options
+    const {
+      src,
+      loaded,
+      prototypeName = 'cdnScript',
+      name = 'inject-script',
+      isRunScriptWithSrc = true,
+    } = options
     if(installed){return}
     installed = true
-    if(Array.isArray(src)){
-      src.forEach((src: string) => {
-        load(src).then(() => {
-          if(loaded){
-            loaded(src)
-          }
-        })
-      })
-    }
+    const style = ['display:none']
     vue.prototype[`$${prototypeName}`] = load
-    vue.component('cdn-script', {
+    vue.component(name, {
+      name,
       props: ['src'],
+      data() {
+        return {loaded: false}
+      },
       created() {
-        this.$script(this.src).then((src) => {
-          this[`$${prototypeName}`]('cdn-script/loaded', src)
+        // supporting Nuxt
+        if(process.server){return}
+        if(!this.src){
+          this.loaded = true
+          return
+        }
+        this[`$${prototypeName}`](this.src).then((src) => {
+          this.loaded = true
+          this.$emit(`${name}/loaded`, src)
         }).catch((error) => {
-          this.$emit('cdn-script/error', error)
+          this.$emit(`${name}/error`, error)
         })
       },
       render(h) {
-        return h('div', {style: ['display:none']}, this.$slots.default)
+        if((this.src && !isRunScriptWithSrc) || !this.loaded){
+          return h('div', {style})
+        }
+        return h('div', {style}, [h('script', [this.$slots.default])])
       },
     })
+    // supporting Nuxt
+    if(process.server){return}
+    const done = (src) => () => {
+      if(loaded){
+        loaded(src)
+      }
+    }
+    if(Array.isArray(src)){
+      src.forEach((src: string) => {
+        load(src).then(done(src))
+      })
+    }else if(typeof src === 'string'){
+      load(src).then(done(src))
+    }
   },
 }
 
-export default vueCdnScript
+export default plugin
