@@ -3,13 +3,12 @@ export interface ILoadRequestData {
   basePath?: string
   progress?: any
   done?: any
-  isResponseBase64?: boolean
+  isBlob?: boolean
 }
 
 export interface ILoadOptions extends IImageRequestOptions {
   worker?: Worker
   terminateAfterDone?: boolean
-  withWorker?: boolean
 }
 
 export interface IImageRequestOptions {
@@ -31,7 +30,10 @@ export interface IResult {
   url: string
   loaded: number
   total: number
-  response?: Blob
+  response?: Blob | string
 }
 
+
 export type TImageRequestCallback = (data: IResult) => void
+
+

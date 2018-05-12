@@ -10,11 +10,11 @@ const addHtmlHead = (element: HTMLScriptElement) => {
   document.querySelector('head').appendChild(element)
 }
 
-const getAllScript = (): NodeListOf<HTMLScriptElement> => {
+export const getAllScript = (): NodeListOf<HTMLScriptElement> => {
   return document.querySelectorAll('head script')
 }
 
-const findAttribute = (
+export const findAttribute = (
   nodeList: NodeListOf<Element>,
   name: string,
   value: string,

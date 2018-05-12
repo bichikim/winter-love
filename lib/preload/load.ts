@@ -10,14 +10,15 @@ const load = (options: ILoadOptions = {}) => {
     done,
     progress,
     terminateAfterDone = true,
-    withWorker = true,
   } = options
   let {worker} = options
-  if(!isSupportWebworker() || !withWorker){
-    console.warn(
-      '[preload] this browser do not support Webworker' +
-      ' this will affect ui animation speed',
-    )
+  if(!isSupportWebworker()){
+    if(process.env.NODE_ENV !== 'production'){
+      console.warn(
+        '[preload] this browser do not support Webworker' +
+        ' this will affect ui animation speed',
+      )
+    }
     imageRequest({url, progress, done})
     return
   }
