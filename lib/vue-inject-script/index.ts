@@ -8,7 +8,7 @@ interface IOptions {
 }
 
 let installed: boolean = false
-const addHtmlHead = (element: HTMLScriptElement) => {
+const appendElement = (element: HTMLScriptElement) => {
   document.querySelector('body').appendChild(element)
 }
 
@@ -39,7 +39,7 @@ const load = (src: string, type: string = 'text/javascript'): Promise<string> =>
   const script = document.createElement('script')
   script.type = type
   script.src = src
-  addHtmlHead(script)
+  appendElement(script)
   return new Promise<string>((resolve, reject) => {
     script.onload = () => {
       resolve(src)
