@@ -6,15 +6,7 @@
   "private": true,
   "main": "bin/index.js",
   "scripts": {
-    "nps": "nps -c ./config/nps.config.js",
-    "dev": "nps -c ./config/nps.config.js dev",
-    "build": "nps -c ./config/nps.config.js build",
-    "start": "nps -c ./config/nps.config.js start",
-    "generate": "nps -c ./config/nps.config.js generate",
-    "eslint": "nps -c ./config/nps.config.js eslint",
-    "tslint": "nps -c ./config/nps.config.js tslints",
-    "precommit": "nps -c ./config/nps.config.js precommit",
-    "test:unit": "nps -c ./config/nps.config.js test:unit"
+    "nps": "nps -c ./config/nps.config.js"
   },
   "vendor": [
     "join-path",

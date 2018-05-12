@@ -15,6 +15,7 @@
 </template>
 <script lang="ts">
   import {Component, Vue, Prop} from 'vue-property-decorator'
+
   @Component
   export default class  extends Vue {
     @Prop({default: 0}) activeIndex: number

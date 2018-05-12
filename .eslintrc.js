@@ -20,7 +20,6 @@ module.exports = {
       files: ['*.ts'],
       "rules": {
         'new-cap': 'off',
-        'no-undef': 'off',
       }
     }
   ],
@@ -42,6 +41,8 @@ module.exports = {
      **************************************/
     // off
     'one-var': 'off',
+    'no-undef': 'off',
+    'no-console': 'off',
     // on
     'array-callback-return': 'error',
     'arrow-parens': ['error', 'always'],
@@ -75,7 +76,6 @@ module.exports = {
     'no-buffer-constructor': 'error',
     'no-caller': 'error',
     'no-catch-shadow': 'error',
-    'no-console': 'error',
     'no-div-regex': 'error',
     'no-else-return': 'error',
     'no-empty-function': 'error',
@@ -118,7 +118,6 @@ module.exports = {
     'no-tabs': 'error',
     'no-template-curly-in-string': 'error',
     'no-throw-literal': 'error',
-    'no-undef': 'error',
     'no-undef-init': 'error',
     'no-undefined': 'error',
     'no-unmodified-loop-condition': 'error',
