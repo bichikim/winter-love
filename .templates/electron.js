@@ -1,4 +1,4 @@
-const electron = require('electron')
+const electron = require('.templates/electron')
 const http = require('http')
 const OK = 200, POLL_WAIT_TIME = 300
 let win

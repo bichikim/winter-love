@@ -1,17 +1,19 @@
 import Element from 'element-ui'
 import Vue from 'vue'
-// import VueAnalytics from 'vue-analytics'
+import VueCdnScript from '~/vue-cdn-script'
 import VueI18n from 'vue-i18n'
 
 // noinspection JSUnusedGlobalSymbols
-export default ({isServer, isClient}) => {
+export default () => {
   Vue.use(Element)
   Vue.use(VueI18n)
-  if(isServer){
+  if(process.server){
     // nothing to run
   }
 
-  if(isClient){
-    // Vue.use(VueAnalytics)
+  if(process.client){
+    Vue.use(VueCdnScript, {
+      src: ['https://apis.google.com/js/client:platform.js'],
+    })
   }
 }
