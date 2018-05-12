@@ -74,6 +74,8 @@ module.exports = {
         NODE_ENV: '"production"',
       },
       'process.test': true,
+      'process.client': true,
+      'process.server': false,
     }),
   ],
   node: {

@@ -9,23 +9,24 @@ interface IOptions {
 
 let installed: boolean = false
 const addHtmlHead = (element: HTMLScriptElement) => {
-  document.querySelector('head').appendChild(element)
+  document.querySelector('body').appendChild(element)
 }
 
 export const getAllScript = (): NodeListOf<HTMLScriptElement> => {
-  return document.querySelectorAll('head script')
+  return document.querySelectorAll('script')
 }
 
 export const findAttribute = (
   name: string,
   value: string,
-  nodeList?: NodeListOf<Element>,
+  nodeList?: NodeListOf<HTMLElement>,
 ): Element | undefined => {
   if(!nodeList){return}
   const {length} = nodeList
+  if(!nodeList.item) return
   for(let i = 0; i < length; i += 1){
     const node = nodeList.item(i)
-    if(node.getAttribute(name) === value){
+    if(node.getAttribute && node.getAttribute(name) === value){
       return node
     }
   }
