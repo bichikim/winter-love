@@ -1,6 +1,7 @@
 import {PluginObject, VueConstructor} from 'vue'
 import load from './load'
 import IOptions from './IOptions'
+import scriptComponentFactory from './script-component-factory'
 
 let installed: boolean = false
 
@@ -15,35 +16,15 @@ const plugin: PluginObject<IOptions> = {
     } = options
     if(installed){return}
     installed = true
-    const style = ['display:none']
     vue.prototype[`$${prototypeName}`] = load
-    vue.component(name, {
+    vue.component(
       name,
-      props: ['src', 'type'],
-      data() {
-        return {loaded: false}
-      },
-      created() {
-        // supporting Nuxt
-        if(process.server){return}
-        if(!this.src){
-          this.loaded = true
-          return
-        }
-        this[`$${prototypeName}`](this.src, this.type).then((src) => {
-          this.loaded = true
-          this.$emit(`${name}/loaded`, src)
-        }).catch((error) => {
-          this.$emit(`${name}/error`, error)
-        })
-      },
-      render(h) {
-        if((this.src && !isRunScriptWithSrc) || !this.loaded){
-          return h('div', {style})
-        }
-        return h('div', {style}, [h('script', [this.$slots.default])])
-      },
-    })
+      scriptComponentFactory({
+        name,
+        prototypeName,
+        isRunScriptWithSrc,
+      })
+    )
     // supporting Nuxt
     if(process.server){return}
     const done = (src) => () => {
