@@ -3,8 +3,7 @@ export const state = () => ({
   noNo: null,
 })
 
-export const actions = {
-}
+export const actions = {}
 
 export const mutations = {
   changeTest(state, payload) {

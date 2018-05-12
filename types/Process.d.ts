@@ -6,7 +6,7 @@
 /* tslint:disable-next-line: no-namespace*/
 declare namespace NodeJS {
   /* tslint:disable-next-line: interface-name*/
-  export interface Process{
+  export interface Process {
     client: boolean
     server: boolean
     browser: boolean

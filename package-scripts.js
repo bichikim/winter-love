@@ -14,7 +14,7 @@ module.exports = {
     generate: nuxt('generate'),
     eslint: {
       default: 'eslint --ext .js,.vue,.ts --ignore-path .gitignore .',
-      fix: 'eslint --fix .js,.vue,.ts --ignore-path .gitignore .',
+      fix: 'eslint --fix --ext .js,.vue,.ts --ignore-path .gitignore .',
     },
     tslint: {
       default: 'tslint --project tsconfig.json src/**/*.ts',

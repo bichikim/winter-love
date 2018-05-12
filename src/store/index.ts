@@ -1,11 +1,9 @@
 import vuexKeg from 'vuex-keg'
 import VuexStorage from '~/vuex-storage'
 
-export const state = () => ({
+export const state = () => ({})
 
-})
-
-export const plugins =  [
+export const plugins = [
   vuexKeg({
     plugins: {
       test: () => {
