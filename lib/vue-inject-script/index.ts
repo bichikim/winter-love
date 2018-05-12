@@ -3,6 +3,8 @@ import load from './load'
 import IOptions from './IOptions'
 import scriptComponentFactory from './script-component-factory'
 
+export {IOptions, load}
+
 let installed: boolean = false
 
 const plugin: PluginObject<IOptions> = {
