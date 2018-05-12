@@ -2,6 +2,7 @@ interface IOptions {
   done?: (result: Blob) => any
   error?: (error: any) => any
 }
+
 const INIT_SLICE = 512
 export default (
   base64: string,

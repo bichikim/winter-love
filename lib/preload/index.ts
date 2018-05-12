@@ -1,12 +1,7 @@
-/**
- *
- * @author Bichi Kim <bichi@pjfactory.com>
- * @copyright PJ Factory Co.
- * @license Private
- */
 import joinPath from 'join-path'
 import {Load} from './load'
 import {ILoadRequestData} from './types'
+
 const loader = new Load()
 export default (request: ILoadRequestData = {}): Promise<string> => {
   const {

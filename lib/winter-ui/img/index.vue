@@ -21,7 +21,7 @@
     @Prop({default: 'Image'}) title: number
 
 
-    get path(){
+    get path() {
       const {isFromAssets, basePath, src} = this
       return isFromAssets ? joinPath('@/assets', basePath, src) : joinPath(basePath, src)
     }

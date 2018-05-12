@@ -2,6 +2,7 @@ import LoadWorker from 'worker-loader!./load.worker'
 import {ILoadClassOptions, IWorkers} from '~/preload/types'
 import {isSupportWebworker} from '~/preload/util'
 import load from './load'
+
 const INIT_MAX_WORKER = 2
 
 const workers: IWorkers = {

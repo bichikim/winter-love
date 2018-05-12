@@ -1,5 +1,6 @@
 import {last} from 'lodash'
 import {IImageRequestOptions} from './types'
+
 export default (options: IImageRequestOptions = {}) => {
   const {url, progress, done} = options
   let type

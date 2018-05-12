@@ -8,7 +8,7 @@ const application = (extension: string) => {
 
 export default (url: string): string => {
   const pre: null | string[] = /^.+\.([^.]+)$/.exec(url)
-  const extension: string = pre? pre.pop() : ''
+  const extension: string = pre ? pre.pop() : ''
   switch(extension){
     case 'jpg':
       return image(extension)

@@ -6,6 +6,7 @@
 <script lang="ts">
   import {Component, Vue, Prop, Watch} from 'vue-property-decorator'
   import anime from 'animejs'
+
   @Component
   export default class  extends Vue {
     // animation rail run animation head ~ last
@@ -20,7 +21,7 @@
     }
 
 
-    @Watch('currentRail', {immediate: false}) onProps(props){
+    @Watch('currentRail', {immediate: false}) onProps(props) {
       const {rail, init} = props
       anime.timeline({
         ...init,
@@ -28,7 +29,7 @@
       }).add(rail)
     }
 
-    mounted(){
+    mounted() {
       anime.timeline({
         ...this.init,
         targets: this.$el,

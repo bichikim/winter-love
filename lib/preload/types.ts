@@ -1,4 +1,4 @@
-export interface ILoadRequestData{
+export interface ILoadRequestData {
   src?: string
   basePath?: string
   progress?: any
@@ -6,7 +6,7 @@ export interface ILoadRequestData{
   isResponseBase64?: boolean
 }
 
-export interface ILoadOptions extends IImageRequestOptions{
+export interface ILoadOptions extends IImageRequestOptions {
   worker?: Worker
   terminateAfterDone?: boolean
   withWorker?: boolean
