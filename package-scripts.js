@@ -16,10 +16,13 @@ module.exports = {
       default: 'eslint --ext .js,.vue,.ts --ignore-path .gitignore .',
       fix: 'eslint --fix .js,.vue,.ts --ignore-path .gitignore .',
     },
-    tslint: 'tslint --project tsconfig.json src/**/*.ts',
+    tslint: {
+      default: 'tslint --project tsconfig.json src/**/*.ts',
+      fix: 'tslint --fix "src/**/*.ts"',
+    },
     precommit: series(
       nps('tslint'),
-      nps('eslint'),
+      nps('eslint.fix'),
     ),
     'test:unit': 'karma start config/karma.config.js',
   },

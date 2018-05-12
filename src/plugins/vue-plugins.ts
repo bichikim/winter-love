@@ -1,7 +1,7 @@
 import Element from 'element-ui'
 import Vue from 'vue'
-import VueCdnScript from '~/vue-cdn-script'
 import VueI18n from 'vue-i18n'
+import VueCdnScript from '~/vue-cdn-script'
 
 // noinspection JSUnusedGlobalSymbols
 export default () => {
