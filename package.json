@@ -31,6 +31,7 @@
     "lodash": "^4.17.10",
     "nuxt": "latest",
     "vue": "^2.5.16",
+    "vue-analytics": "^5.10.4",
     "vue-class-component": "latest",
     "vue-google-adsense": "^1.0.4",
     "vue-i18n": "latest",
