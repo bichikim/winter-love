@@ -82,6 +82,10 @@
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@firebase/app-types/-/app-types-0.2.0.tgz#2a0e9c433d5f39e428358c5cd8065010d5a07985"
 
+"@firebase/app-types@0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@firebase/app-types/-/app-types-0.3.1.tgz#df4e79c38f759e606a421e866cecb7da4577b606"
+
 "@firebase/app@0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@firebase/app/-/app-0.2.0.tgz#015c270f07be2b01cf64129a2d0f9b3b87f3c135"
@@ -90,9 +94,23 @@
     "@firebase/util" "0.1.11"
     tslib "1.9.0"
 
+"@firebase/app@0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@firebase/app/-/app-0.3.1.tgz#282a217bc904fd5168e43c3e2d30e6658ceca278"
+  dependencies:
+    "@firebase/app-types" "0.3.1"
+    "@firebase/util" "0.2.0"
+    dom-storage "2.1.0"
+    tslib "1.9.0"
+    xmlhttprequest "1.8.0"
+
 "@firebase/auth-types@0.2.1":
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/@firebase/auth-types/-/auth-types-0.2.1.tgz#83a03939358ce8a59de85404b9ed7ca13a51548f"
+
+"@firebase/auth-types@0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@firebase/auth-types/-/auth-types-0.3.2.tgz#fc636084eb82cb098e4e76efc5fffd315e22abdd"
 
 "@firebase/auth@0.4.2":
   version "0.4.2"
@@ -100,9 +118,19 @@
   dependencies:
     "@firebase/auth-types" "0.2.1"
 
+"@firebase/auth@0.5.2":
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/@firebase/auth/-/auth-0.5.2.tgz#f4d7b699e21523b412f5af21a5507f44625d056c"
+  dependencies:
+    "@firebase/auth-types" "0.3.2"
+
 "@firebase/database-types@0.2.1":
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/@firebase/database-types/-/database-types-0.2.1.tgz#f83a6d03af5f8c93276ceb89e1f31e4664c9df1b"
+
+"@firebase/database-types@0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@firebase/database-types/-/database-types-0.3.1.tgz#4a15423f3b2cb3bed111f5a353c5c1bb2e2787ba"
 
 "@firebase/database@0.2.2":
   version "0.2.2"
@@ -114,9 +142,23 @@
     faye-websocket "0.11.1"
     tslib "1.9.0"
 
+"@firebase/database@0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@firebase/database/-/database-0.3.1.tgz#1ca0797b8e9a243d383d31b1873373b84a2048b9"
+  dependencies:
+    "@firebase/database-types" "0.3.1"
+    "@firebase/logger" "0.1.1"
+    "@firebase/util" "0.2.0"
+    faye-websocket "0.11.1"
+    tslib "1.9.0"
+
 "@firebase/firestore-types@0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@firebase/firestore-types/-/firestore-types-0.3.0.tgz#9df0af784145c568c6d306eda1dd25198b5a2b50"
+
+"@firebase/firestore-types@0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@firebase/firestore-types/-/firestore-types-0.4.1.tgz#9a96dff26f0537b13ff119b5e7ab4bddad2068d1"
 
 "@firebase/firestore@0.4.1":
   version "0.4.1"
@@ -128,9 +170,23 @@
     grpc "1.10.1"
     tslib "1.9.0"
 
+"@firebase/firestore@0.5.2":
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/@firebase/firestore/-/firestore-0.5.2.tgz#92dcbc604e41d97d371e115280f917dbdeaab21a"
+  dependencies:
+    "@firebase/firestore-types" "0.4.1"
+    "@firebase/logger" "0.1.1"
+    "@firebase/webchannel-wrapper" "0.2.8"
+    grpc "1.10.1"
+    tslib "1.9.0"
+
 "@firebase/functions-types@0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@firebase/functions-types/-/functions-types-0.1.1.tgz#3b2176bdb30a4682321eb2ff79e796f6d9c010e0"
+
+"@firebase/functions-types@0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@firebase/functions-types/-/functions-types-0.1.2.tgz#f291b2945218a97d9ab0e20f2fdec2cef6f90f94"
 
 "@firebase/functions@0.1.1":
   version "0.1.1"
@@ -138,6 +194,14 @@
   dependencies:
     "@firebase/functions-types" "0.1.1"
     "@firebase/messaging-types" "0.1.3"
+    isomorphic-fetch "2.2.1"
+
+"@firebase/functions@0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@firebase/functions/-/functions-0.2.2.tgz#fd919deede5ec48870ecf751e4300066fc9424dc"
+  dependencies:
+    "@firebase/functions-types" "0.1.2"
+    "@firebase/messaging-types" "0.2.2"
     isomorphic-fetch "2.2.1"
 
 "@firebase/logger@0.1.1":
@@ -148,12 +212,24 @@
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/@firebase/messaging-types/-/messaging-types-0.1.3.tgz#0a80c69c8f791e3aa94b28f4d2e296d0ea2571bc"
 
+"@firebase/messaging-types@0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@firebase/messaging-types/-/messaging-types-0.2.2.tgz#7d97abb87b599445f09df0085cbd89e9405984c6"
+
 "@firebase/messaging@0.2.4":
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/@firebase/messaging/-/messaging-0.2.4.tgz#f6404c82f7cb86538f5fa62b4549b28a4edb9f90"
   dependencies:
     "@firebase/messaging-types" "0.1.3"
     "@firebase/util" "0.1.11"
+    tslib "1.9.0"
+
+"@firebase/messaging@0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@firebase/messaging/-/messaging-0.3.2.tgz#4851b41773deb890f6919a67270d3fd34863756b"
+  dependencies:
+    "@firebase/messaging-types" "0.2.2"
+    "@firebase/util" "0.2.0"
     tslib "1.9.0"
 
 "@firebase/polyfill@0.3.1":
@@ -168,6 +244,10 @@
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/@firebase/storage-types/-/storage-types-0.1.3.tgz#3e68942c5aab9f5f7180a797dff22d239821668e"
 
+"@firebase/storage-types@0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@firebase/storage-types/-/storage-types-0.2.2.tgz#14b56a3b61005e72dfd9ac3ec6bcb160bc3736d3"
+
 "@firebase/storage@0.1.9":
   version "0.1.9"
   resolved "https://registry.yarnpkg.com/@firebase/storage/-/storage-0.1.9.tgz#1a32bd3f48a98f7eb1472cb3e5e4e37e04464c48"
@@ -175,9 +255,22 @@
     "@firebase/storage-types" "0.1.3"
     tslib "1.9.0"
 
+"@firebase/storage@0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@firebase/storage/-/storage-0.2.2.tgz#97a90e41b008f6c3b6193e7fed1f4afd3cfda8b4"
+  dependencies:
+    "@firebase/storage-types" "0.2.2"
+    tslib "1.9.0"
+
 "@firebase/util@0.1.11":
   version "0.1.11"
   resolved "https://registry.yarnpkg.com/@firebase/util/-/util-0.1.11.tgz#9990dff53930aa9fcae31494ebe8de5c5b8e815c"
+  dependencies:
+    tslib "1.9.0"
+
+"@firebase/util@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@firebase/util/-/util-0.2.0.tgz#b9e176703deda671b823522759f88f8356aaf624"
   dependencies:
     tslib "1.9.0"
 
@@ -221,9 +314,25 @@
   version "0.31.36"
   resolved "https://registry.yarnpkg.com/@types/es6-shim/-/es6-shim-0.31.36.tgz#ad632af021b7f13846c2dddbba4db0a6f5b3eb6b"
 
+"@types/firebase@^3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@types/firebase/-/firebase-3.2.1.tgz#17c1c8fee7485ab09668d2461e34540bdf44b3b1"
+  dependencies:
+    firebase "*"
+
+"@types/jquery@*":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.3.1.tgz#55758d44d422756d6329cbf54e6d41931d7ba28f"
+
 "@types/lodash@^4.14.72":
   version "4.14.108"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.108.tgz#02656af3add2e5b3174f830862c47421c00ef817"
+
+"@types/masonry-layout@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@types/masonry-layout/-/masonry-layout-4.2.0.tgz#05934f8a269cfc781f595245c0b33fc5ee0aed97"
+  dependencies:
+    "@types/jquery" "*"
 
 "@types/mocha@^5.2.0":
   version "5.2.0"
@@ -2716,6 +2825,10 @@ des.js@^1.0.0:
     inherits "^2.0.1"
     minimalistic-assert "^1.0.0"
 
+desandro-matches-selector@^2.0.0:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/desandro-matches-selector/-/desandro-matches-selector-2.0.2.tgz#717beed4dc13e7d8f3762f707a6d58a6774218e1"
+
 destroy@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
@@ -3230,6 +3343,10 @@ etag@^1.8.1, etag@~1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
 
+ev-emitter@^1.0.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/ev-emitter/-/ev-emitter-1.1.1.tgz#8f18b0ce5c76a5d18017f71c0a795c65b9138f2a"
+
 event-emitter@~0.3.5:
   version "0.3.5"
   resolved "https://registry.yarnpkg.com/event-emitter/-/event-emitter-0.3.5.tgz#df8c69eef1647923c7157b9ce83840610b02cc39"
@@ -3556,6 +3673,19 @@ find-up@^2.0.0, find-up@^2.1.0:
   dependencies:
     locate-path "^2.0.0"
 
+firebase@*:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/firebase/-/firebase-5.0.2.tgz#5c0d647acc10552d15169e5f8482413aff1264cb"
+  dependencies:
+    "@firebase/app" "0.3.1"
+    "@firebase/auth" "0.5.2"
+    "@firebase/database" "0.3.1"
+    "@firebase/firestore" "0.5.2"
+    "@firebase/functions" "0.2.2"
+    "@firebase/messaging" "0.3.2"
+    "@firebase/polyfill" "0.3.1"
+    "@firebase/storage" "0.2.2"
+
 firebase@^4.13.1:
   version "4.13.1"
   resolved "https://registry.yarnpkg.com/firebase/-/firebase-4.13.1.tgz#87ab64bbb7f707244fb878f2a28235b0e3aed3ec"
@@ -3570,6 +3700,12 @@ firebase@^4.13.1:
     "@firebase/storage" "0.1.9"
     dom-storage "2.1.0"
     xmlhttprequest "1.8.0"
+
+fizzy-ui-utils@^2.0.0:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/fizzy-ui-utils/-/fizzy-ui-utils-2.0.7.tgz#7df45dcc4eb374a08b65d39bb9a4beedf7330505"
+  dependencies:
+    desandro-matches-selector "^2.0.0"
 
 flat-cache@^1.2.1:
   version "1.3.0"
@@ -3796,6 +3932,10 @@ get-caller-file@^1.0.1:
 get-func-name@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/get-func-name/-/get-func-name-2.0.0.tgz#ead774abee72e20409433a066366023dd6887a41"
+
+get-size@^2.0.2:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/get-size/-/get-size-2.0.3.tgz#54a1d0256b20ea7ac646516756202769941ad2ef"
 
 get-stdin@^4.0.1:
   version "4.0.1"
@@ -5365,6 +5505,13 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
+masonry-layout@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/masonry-layout/-/masonry-layout-4.2.1.tgz#1c878b85a88866ba6b39b9bd0e162348aed7ce13"
+  dependencies:
+    get-size "^2.0.2"
+    outlayer "^2.1.0"
+
 match-url-wildcard@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/match-url-wildcard/-/match-url-wildcard-0.0.1.tgz#cae6353b69315e0d4867f10cfa9056b5de5049b4"
@@ -6189,6 +6336,14 @@ osenv@^0.1.4:
   dependencies:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
+
+outlayer@^2.1.0:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/outlayer/-/outlayer-2.1.1.tgz#29863b6de10ea5dadfffcadfa0d728907387e9a2"
+  dependencies:
+    ev-emitter "^1.0.0"
+    fizzy-ui-utils "^2.0.0"
+    get-size "^2.0.2"
 
 p-finally@^1.0.0:
   version "1.0.0"
