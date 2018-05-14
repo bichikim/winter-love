@@ -5,6 +5,7 @@ export interface IOptions {
   name?: string
   itemSelector?: string
   columnWidth?: string
+  gutter?: number
   horizontalOrder?: boolean
   percentPosition?: boolean
   stamp?: string

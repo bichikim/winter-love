@@ -7,6 +7,7 @@ export default (options: IOptions) => {
   const {
     itemSelector = '.item',
     columnWidth = '.item',
+    gutter = 0,
     horizontalOrder = true,
     percentPosition = true,
     stamp = '.stamp',
