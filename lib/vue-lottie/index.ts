@@ -1,30 +1,30 @@
+import Lottie from './Lottie'
+import * as events from './events'
 import {PluginObject, VueConstructor} from 'vue'
+export {Lottie}
+export {events}
+
+let _vue: VueConstructor
 
 interface IOptions {
   name?: string
 }
-
-let _vue: VueConstructor
 
 const plugin: PluginObject<IOptions> = {
   install(vue: VueConstructor, options: IOptions = {}) {
     if(_vue && _vue === vue){
       if(process.env.NODE_ENV !== 'production'){
         console.error(
-          '[vue-assets] already installed Vue.use(~) should be called only once'
+          '[vue-lottie] already installed Vue.use(~) should be called only once'
         )
       }
       return
     }
     _vue = vue
-    const {name = 'assets'} = options
+    const {name = 'lottie'} = options
     vue.mixin({
-      created() {
-        const {assets = {}} = this.$options
-        this.$assets = {}
-        Object.keys(assets).forEach((key) => {
-          this[`$${name}`][key] = assets[key]
-        })
+      components: {
+        [name]: Lottie,
       },
     })
   },

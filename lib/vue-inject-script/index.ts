@@ -5,10 +5,18 @@ import scriptComponentFactory from './script-component-factory'
 
 export {IOptions, load}
 
-let installed: boolean = false
+let _vue: VueConstructor
 
 const plugin: PluginObject<IOptions> = {
   install(vue: VueConstructor, options: IOptions = {}) {
+    if(_vue && _vue === vue){
+      if(process.env.NODE_ENV !== 'production'){
+        console.error(
+          '[vue-inject-script] already installed Vue.use(~) should be called only once'
+        )
+      }
+    }
+    _vue = vue
     const {
       src,
       loaded,
@@ -16,8 +24,6 @@ const plugin: PluginObject<IOptions> = {
       name = 'inject-script',
       isRunScriptWithSrc = true,
     } = options
-    if(installed){return}
-    installed = true
     vue.prototype[`$${prototypeName}`] = load
     vue.component(
       name,
