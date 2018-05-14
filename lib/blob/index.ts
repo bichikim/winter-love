@@ -1,5 +1,7 @@
-import createObjectURL from './create-object-URL'
+import blobToBase64 from './blob-to-base64'
+import urlToBlob from './url-to-blob'
 
 export {
-  createObjectURL,
+  blobToBase64,
+  urlToBlob,
 }
