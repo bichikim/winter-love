@@ -43,6 +43,7 @@ module.exports = {
     'one-var': 'off',
     'no-undef': 'off',
     'no-console': 'off',
+    // 'linebreak-style': ['error', 'unix'],
     // on
     'array-callback-return': 'error',
     'arrow-parens': ['error', 'always'],
@@ -62,7 +63,6 @@ module.exports = {
     'guard-for-in': 'error',
     'indent': ['error', 2, { "SwitchCase": 1 }],
     'keyword-spacing': ['error', {'before': false, 'after': false, 'overrides': {'const' : {before: true, after: true}, 'let' : {before: true, after: true}, 'from': {before: true, after: true}, 'import': {before: true, after: true}, 'as': {before: true, after: true}, 'export': {after: true}, 'return': {before: true, after: true}, 'this': {before: true, after: true}, 'case':{after: true}, 'extends': {before: true}, 'implements': {before: true},},}],
-    'linebreak-style': ['error', 'unix'],
     'max-depth': ['error', {'max': 4}],
     'max-len': ['error', 100],
     'max-lines': 'error',

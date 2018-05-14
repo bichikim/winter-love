@@ -20,10 +20,10 @@ const plugin: PluginObject<IOptions> = {
       emit(event: string, ...args: any[]) {
         this.$emit(namespacedName.call(this, event, prefix), ...args)
       },
-      on(event: string, callback: Function) {
+      on(event: string, callback: (...args: any[]) => any) {
         this.$on(namespacedName.call(this, event, prefix), callback)
       },
-      ones(event: string, callback: Function) {
+      ones(event: string, callback: (...args: any[]) => any) {
         this.$ones(namespacedName.call(this, event, prefix), callback)
       },
     }
