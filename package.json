@@ -6,7 +6,7 @@
   "private": true,
   "main": "bin/index.js",
   "scripts": {
-    "nps": "nps -c ./config/nps.config.js"
+    "nps": "nps"
   },
   "vendor": [
     "join-path",
@@ -21,6 +21,7 @@
     "fs-extra": "^6.0.0",
     "join-path": "^1.1.1",
     "lodash": "^4.17.10",
+    "lottie-web": "^5.1.13",
     "nuxt": "latest",
     "vue": "^2.5.16",
     "vue-class-component": "latest",
