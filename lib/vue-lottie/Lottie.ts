@@ -77,7 +77,6 @@ export default class Lottie extends Vue {
   render(h) {
     if(this.shouldUpdateAnimation){
       this.$nextTick(() => {
-        console.log('should change')
         this.initMovin()
       })
     }
