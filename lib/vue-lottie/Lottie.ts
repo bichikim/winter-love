@@ -4,6 +4,7 @@ import {
   COMPLETE, CREATED, DATA_READY, DESTROY, DOM_LOADED,
   ENTER_FRAME, LOADED_IMAGES, LOOP_COMPLETE, SEGMENT_START,
 } from './events'
+import {shouldChange} from '~/vue-helper'
 
 @Component
 export default class Lottie extends Vue {
@@ -16,27 +17,23 @@ export default class Lottie extends Vue {
   @Prop({default: false}) extendEvent: boolean
   @Prop() controller: (controller) => void
 
-  oldAniSetting: any = null
+  old: any = {}
 
   animation: any = null
 
-  get props() {
+  get watchingProps() {
     const {animationData, renderer, loop, autoplay, rendererSettings} = this
     return {animationData, renderer, loop, autoplay, rendererSettings}
   }
 
-  shouldUpdateAnimation() {
+  get shouldUpdateAnimation() {
     const {animationData, renderer, loop, autoplay, rendererSettings} = this
-    const {oldAniSetting} = this
-    if(!oldAniSetting){
-      this.oldAniSetting = {animationData, renderer, loop, autoplay, rendererSettings}
-      return true
+    const {aniSetting} = this.old
+    const change = shouldChange(this, aniSetting)
+    if(change){
+      this.old.aniSetting = {animationData, renderer, loop, autoplay, rendererSettings}
     }
-    return oldAniSetting.animationData !== animationData ||
-      oldAniSetting.renderer !== renderer ||
-      oldAniSetting.loop !== loop ||
-      oldAniSetting.autoplay !== autoplay ||
-      oldAniSetting.rendererSettings !== rendererSettings
+    return change
   }
 
   initMovin() {
@@ -46,7 +43,7 @@ export default class Lottie extends Vue {
     if(this.animation){
       this.animation.destroy()
     }
-    const {renderer, loop, autoplay, animationData} = this.props
+    const {renderer, loop, autoplay, animationData} = this
     const {rendererSettings} = this
     this.animation = lottie.loadAnimation({
       container, renderer, loop, autoplay, animationData,
@@ -78,8 +75,9 @@ export default class Lottie extends Vue {
   }
 
   render(h) {
-    if(this.shouldUpdateAnimation()){
+    if(this.shouldUpdateAnimation){
       this.$nextTick(() => {
+        console.log('should change')
         this.initMovin()
       })
     }
