@@ -6,10 +6,16 @@
 
   @Component
   export default class  extends Vue {
-    @Prop content: string
+    @Prop() content: string
 
     get contentHtml() {
-      return this.content.replace(/(?:\r\n|\r|\n)/g, '<br />')
+      const first = this.$slots.default ? this.$slots.default[0] : {}
+      const {text} = first || {}
+      const content = this.content || text
+      if(!content){
+        return ''
+      }
+      return content.replace(/(?:\r\n|\r|\n)/g, '<br />')
     }
   }
 </script>

@@ -10,16 +10,16 @@ let _vue: VueConstructor
 
 const plugin: PluginObject<IOptions> = {
   install(vue: VueConstructor, options: IOptions = {}) {
+    const {name = 'white-space'} = options
     if(_vue && _vue === vue){
       if(process.env.NODE_ENV !== 'production'){
         console.error(
-          '[vue-lottie] already installed Vue.use(~) should be called only once'
+          `[vue-${name}] already installed Vue.use(~) should be called only once`,
         )
       }
       return
     }
     _vue = vue
-    const {name = 'white-space'} = options
     vue.mixin({
       components: {
         [name]: WhiteSpace,
@@ -27,5 +27,5 @@ const plugin: PluginObject<IOptions> = {
     })
   },
 }
-
+Object.freeze(plugin)
 export default plugin
