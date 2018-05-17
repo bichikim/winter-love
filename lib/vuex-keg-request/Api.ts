@@ -21,6 +21,8 @@ export interface IApi {
 
 export const GET = 'GET'
 export const POST = 'POST'
+export const PUT = 'PUT'
+export const DELETE = 'DELETE'
 
 export default class Api implements IApi {
   private readonly _pathInfo: IPathCollection
