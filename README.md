@@ -23,11 +23,12 @@ $ npm run nps.generate
 ```javascript
 import winterLove from './bin'
 import express from 'express'
-express.use(winterLove({config: your.config}))
+const app = express()
+app.use(winterLove({config: your.config}))
 // or
 async function run() {
   const middleware = await winterLove({build: true, config: your.config})
-  express.use(middleware)
+  app.use(middleware)
   // ... do something
 }
 
