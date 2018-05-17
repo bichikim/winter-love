@@ -10,7 +10,7 @@ const plugin: PluginObject<IOptions> = {
     if(_vue && _vue === vue){
       if(process.env.NODE_ENV !== 'production'){
         console.error(
-          '[vue-worker] already installed Vue.use(~) should be called only once'
+          '[vue-worker] already installed Vue.use(~) should be called only once',
         )
       }
     }

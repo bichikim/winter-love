@@ -43,6 +43,7 @@ module.exports = async function defaultModule() {
   this.options.head.link.push({rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'})
   this.options.head.titleTemplate = `${title}-%s`
   this.options.plugins.push('@/plugins/vue-plugins')
+  this.options.plugins.push({src: '@/plugins/vue-plugins-client', srr: false})
   this.options.css.push({src: '@/assets/styles/bootstrap.styl', lang: 'stylus'})
   this.options.css.push('element-ui/lib/theme-chalk/reset.css')
   this.options.css.push('element-ui/lib/theme-chalk/index.css')

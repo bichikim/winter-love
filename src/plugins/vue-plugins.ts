@@ -12,11 +12,4 @@ export default () => {
     src: ['https://apis.google.com/js/client:platform.js'],
   })
   Vue.use(VueWhiteSpace)
-  if(process.server){
-    // nothing to run
-  }
-
-  if(process.client){
-    //
-  }
 }
