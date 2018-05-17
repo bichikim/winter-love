@@ -1,10 +1,9 @@
 const {version} = require('../package')
-const {resolve} = require('path')
 module.exports = {
 
-  srcDir: resolve(__dirname, '../src'),
+  srcDir: './src',
 
-  rootDir: resolve(__dirname, '../'),
+  rootDir: './',
 
   /*
    ** Customize the progress bar color
