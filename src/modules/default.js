@@ -37,7 +37,7 @@ module.exports = async function defaultModule() {
     /*************************************************
      * Change alias "~" location from ./${srcDir} to ./lib
      *************************************************/
-    config.resolve.alias['~'] = resolve(config.resolve.alias['@@'], 'lib')
+    config.resolve.alias['~'] = resolve(root, 'lib')
   })
   this.options.head.meta.push({charset: 'utf-8'})
   this.options.head.link.push({rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'})
