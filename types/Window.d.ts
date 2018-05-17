@@ -8,6 +8,7 @@ declare interface Window {
   Worker?: Worker
   preloadTest?: boolean
   webkitURL?: URL
+  WebGLRenderingContext?: WebGLRenderingContext
 
   onNuxtReady(callback: () => void)
 }

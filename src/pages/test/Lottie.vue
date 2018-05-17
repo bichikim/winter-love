@@ -1,6 +1,6 @@
 <template lang="pug">
   .lottie-page
-    lottie(:animationData="example" :loop="loop")
+    lottie(:animationData="example" :loop="loop" :event="event")
 </template>
 <script lang="ts">
   import Lottie from '~/vue-lottie/Lottie.ts'
@@ -15,11 +15,15 @@
     example: any = example
 
     loop: boolean = false
+    event: boolean = true
 
     created() {
       setInterval(() => {
         this.loop = !this.loop
       }, 10000)
+      setInterval(() => {
+        this.event = !this.event
+      }, 400)
     }
   }
 </script>
