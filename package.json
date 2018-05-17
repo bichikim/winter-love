@@ -9,6 +9,7 @@
     "nps": "nps"
   },
   "vendor": [
+    "vue-property-decorator",
     "~/vuex-storage",
     "~/assgin"
   ],
