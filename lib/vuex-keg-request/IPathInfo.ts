@@ -2,7 +2,7 @@ export const sParents = Symbol('pathInfo parent')
 export default interface IPathInfo {
   name?: string
   module?: {[name: string]: IPathInfo}
-  method?: string | ((collection: any) => Promise<any>)
+  method?: string | ((collection: any) => Promise<any>) // Todo: fireStore 처리용 함수 미구현
   basePath?: string
   apiKey?: string, // Todo: 파이어 베이스 키 ID 미구현
   authDomain?: string, // Todo: 파이어 베이스 도메인 미구현
