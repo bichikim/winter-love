@@ -38,7 +38,6 @@ module.exports = async function defaultModule() {
      * Change alias "~" location from ./${srcDir} to ./lib
      *************************************************/
     config.resolve.alias['~'] = resolve(config.resolve.alias['@@'], 'lib')
-    console.log(config.css)
   })
   this.options.head.meta.push({charset: 'utf-8'})
   this.options.head.link.push({rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'})
@@ -46,6 +45,6 @@ module.exports = async function defaultModule() {
   this.options.plugins.push('@/plugins/vue-plugins')
   this.options.plugins.push({src: '@/plugins/vue-plugins-client', ssr: false})
   this.options.css.push({src: '@/assets/styles/bootstrap.styl', lang: 'stylus'})
-  this.options.css.push(resolve(root,'./node_modules/element-ui/lib/theme-chalk/reset.css'))
-  this.options.css.push(resolve(root, './/node_modules/element-ui/lib/theme-chalk/index.css'))
+  this.options.css.push('@@/node_modules/element-ui/lib/theme-chalk/reset.css')
+  this.options.css.push('@@/node_modules/element-ui/lib/theme-chalk/index.css')
 }
