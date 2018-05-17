@@ -1,5 +1,5 @@
 const fs = require('fs-extra')
-const {resolve, join} = require('path')
+const {join, resolve} = require('path')
 module.exports = async function defaultModule() {
   const root = this.options.rootDir
   if(!this.options.build){
@@ -37,7 +37,7 @@ module.exports = async function defaultModule() {
     /*************************************************
      * Change alias "~" location from ./${srcDir} to ./lib
      *************************************************/
-    config.resolve.alias['~'] = './lib'
+    config.resolve.alias['~'] = join(config.resolve.alias['@'], '../lib')
   })
   this.options.head.meta.push({charset: 'utf-8'})
   this.options.head.link.push({rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'})
