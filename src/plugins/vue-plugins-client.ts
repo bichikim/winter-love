@@ -1,5 +1,6 @@
 import cvs from '~/console-version-writer'
 
-export default () => {
+export default ({env}) => {
+  console.log(env)
   cvs()
 }

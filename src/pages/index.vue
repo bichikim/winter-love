@@ -7,7 +7,6 @@
       .links
         a.button--green(href="https://nuxtjs.org/" target="_blank") Documentation
         a.button--grey(href="https://github.com/nuxt/nuxt.js" target="_blank") GitHub
-        a.buuton--grey(@click="onToggleFullScreen") FullScreen
 </template>
 
 <script lang="ts">

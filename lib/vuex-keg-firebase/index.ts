@@ -1,4 +1,4 @@
-import friebase from 'firebase'
+import firebase from 'firebase'
 import {isFunction} from 'lodash'
 
 import 'firebase/firestore'
@@ -19,8 +19,8 @@ export default function fireBase(options: IInitializeOptions) {
         _options[key] = value(store)
       }
     })
-    friebase.initializeApp(_options)
-    const db = friebase.firestore()
+    firebase.initializeApp(_options)
+    const db = firebase.firestore()
     return () => (path: string) => {
       if(path){
         return db.doc(path)

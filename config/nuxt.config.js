@@ -1,3 +1,4 @@
+const {version} = require('../package')
 module.exports = {
 
   srcDir: './src',
@@ -19,6 +20,7 @@ module.exports = {
   ],
 
   storeInit: {
+    version,
     api: {
       test: 'hi?',
     },

@@ -1,9 +1,15 @@
+import {keg} from 'vuex-keg'
+
 export const state = () => ({
   test: null,
   noNo: null,
 })
 
-export const actions = {}
+export const actions = {
+  test: keg(({request}) => {
+    request('test')
+  }),
+}
 
 export const mutations = {
   changeTest(state, payload) {

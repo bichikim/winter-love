@@ -1,4 +1,3 @@
-import packageJson from '@@/package.json'
 import bowser from 'bowser'
 const {
   msie = false,
@@ -36,7 +35,7 @@ interface ICVWOptions {
 }
 export default (options: ICVWOptions = {}) => {
   const {
-    version = packageJson.name || 'unknown',
+    version = 'unknown',
     name = '🍰 Version ',
     nameStyle = consoleNameStyle,
     versionStyle = consoleVersionStyle,

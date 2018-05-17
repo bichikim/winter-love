@@ -20,8 +20,8 @@
     @Prop() near: number = 0.01
     @Prop() far: number = 10
     @Prop() antialias: boolean = true
-    @Prop() light: Light[] | Light = []
-    @Prop() mash: Mesh[] | Mesh = []
+    light: Light[] | Light = []
+    mash: Mesh[] | Mesh = []
 
     @Watch('fov') onFov(fov) {
       this.camera.fov = fov
