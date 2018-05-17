@@ -1,5 +1,5 @@
 const fs = require('fs-extra')
-const {resolve} = require('path')
+const {resolve, join} = require('path')
 module.exports = async function defaultModule() {
   const root = this.options.rootDir
   if(!this.options.build){
@@ -9,7 +9,7 @@ module.exports = async function defaultModule() {
     this.options.build.vendor = []
   }
   const {lint = false} = this.options
-  const packageJson = await fs.readJson(resolve(root, 'package.json'))
+  const packageJson = await fs.readJson(join(root, 'package.json'))
   const {name = 'winter love'} = packageJson
   const {vendor, title = name} = packageJson
   this.options.build.vendor.concat(vendor)
@@ -45,6 +45,7 @@ module.exports = async function defaultModule() {
   this.options.plugins.push('@/plugins/vue-plugins')
   this.options.plugins.push({src: '@/plugins/vue-plugins-client', ssr: false})
   this.options.css.push({src: '@/assets/styles/bootstrap.styl', lang: 'stylus'})
-  this.options.css.push('@@/node_modules/element-ui/lib/theme-chalk/reset.css')
-  this.options.css.push('@@/node_modules/element-ui/lib/theme-chalk/index.css')
+  console.log(root)
+  this.options.css.push(join(root,'/node_modules/element-ui/lib/theme-chalk/reset.css'))
+  this.options.css.push(join(root, '/node_modules/element-ui/lib/theme-chalk/index.css'))
 }
