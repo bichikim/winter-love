@@ -7,16 +7,16 @@ const CALL_NAME = '__vuex_init__'
  */
 export default (context) => {
   const {store, env} = context
-  if(!process.browser){
-    return
-  }
+  if(!process.browser){return}
 
-  store.hotUpdate({
-    mutations: {
-      [CALL_NAME](state, payload) {
-        assign(state, payload, {safeMode: true})
+  if(env && env.store){
+    store.hotUpdate({
+      mutations: {
+        [CALL_NAME](state, payload) {
+          assign(state, payload, {safeMode: true})
+        },
       },
-    },
-  })
-  store.commit(CALL_NAME, env)
+    })
+    store.commit(CALL_NAME, env.store)
+  }
 }

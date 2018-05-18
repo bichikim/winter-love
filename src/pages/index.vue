@@ -19,7 +19,7 @@
       AppLogo,
     },
   })
-  export default class Index extends Vue {
+  export default class IndexPage extends Vue {
   }
 </script>
 

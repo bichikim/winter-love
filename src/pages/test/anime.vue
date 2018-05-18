@@ -1,15 +1,19 @@
 <template lang="pug">
-  .inject-script
-    inject-script(src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js") console.log('hi!?')
+  .anime-test hello
 </template>
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator'
-  @Component
-  export default class InjectScript extends Vue {
+  import Anime from '~/vue-anime/Anime'
+  @Component({
+    components: {
+      Anime
+    }
+  })
+  export default class AnimeTestPage extends Vue {
   }
 </script>
 <style scoped lang="stylus">
-  .inject-script
+  .anime-test
     position absolute
     width: 100%
     height: 100%

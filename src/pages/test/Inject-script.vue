@@ -1,17 +1,17 @@
 <template lang="pug">
-  .white-space hello
-    white-space {{contentText}}
-    white-space(:content="contentText")
+  .inject-script
+    inject-script(
+      src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+    ) console.log('hi!?')
 </template>
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator'
   @Component
-  export default class WhiteSpace extends Vue {
-    contentText: string = 'hi?\nmy name is\n hahaha'
+  export default class InjectScriptPage extends Vue {
   }
 </script>
 <style scoped lang="stylus">
-  .white-space
+  .inject-script
     position absolute
     width: 100%
     height: 100%

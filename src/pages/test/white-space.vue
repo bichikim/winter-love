@@ -1,21 +1,17 @@
 <template lang="pug">
-  .request hello
+  .white-space hello
+    white-space {{contentText}}
+    white-space(:content="contentText")
 </template>
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator'
-  import {Action as _Action, namespace} from 'vuex-class'
-  const Action = namespace('api', _Action)
   @Component
-  export default class KegRequestPage extends Vue {
-    @Action test: () => void
-
-    mounted(){
-      this.test()
-    }
+  export default class WhiteSpacePage extends Vue {
+    contentText: string = 'hi?\nmy name is\n hahaha'
   }
 </script>
 <style scoped lang="stylus">
-  .request
+  .white-space
     position absolute
     width: 100%
     height: 100%

@@ -17,9 +17,11 @@ module.exports = {
     '@/modules/default',
     '@/modules/store-init',
     '@/modules/typescript',
+    '@nuxtjs/pwa',
   ],
 
-  storeInit: {
+  // inti store data
+  store: {
     version,
     api: {
       test: 'hi?',

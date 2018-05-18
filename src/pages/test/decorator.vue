@@ -7,7 +7,7 @@
   // import {mapActions, mapState} from 'vuex'
   import DecoratorTest from '@/components/DecoratorTest'
   export default {
-    name: '',
+    name: 'decorator-test-page',
     components: {DecoratorTest},
     props: {},
     data(){

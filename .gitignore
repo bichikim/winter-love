@@ -16,6 +16,9 @@ coverage/
 # Nuxt generate
 dist
 
+#nuxtjs pwa
+sw.*
+
 # .lock
 #yarn.lock
 package-lock.json
