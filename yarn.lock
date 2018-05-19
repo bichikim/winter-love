@@ -3009,7 +3009,7 @@ elegant-spinner@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/elegant-spinner/-/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
 
-element-ui@^2.3.8:
+element-ui@latest:
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/element-ui/-/element-ui-2.3.8.tgz#5d24ab1ea66363d7ffa651b7ec47b3f93cdffd7c"
   dependencies:
@@ -6128,7 +6128,7 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
-nuxt@^1.4.0:
+nuxt@latest:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-1.4.0.tgz#66df9ede68daf2ef4cfbcc329da7dda0003e0420"
   dependencies:
@@ -9428,7 +9428,7 @@ vue-add-globals@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/vue-add-globals/-/vue-add-globals-2.0.1.tgz#c9fba6faac44f679ec15d5a9637f518b181fc44d"
 
-vue-class-component@^6.0.0, vue-class-component@^6.2.0, vue-class-component@latest:
+vue-class-component@^6.0.0, vue-class-component@^6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-6.2.0.tgz#7adb1daa9a868c75f30f97f33f4f1b94aee62089"
 
@@ -9447,7 +9447,7 @@ vue-hot-reload-api@^2.2.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.0.tgz#97976142405d13d8efae154749e88c4e358cf926"
 
-vue-i18n@^7.6.0:
+vue-i18n@latest:
   version "7.6.0"
   resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-7.6.0.tgz#8745807756f6ca5090fd85629e9cab99b1c6e442"
 
