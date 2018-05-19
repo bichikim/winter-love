@@ -11,7 +11,7 @@
       Lottie,
     }
   })
-  export default class BodyMovinPage extends Vue {
+  export default class LottiePage extends Vue {
     example: any = example
 
     loop: boolean = false

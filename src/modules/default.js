@@ -1,5 +1,5 @@
 const fs = require('fs-extra')
-const {join, resolve} = require('path')
+const {join} = require('path')
 module.exports = async function defaultModule() {
   const root = this.options.rootDir
   if(!this.options.build){
