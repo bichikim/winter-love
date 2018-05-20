@@ -11,6 +11,8 @@ coverage/
 
 # Nuxt build
 .nuxt
+/src/static/OneSignalSDKUpdaterWorker.js
+/src/static/OneSignalSDKWorker.js
 /src/static/sw.js
 
 # Nuxt generate
