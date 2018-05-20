@@ -1,6 +1,7 @@
 module.exports = function() {
   // Add .ts extension for store, middleware and more
   this.nuxt.options.extensions.push('ts')
+  const dev = this.options.dev
   // Extend build
   this.extendBuild((config) => {
     const tsLoader = {
@@ -21,6 +22,9 @@ module.exports = function() {
       test: /((client|server)\.js)|(\.tsx?)$/,
       ...tsLoader,
     })
+    if(dev){
+      config.devtool = 'inline-source-map'
+    }
     // Add TypeScript loader for vue files
     for(let rule of config.module.rules){
       if(rule.loader === 'vue-loader'){

@@ -1,7 +1,8 @@
 import {PluginObject, VueConstructor} from 'vue'
 
 interface IOptions {
-  name?: string
+  requireName?: string
+  assetsName?: string
 }
 
 let _vue: VueConstructor
@@ -16,8 +17,18 @@ const plugin: PluginObject<IOptions> = {
       }
     }
     _vue = vue
-    const {name = 'require'} = options
-    vue.prototype[`$${name}`] = require
+    const {requireName = 'require', assetsName = 'assets'} = options
+    vue.mixin({
+      created() {
+        if(typeof this[requireName] === 'function'){
+          const assets = this.require()
+          if(this[`$${assetsName}`]){
+            this[`$${assetsName}`] = {}
+          }
+          Object.assign(this[`$${assetsName}`], assets)
+        }
+      },
+    })
   },
 }
 Object.freeze(plugin)

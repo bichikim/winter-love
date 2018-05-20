@@ -41,6 +41,11 @@ module.exports = async function defaultModule() {
     config.resolve.alias['~'] = join(config.resolve.alias['@'], '../lib')
   })
   this.options.head.meta.push({charset: 'utf-8'})
+  this.options.head.meta.push({
+    name: 'viewport',
+    content:
+      'width=device-width, initial-scale=1',
+  })
   this.options.head.titleTemplate = `${title}-%s`
   this.options.plugins.push('@/plugins/vue-plugins')
   this.options.plugins.push({
@@ -51,6 +56,7 @@ module.exports = async function defaultModule() {
     src: '@/assets/styles/bootstrap.styl',
     lang: 'stylus',
   })
+
   this.options.css.push('./node_modules/element-ui/lib/theme-chalk/reset.css')
   this.options.css.push('./node_modules/element-ui/lib/theme-chalk/index.css')
 }

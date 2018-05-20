@@ -1,5 +1,5 @@
 <template lang="pug">
-  .white-space hello
+  .white-space
     white-space {{contentText}}
     white-space(:content="contentText")
 </template>
@@ -17,4 +17,8 @@
     height: 100%
     top: 0
     left: 0
+    div
+      position initial
+      width auto
+      height auto
 </style>

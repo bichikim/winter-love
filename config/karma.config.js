@@ -4,7 +4,7 @@
 const webpack = require('./webpack.config.js')
 module.exports = function(config) {
   config.set({
-    browsers: ['PhantomJS'],
+    browsers: ['PhantomJS', 'ChromeWithoutSecurity'],
     frameworks: ['mocha', 'chai', 'sinon'],
     reporters: ['spec', 'coverage'],
     files: [

@@ -78,6 +78,13 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
+"@bahmutov/data-driven@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@bahmutov/data-driven/-/data-driven-1.0.0.tgz#6897061cd61a0afc26a7079527bfbb1073b4228a"
+  dependencies:
+    check-more-types "2.24.0"
+    lazy-ass "1.6.0"
+
 "@firebase/app-types@0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@firebase/app-types/-/app-types-0.2.0.tgz#2a0e9c433d5f39e428358c5cd8065010d5a07985"
@@ -553,7 +560,7 @@ ansi-styles@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-1.1.0.tgz#eaecbf66cd706882760b2f4691582b8f55d7a7de"
 
-ansi-styles@^2.2.1:
+ansi-styles@^2.0.1, ansi-styles@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-2.2.1.tgz#b432dd3358b634cf75e1e4664368240533c1ddbe"
 
@@ -2085,6 +2092,10 @@ check-error@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/check-error/-/check-error-1.0.2.tgz#574d312edd88bb5dd8912e9286dd6c0aed4aac82"
 
+check-more-types@2.24.0:
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/check-more-types/-/check-more-types-2.24.0.tgz#1420ffb10fd444dcfc79b43891bbfffd32a84600"
+
 check-types@^7.3.0:
   version "7.3.0"
   resolved "https://registry.yarnpkg.com/check-types/-/check-types-7.3.0.tgz#468f571a4435c24248f5fd0cb0e8d87c3c341e7d"
@@ -2333,7 +2344,7 @@ commander@~2.13.0:
   version "2.13.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.13.0.tgz#6964bca67685df7c1f1430c584f07d7597885b9c"
 
-common-tags@^1.4.0:
+common-tags@1.7.2, common-tags@^1.4.0:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/common-tags/-/common-tags-1.7.2.tgz#24d9768c63d253a56ecff93845b44b4df1d52771"
   dependencies:
@@ -2957,6 +2968,10 @@ diff@3.5.0, diff@^3.1.0, diff@^3.2.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/diff/-/diff-3.5.0.tgz#800c0dd1e0a8bfbc95835c202ad220fe317e5a12"
 
+diff@^1.3.2:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/diff/-/diff-1.4.0.tgz#7f28d2eb9ee7b15a97efd89ce63dcfdaa3ccbabf"
+
 diffie-hellman@^5.0.0:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/diffie-hellman/-/diffie-hellman-5.0.3.tgz#40e8ee98f55a2149607146921c63e1ae5f3d2875"
@@ -2964,6 +2979,13 @@ diffie-hellman@^5.0.0:
     bn.js "^4.1.0"
     miller-rabin "^4.0.0"
     randombytes "^2.0.0"
+
+disparity@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/disparity/-/disparity-2.0.0.tgz#57ddacb47324ae5f58d2cc0da886db4ce9eeb718"
+  dependencies:
+    ansi-styles "^2.0.1"
+    diff "^1.3.2"
 
 doctrine@^2.1.0:
   version "2.1.0"
@@ -3286,6 +3308,12 @@ es6-weak-map@^2.0.1:
 escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
+
+escape-quotes@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/escape-quotes/-/escape-quotes-1.0.2.tgz#b4896d4a6cf82dd5b33f49b713408c6380f6cd97"
+  dependencies:
+    escape-string-regexp "^1.0.5"
 
 escape-string-regexp@1.0.5, escape-string-regexp@^1.0.0, escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
@@ -3849,6 +3877,14 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.1"
     readable-stream "^2.0.4"
 
+folktale@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/folktale/-/folktale-2.0.1.tgz#6dc26a65565aefdef9520223e022dddf5b8d8462"
+
+folktale@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/folktale/-/folktale-2.1.0.tgz#3332b9e37b4b92150788b72bd0e2ddd8d70e4096"
+
 follow-redirects@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.0.0.tgz#8e34298cbd2e176f254effec75a1c78cc849fd37"
@@ -4303,6 +4339,10 @@ has-flag@^2.0.0:
 has-flag@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-3.0.0.tgz#b5d454dc2199ae225699f3467e5a07f3b955bafd"
+
+has-only@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/has-only/-/has-only-1.1.1.tgz#0ed2b101e73a2226254421464c65e381affcce66"
 
 has-symbols@^1.0.0:
   version "1.0.0"
@@ -4772,7 +4812,7 @@ is-builtin-module@^1.0.0:
   dependencies:
     builtin-modules "^1.0.0"
 
-is-ci@^1.0.10:
+is-ci@1.1.0, is-ci@^1.0.10:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/is-ci/-/is-ci-1.1.0.tgz#247e4162e7860cebbdaf30b774d6b0ac7dcfe7a5"
   dependencies:
@@ -5157,13 +5197,13 @@ jsbn@~0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
 
+jsesc@2.5.1, jsesc@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-2.5.1.tgz#e421a2a8e20d6b0819df28908f782526b96dd1fe"
+
 jsesc@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-1.3.0.tgz#46c3fec8c1892b12b0833db9bc7622176dbab34b"
-
-jsesc@^2.5.1:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-2.5.1.tgz#e421a2a8e20d6b0819df28908f782526b96dd1fe"
 
 jsesc@~0.5.0:
   version "0.5.0"
@@ -5374,6 +5414,10 @@ launch-editor@^2.2.1:
   dependencies:
     chalk "^2.3.0"
     shell-quote "^1.6.1"
+
+lazy-ass@1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/lazy-ass/-/lazy-ass-1.6.0.tgz#7999655e8646c17f089fdd187d150d3324d54513"
 
 lazy-cache@^1.0.3:
   version "1.0.4"
@@ -7696,6 +7740,10 @@ querystring@0.2.0, querystring@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
 
+ramda@0.25.0:
+  version "0.25.0"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.25.0.tgz#8fdf68231cffa90bc2f9460390a0cb74a29b29a9"
+
 randomatic@^1.1.3:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/randomatic/-/randomatic-1.1.7.tgz#c7abe9cc8b87c0baa876b19fde83fd464797e38c"
@@ -8448,6 +8496,44 @@ smtp-connection@2.12.0:
     httpntlm "1.6.1"
     nodemailer-shared "1.1.0"
 
+snap-shot-compare@2.7.1:
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/snap-shot-compare/-/snap-shot-compare-2.7.1.tgz#e7ac19d2a0385414fa8f847c4d01855f49383fdb"
+  dependencies:
+    check-more-types "2.24.0"
+    disparity "2.0.0"
+    folktale "2.0.1"
+    lazy-ass "1.6.0"
+    strip-ansi "4.0.0"
+    variable-diff "1.1.0"
+
+snap-shot-core@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/snap-shot-core/-/snap-shot-core-6.0.0.tgz#8fdf6687ebc521cea7ac81531edca694f617d76f"
+  dependencies:
+    check-more-types "2.24.0"
+    common-tags "1.7.2"
+    debug "3.1.0"
+    escape-quotes "1.0.2"
+    folktale "2.1.0"
+    is-ci "1.1.0"
+    jsesc "2.5.1"
+    lazy-ass "1.6.0"
+    mkdirp "0.5.1"
+    ramda "0.25.0"
+
+snap-shot-it@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/snap-shot-it/-/snap-shot-it-5.0.0.tgz#ca2ac60b22d44774472bc1c61311effd2108130d"
+  dependencies:
+    "@bahmutov/data-driven" "1.0.0"
+    check-more-types "2.24.0"
+    debug "3.1.0"
+    has-only "1.1.1"
+    ramda "0.25.0"
+    snap-shot-compare "2.7.1"
+    snap-shot-core "6.0.0"
+
 snapdragon-node@^2.0.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/snapdragon-node/-/snapdragon-node-2.1.1.tgz#6c175f86ff14bdb0724563e8f3c1b021a286853b"
@@ -8824,6 +8910,12 @@ stringstream@~0.0.4, stringstream@~0.0.5:
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/stringstream/-/stringstream-0.0.5.tgz#4e484cd4de5a0bbbee18e46307710a8a81621878"
 
+strip-ansi@4.0.0, strip-ansi@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-4.0.0.tgz#a8479022eb1ac368a871389b635262c505ee368f"
+  dependencies:
+    ansi-regex "^3.0.0"
+
 strip-ansi@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-0.3.0.tgz#25f48ea22ca79187f3174a4db8759347bb126220"
@@ -8835,12 +8927,6 @@ strip-ansi@^3.0.0, strip-ansi@^3.0.1:
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-3.0.1.tgz#6a385fb8853d952d5ff05d0e8aaf94278dc63dcf"
   dependencies:
     ansi-regex "^2.0.0"
-
-strip-ansi@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-4.0.0.tgz#a8479022eb1ac368a871389b635262c505ee368f"
-  dependencies:
-    ansi-regex "^3.0.0"
 
 strip-bom@^2.0.0:
   version "2.0.0"
@@ -9648,6 +9734,13 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
+
+variable-diff@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/variable-diff/-/variable-diff-1.1.0.tgz#d2bd5c66db76c13879d96e6a306edc989df978da"
+  dependencies:
+    chalk "^1.1.1"
+    object-assign "^4.0.1"
 
 vary@~1.1.2:
   version "1.1.2"

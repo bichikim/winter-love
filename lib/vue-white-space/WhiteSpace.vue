@@ -9,13 +9,27 @@
     @Prop() content: string
 
     get contentHtml() {
-      const first = this.$slots.default ? this.$slots.default[0] : {}
-      const {text} = first || {}
-      const content = this.content || text
-      if(!content){
-        return ''
+      const replace = (text) => {
+        return text.replace(/(?:\r\n|\r|\n)/g, '<br />')
       }
-      return content.replace(/(?:\r\n|\r|\n)/g, '<br />')
+      if(this.content){return replace(this.content)}
+      let html = ''
+      if(!this.$slots.default){return html}
+      this.$slots.default.forEach((value) => {
+        let content
+        if(typeof value === 'string') {
+          content = value
+        }else if(typeof value === 'object'){
+          content = value.text
+        }else{
+          return
+        }
+        if(!content){
+          return
+        }
+        html += replace(content)
+      })
+      return html
     }
   }
 </script>
