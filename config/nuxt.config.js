@@ -17,6 +17,7 @@ module.exports = {
     '@/modules/default',
     '@/modules/store-init',
     '@/modules/typescript',
+    '@/modules/no-test-page',
     '@nuxtjs/pwa',
   ],
 

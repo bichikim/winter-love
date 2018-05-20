@@ -9,14 +9,26 @@
     "nps": "nps"
   },
   "vendor": [
+    "~/assgin",
+    "babel-polyfill",
+    "axios",
+    "vuex-class",
     "vue-property-decorator",
-    "~/vuex-storage",
-    "~/assgin"
+    "vue-class-component"
+  ],
+  "engines": {
+    "node": ">= 8.10"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
   ],
   "dependencies": {
     "@nuxtjs/pwa": "^2.0.8",
     "animejs": "^2.2.0",
     "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
     "bowser": "^1.9.3",
     "element-ui": "latest",
     "firebase": "^4.13.1",
@@ -47,6 +59,7 @@
     "@types/sinon": "^4.3.1",
     "@types/three": "^0.92.0",
     "@vue/test-utils": "^1.0.0-beta.15",
+    "autoprefixer": "^8.2.0",
     "avoriaz": "^6.3.0",
     "babel-eslint": "latest",
     "babel-preset-stage-0": "^6.24.1",

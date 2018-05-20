@@ -28,6 +28,8 @@
     "types/**/*.d.ts"
   ],
   "exclude": [
+    ".nuxt",
+    ".keep",
     "templates",
     "node_modules"
   ]
