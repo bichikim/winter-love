@@ -25,6 +25,7 @@
     "not ie <= 8"
   ],
   "dependencies": {
+    "@nuxtjs/onesignal": "^2.0.0",
     "@nuxtjs/pwa": "^2.0.8",
     "animejs": "^2.2.0",
     "axios": "^0.18.0",

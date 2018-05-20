@@ -9,9 +9,9 @@ module.exports = async function defaultModule() {
     this.options.build.vendor = []
   }
   const {lint = false} = this.options
-  const packageJson = await fs.readJson(join(root, 'package.json'))
+  const packageJson = await fs.readJson(join(root, 'package.json')) || {}
   const {name = 'winter love'} = packageJson
-  const {vendor, title = name, version} = packageJson
+  const {vendor = [], title = name, version} = packageJson
   this.options.env.version = version
   this.options.build.vendor.concat(vendor)
   this.extendBuild((config, {isDev, isClient}) => {

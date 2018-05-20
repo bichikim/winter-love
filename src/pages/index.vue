@@ -20,8 +20,6 @@
     },
   })
   export default class IndexPage extends Vue {
-    mounted(){
-    }
   }
 </script>
 
