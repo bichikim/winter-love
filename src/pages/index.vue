@@ -7,6 +7,7 @@
       .links
         a.button--green(href="https://nuxtjs.org/" target="_blank") Documentation
         a.button--grey(href="https://github.com/nuxt/nuxt.js" target="_blank") GitHub
+      a(v-on="listeners") click!!
 </template>
 
 <script lang="ts">
@@ -20,6 +21,11 @@
     },
   })
   export default class IndexPage extends Vue {
+    listeners: any = {
+      click: () => {
+        console.log(this)
+      }
+    }
   }
 </script>
 
