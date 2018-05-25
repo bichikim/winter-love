@@ -1,4 +1,4 @@
-module.exports = function noTestPage(options = {}) {
+module.exports = function noTestPage() {
   const dev = this.options.dev
   if(dev){return}
   // remove test route
@@ -8,6 +8,6 @@ module.exports = function noTestPage(options = {}) {
         routes.splice(key, 1)
       }
     })
-
+    console.log(routes)
   })
 }

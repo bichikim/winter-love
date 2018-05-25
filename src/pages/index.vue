@@ -12,13 +12,20 @@
 
 <script lang="ts">
   import AppLogo from '@/components/AppLogo.vue'
-  import {Component, Vue} from 'vue-property-decorator'
+  import {Component, Vue} from 'nuxt-property-decorator'
   import {toggleFullScreen} from '~/full-screen'
 
   @Component({
     components: {
       AppLogo,
     },
+    head () {
+      return {
+        meta: [
+
+        ]
+      }
+    }
   })
   export default class IndexPage extends Vue {
     listeners: any = {
@@ -26,6 +33,7 @@
         console.log(this)
       }
     }
+
   }
 </script>
 

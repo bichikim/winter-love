@@ -35,5 +35,10 @@ module.exports = {
     },
   },
 
-  lint: true,
+
+  // 프로젝트 설정
+  project: {
+    polyfill: true,
+    lint: true,
+  },
 }

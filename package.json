@@ -10,7 +10,6 @@
   },
   "vendor": [
     "~/assgin",
-    "babel-polyfill",
     "axios",
     "vuex-class",
     "vue-property-decorator",
@@ -39,6 +38,7 @@
     "lottie-web": "^5.1.13",
     "masonry-layout": "^4.2.1",
     "nuxt": "^1.4.0",
+    "nuxt-property-decorator": "^1.2.0",
     "three": "^0.92.0",
     "vue": "^2.5.16",
     "vue-class-component": "^6.2.0",
