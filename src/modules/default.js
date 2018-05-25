@@ -18,6 +18,7 @@ function proofOptions() {
   if(!this.options){this.options = {}}
   if(!this.options.build){this.options.build = {}}
   if(!this.options.build.vendor){this.options.build.vendor = []}
+  if(!this.options.build.babel.plugins){this.options.build.babel.plugins = []}
   if(!this.options.head){this.options.head = {}}
   if(!this.options.head.meta){this.options.head.meta = []}
   if(!this.options.head.script){this.options.head.script = []}
@@ -26,13 +27,14 @@ function proofOptions() {
 
 async function getOptions() {
   const root = this.options.rootDir
+  const {dev = false} = this.options
   const {project} = this.options
   const {lint = false, polyfill = true, analyzer = true} = project
   const packageJson = await fs.readJson(join(root, 'package.json')) || {}
   const {name = 'winter love'} = packageJson
-  const {vendor = [], title = name, version} = packageJson
+  const {vendor = [], title = name, version = 'unknown'} = packageJson
   return {
-    root, lint, polyfill, vendor, title, version, analyzer,
+    root, lint, polyfill, vendor, title, version, analyzer, dev,
   }
 }
 
@@ -46,8 +48,12 @@ function setEnv({version} = {}) {
   this.options.env.version = version
 }
 
-function setBuild({lint, vendor} = {}) {
-  this.options.build.vendor.concat(vendor)
+function setBuild({lint, vendor, analyzer} = {}) {
+  const {build} = this.options
+  build.vendor = [...build.vendor, ...vendor]
+  build.analyze = analyzer
+  // todo this is not working for now. this will be able in nuxt 2.0
+  build.babel.plugins = [...build.babel.plugins, 'lodash']
   this.extendBuild((config, {isDev, isClient}) => {
     /*************************************************
      * Run ESLint on save
@@ -69,6 +75,7 @@ function setBuild({lint, vendor} = {}) {
         loader: 'worker-loader',
       })
     }
+
     /*************************************************
      * Change alias "~" location from ./${srcDir} to ./lib
      *************************************************/

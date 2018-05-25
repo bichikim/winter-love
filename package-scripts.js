@@ -23,6 +23,7 @@ module.exports = {
       default: 'tslint --project tsconfig.json src/**/*.ts',
       fix: 'tslint --fix "src/**/*.ts"',
     },
+    analyze: nuxt('build --analyze'),
     precommit: series(
       nps('tslint'),
       nps('eslint.fix'),

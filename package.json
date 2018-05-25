@@ -8,13 +8,7 @@
   "scripts": {
     "nps": "nps"
   },
-  "vendor": [
-    "~/assgin",
-    "axios",
-    "vuex-class",
-    "vue-property-decorator",
-    "vue-class-component"
-  ],
+  "vendor": [],
   "engines": {
     "node": ">= 8.10"
   },
@@ -38,6 +32,7 @@
     "lottie-web": "^5.1.13",
     "masonry-layout": "^4.2.1",
     "nuxt": "^1.4.0",
+    "nuxt-property-decorator": "^1.2.0",
     "three": "^0.92.0",
     "vue": "^2.5.16",
     "vue-class-component": "^6.2.0",
@@ -61,7 +56,9 @@
     "@vue/test-utils": "^1.0.0-beta.15",
     "autoprefixer": "^8.2.0",
     "avoriaz": "^6.3.0",
+    "babel-core": "^6.26.3",
     "babel-eslint": "latest",
+    "babel-plugin-lodash": "^3.3.2",
     "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
@@ -98,8 +95,8 @@
     "tslint": "^5.9.1",
     "typescript": "^2.7.2",
     "typescript-eslint-parser": "^14.0.0",
+    "vuepress": "^0.9.0",
     "webpack": "3.11.0",
-    "webpack-bundle-analyzer": "^2.13.1",
     "worker-loader": "^1.1.1"
   }
 }
