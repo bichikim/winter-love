@@ -35,5 +35,8 @@ module.exports = {
     },
   },
 
-  lint: true,
+
+  project: {
+    lint: true,
+  },
 }

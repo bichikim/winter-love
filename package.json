@@ -10,7 +10,6 @@
   },
   "vendor": [
     "~/assgin",
-    "babel-polyfill",
     "axios",
     "vuex-class",
     "vue-property-decorator",
@@ -100,6 +99,7 @@
     "typescript": "^2.7.2",
     "typescript-eslint-parser": "^14.0.0",
     "webpack": "3.11.0",
+    "webpack-bundle-analyzer": "^2.13.1",
     "worker-loader": "^1.1.1"
   }
 }

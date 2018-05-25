@@ -1,18 +1,52 @@
 const fs = require('fs-extra')
 const {join} = require('path')
+
 module.exports = async function defaultModule() {
+  proofOptions.call(this)
+  const defaultOptions = await getOptions.call(this) || {}
+  setScript.call(this, defaultOptions)
+  setEnv.call(this, defaultOptions)
+  setBuild.call(this, defaultOptions)
+  setMeta.call(this, defaultOptions)
+  setTitle.call(this, defaultOptions)
+  setPlugins.call(this, defaultOptions)
+  setCss.call(this, defaultOptions)
+}
+
+// make sure nuxt options is not empty
+function proofOptions() {
+  if(!this.options){this.options = {}}
+  if(!this.options.build){this.options.build = {}}
+  if(!this.options.build.vendor){this.options.build.vendor = []}
+  if(!this.options.head){this.options.head = {}}
+  if(!this.options.head.meta){this.options.head.meta = []}
+  if(!this.options.head.script){this.options.head.script = []}
+  if(!this.options.css){this.options.css = []}
+}
+
+async function getOptions() {
   const root = this.options.rootDir
-  if(!this.options.build){
-    this.options.build = {}
-  }
-  if(!this.options.build.vendor){
-    this.options.build.vendor = []
-  }
-  const {lint = false} = this.options
+  const {project} = this.options
+  const {lint = false, polyfill = true, analyzer = true} = project
   const packageJson = await fs.readJson(join(root, 'package.json')) || {}
   const {name = 'winter love'} = packageJson
   const {vendor = [], title = name, version} = packageJson
+  return {
+    root, lint, polyfill, vendor, title, version, analyzer,
+  }
+}
+
+function setScript({polyfill} = {}) {
+  if(polyfill){
+    this.options.head.script.push({src: 'https://cdn.polyfill.io/v2/polyfill.min.js'})
+  }
+}
+
+function setEnv({version} = {}) {
   this.options.env.version = version
+}
+
+function setBuild({lint, vendor} = {}) {
   this.options.build.vendor.concat(vendor)
   this.extendBuild((config, {isDev, isClient}) => {
     /*************************************************
@@ -40,23 +74,24 @@ module.exports = async function defaultModule() {
      *************************************************/
     config.resolve.alias['~'] = join(config.resolve.alias['@'], '../lib')
   })
-  this.options.head.meta.push({charset: 'utf-8'})
-  this.options.head.meta.push({
-    name: 'viewport',
-    content:
-      'width=device-width, initial-scale=1',
-  })
-  this.options.head.titleTemplate = `${title}-%s`
-  this.options.plugins.push('@/plugins/vue-plugins')
-  this.options.plugins.push({
-    src: '@/plugins/vue-plugins-client',
-    ssr: false,
-  })
-  this.options.css.push({
-    src: '@/assets/styles/bootstrap.styl',
-    lang: 'stylus',
-  })
+}
 
+function setMeta() {
+  this.options.head.meta.push({charset: 'utf-8'})
+  this.options.head.meta.push({name: 'viewport', content: 'width=device-width, initial-scale=1'})
+}
+
+function setTitle({title} = {}) {
+  this.options.head.titleTemplate = `${title}-%s`
+}
+
+function setPlugins() {
+  this.options.plugins.push('@/plugins/vue-plugins')
+  this.options.plugins.push({src: '@/plugins/vue-plugins-client', ssr: false})
+  this.options.css.push({src: '@/assets/styles/bootstrap.styl', lang: 'stylus'})
+}
+
+function setCss() {
   this.options.css.push('./node_modules/element-ui/lib/theme-chalk/reset.css')
   this.options.css.push('./node_modules/element-ui/lib/theme-chalk/index.css')
 }
