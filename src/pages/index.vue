@@ -1,13 +1,14 @@
 <template lang="pug">
   section.container
-    div
+    .content
       app-logo
-      h1.title Test Pad
-      h2.subtitle Web testing send box
-      .links
-        a.button--green(href="https://nuxtjs.org/" target="_blank") Documentation
-        a.button--grey(href="https://github.com/nuxt/nuxt.js" target="_blank") GitHub
-      a(v-on="listeners") click!!
+      .text
+        h1.title Test Pad
+        h2.subtitle Web testing send box
+        .links
+          a.button--green(href="https://nuxtjs.org/" target="_blank") Documentation
+          a.button--grey(href="https://github.com/nuxt/nuxt.js" target="_blank") GitHub
+        a(v-on="listeners") click!!
 </template>
 
 <script lang="ts">
@@ -36,6 +37,15 @@
     justify-content center
     align-items center
     text-align center
+    .content
+      width 100%
+      height 100%
+    .text
+      width 100%
+      height auto
+      position absolute
+      padding-bottom 10px
+      bottom 0
   .title
     font-family "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif /* 1 */
     display block
