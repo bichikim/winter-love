@@ -1,3 +1,5 @@
+const packageJson = require('../package')
 module.exports = {
-  title: 'winter-love'
+  title: packageJson.name,
+  description: packageJson.description
 }

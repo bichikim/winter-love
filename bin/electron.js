@@ -1,16 +1,15 @@
-const electron = require('.templates/electron')
+const {app, BrowserWindow} = require('electron')
 const http = require('http')
 const OK = 200, POLL_WAIT_TIME = 300
 let win
-export default (render, mode) => {
-  const app = electron.app
+module.exports = (render, mode) => {
   const server = http.createServer(render)
   server.listen()
   const url = `http:localhost:${server.address().port}`
   console.log(`Nuxt working on ${url}`)
 
   const newWin = () => {
-    win = new electron.BrowserWindow({
+    win = new BrowserWindow({
       // icon: path.join(__dirname, //)
     })
     win.maximize()
