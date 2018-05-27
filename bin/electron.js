@@ -2,7 +2,7 @@ const {app, BrowserWindow} = require('electron')
 const http = require('http')
 const OK = 200, POLL_WAIT_TIME = 300
 let win
-module.exports = (render, mode) => {
+module.exports = (render, mode = 'development') => {
   const server = http.createServer(render)
   server.listen()
   const url = `http:localhost:${server.address().port}`

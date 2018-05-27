@@ -8,7 +8,7 @@ const nuxtConfig = require('../config/nuxt.config')
  * @param options.build {boolean}
  * @return {Promise<any>}
  */
-const middleware = (options = {}) => {
+const render = (options = {}) => {
   const {build = false, config = {}} = options
   const nuxt = new Nuxt({...nuxtConfig, ... config})
   let builder
@@ -35,4 +35,4 @@ const middleware = (options = {}) => {
   })
 }
 
-module.exports = middleware
+module.exports = render
