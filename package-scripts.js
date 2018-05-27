@@ -22,6 +22,9 @@ module.exports = {
     test: {
       default: 'karma start config/karma.config.js --browsers=PhantomJS --single-run',
     },
+    doc: {
+      default: '',
+    },
     eslint: {
       default: 'eslint --ext .js,.vue,.ts --ignore-path .gitignore .',
       fix: 'eslint --fix --ext .js,.vue,.ts --ignore-path .gitignore .',
