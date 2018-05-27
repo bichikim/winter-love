@@ -6,7 +6,7 @@
   "private": true,
   "main": "bin/render.js",
   "scripts": {
-    "nps": "nps",
+    "dev": "nps dev",
     "start": "nps serve",
     "start:electron": "nps serve.electron",
     "deploy": "nps deploy",

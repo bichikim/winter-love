@@ -4,7 +4,8 @@ const {Nuxt, Builder} = require('nuxt')
 const {resolve} = require('path')
 let config = require('../config/nuxt.config.js')
 config.rootDir = resolve(__dirname, '../') // for electron-builder
-config.dev = process.dev.NODE_ENV !== 'production'
+config.mode = 'spa'
+config.dev = process.env.NODE_ENV !== 'production'
 // Init Nuxt.js
 const nuxt = new Nuxt(config)
 const builder = new Builder(nuxt)
