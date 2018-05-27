@@ -24,7 +24,7 @@
   export default class IndexPage extends Vue {
     listeners: any = {
       click: () => {
-        console.log(this)
+        console.log('click test')
       }
     }
   }
