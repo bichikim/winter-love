@@ -1,26 +1,28 @@
 const winterLove = require('./render')
+const express = require('express')
 const consola = require('consola')
+const PORT = 8080
+// create & set express app
+const app = express()
+app.set('trust proxy', true)
+
+// get setting
+const {build = false, port = PORT} = process.env
+const dev = process.env.NODE_ENV !== 'production'
+
 // running logic
 async function run() {
-  const {mode, port, NODE_ENV} = process.env
-  const render = await winterLove({
-    build: false,
+  const winterLoveMiddleware =  await winterLove({
+    build,
     config: {
-      dev: false,
+      dev,
     },
   })
-  if(mode === 'electron'){
-      // eslint-disable-next-line global-require
-    const electron = require('./electron')
-    electron(render, NODE_ENV)
-  }else{
-    // eslint-disable-next-line global-require
-    const web = require('./web')
-    await web(render, port)
-  }
+  app.use(winterLoveMiddleware)
+  await new Promise((resolve) => {app.listen(port, resolve)})
 }
 
-
+// run!
 run()
-  .then(() => (consola.start('service is started')))
+  .then(() => (consola.start(`service is started port: ${port}`)))
   .catch((error) => (consola.error(error)))

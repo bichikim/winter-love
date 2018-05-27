@@ -11,28 +11,16 @@ const nuxtConfig = require('../config/nuxt.config')
 const render = (options = {}) => {
   const {build = false, config = {}} = options
   const nuxt = new Nuxt({...nuxtConfig, ... config})
-  let builder
   if(build){
-    builder = new Builder(nuxt)
-  }else{
-    return nuxt.render
-  }
-  // only return Promise after building
-  return new Promise((resolve, reject) => {
-    if(builder){
-      builder.build().then((...anyResults) => {
+    return  new Promise((resolve, reject) => {
+      new Builder(nuxt).build().then((...anyResults) => {
         resolve(nuxt.render, ...anyResults)
       }).catch((error) => {
         reject(error)
       })
-    }else{
-      try{
-        resolve(nuxt.render)
-      }catch(error){
-        reject(error)
-      }
-    }
-  })
+    })
+  }
+  return Promise.resolve(nuxt.render)
 }
 
 module.exports = render

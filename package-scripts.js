@@ -9,11 +9,13 @@ module.exports = {
   scripts: {
     default: nps('dev'),
     dev: nuxt(),
-    build: nuxt('build'),
+    build: {
+      default: nuxt('build'),
+    },
     start: nuxt('start'),
     serve: {
-      default: 'cross-env mode=web node bin',
-      electron: 'cross-env mode=electron electron bin',
+      default: 'cross-env NODE_ENV=production node bin',
+      electron: 'cross-env NODE_ENV=development electron bin/electron',
     },
     deploy: 'gcloud app deploy',
     generate: nuxt('generate'),

@@ -4,11 +4,10 @@
   "description": "winterlove project",
   "author": "Bichi Kim <bichi@live.co.kr>",
   "private": true,
-  "main": "bin",
+  "main": "bin/render.js",
   "scripts": {
     "nps": "nps",
     "start": "nps serve",
-    "start:web": "nps serve",
     "start:electron": "nps serve.electron",
     "deploy": "nps deploy",
     "build": "nps build"
