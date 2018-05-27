@@ -11,6 +11,8 @@ module.exports = {
     dev: nuxt(),
     build: nuxt('build'),
     start: nuxt('start'),
+    serve: 'node bin',
+    deploy: 'gcloud app deploy',
     generate: nuxt('generate'),
     test: {
       default: 'karma start config/karma.config.js --browsers=PhantomJS --single-run',

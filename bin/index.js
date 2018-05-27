@@ -1,38 +1,28 @@
-const {Nuxt, Builder} = require('nuxt')
-const nuxtConfig = require('../config/nuxt.config')
+const winterLove = require('./middleware')
+const express = require('express')
+const consola = require('consola')
+const grabCommend = require('./grab-commend')
 
-/**
- * Express middleware
- * @param options {object|null}
- * @param options.config {object}
- * @param options.build {boolean}
- * @return {Promise<any>}
- */
-const middleware = (options = {}) => {
-  const {build = false, config = {}} = options
-  const nuxt = new Nuxt({...nuxtConfig, ... config})
-  let builder
-  if(build){
-    builder = new Builder(nuxt)
-  }else{
-    return nuxt.render
-  }
-  // only return Promise after building
-  return new Promise((resolve, reject) => {
-    if(builder){
-      builder.build().then((...anyResults) => {
-        resolve(nuxt.render, ...anyResults)
-      }).catch((error) => {
-        reject(error)
-      })
-    }else{
-      try{
-        resolve(nuxt.render)
-      }catch(error){
-        reject(error)
-      }
-    }
+// create & set express app
+const app = express()
+app.set('trust proxy', true)
+
+// get setting
+const {build = false, port} = grabCommend()
+
+// running logic
+async function run() {
+  const winterLoveMiddleware =  await winterLove({
+    build,
+    config: {
+      dev: false,
+    },
   })
+  app.use(winterLoveMiddleware)
+  await new Promise((resolve) => {app.listen(port, resolve)})
 }
 
-module.exports = middleware
+// run!
+run()
+  .then(() => (consola.start(`service is started port: ${port}`)))
+  .catch((error) => (consola.error(error)))

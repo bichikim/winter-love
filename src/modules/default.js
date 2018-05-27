@@ -48,10 +48,10 @@ function setEnv({version} = {}) {
   this.options.env.version = version
 }
 
-function setBuild({lint, vendor, analyzer} = {}) {
+function setBuild({lint, vendor, dev, analyzer} = {}) {
   const {build} = this.options
   build.vendor = [...build.vendor, ...vendor]
-  build.analyze = analyzer
+  if(dev){build.analyze = analyzer}
   // todo this is not working for now. this will be able in nuxt 2.0
   build.babel.plugins = [...build.babel.plugins, 'lodash']
   this.extendBuild((config, {isDev, isClient}) => {
