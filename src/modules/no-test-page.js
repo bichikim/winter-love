@@ -8,6 +8,5 @@ module.exports = function noTestPage() {
         routes.splice(key, 1)
       }
     })
-    console.log(routes)
   })
 }

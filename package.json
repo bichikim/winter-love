@@ -7,7 +7,7 @@
   "main": "bin/render.js",
   "scripts": {
     "dev": "nps dev",
-    "start": "nps serve",
+    "start": "nps build && nps serve",
     "start:electron": "nps serve.electron",
     "deploy": "nps deploy",
     "build": "nps build"
@@ -56,7 +56,6 @@
     "@types/three": "^0.92.2",
     "@vue/test-utils": "^1.0.0-beta.16",
     "autoprefixer": "^8.5.1",
-    "avoriaz": "^6.3.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
     "babel-plugin-lodash": "^3.3.2",
@@ -90,6 +89,7 @@
     "mocha": "^5.2.0",
     "nps": "^5.9.0",
     "nps-utils": "^1.5.0",
+    "nuxt-property-decorator": "^1.2.0",
     "pug": "^2.0.0",
     "sinon": "^5.0.10",
     "snap-shot-it": "^5.0.0",
