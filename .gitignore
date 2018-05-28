@@ -32,6 +32,7 @@ tests/e2e/reports
 tests/unit/coverage
 
 # Editor directories and files
+.elasticbeanstalk/
 .idea
 .vscode
 *.suo
