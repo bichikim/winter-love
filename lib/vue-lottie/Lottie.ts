@@ -1,10 +1,17 @@
 import lottie from 'lottie-web'
-import {Component, Prop, Vue} from 'vue-property-decorator'
+import {Component, Prop, Vue, Watch} from 'vue-property-decorator'
 import {
   COMPLETE, CREATED, DATA_READY, DESTROY, DOM_LOADED,
   ENTER_FRAME, LOADED_IMAGES, LOOP_COMPLETE, SEGMENT_START,
 } from './events'
-import {shouldChange} from '~/vue-helper'
+function shouldChange(compare, _origin) {
+  const origin = _origin || this
+  if(!origin || !compare){return true}
+  const change = Object.keys(compare).find((key) => {
+    return origin[key] !== compare[key]
+  })
+  return typeof change !== 'undefined'
+}
 
 @Component
 export default class Lottie extends Vue {
@@ -12,26 +19,34 @@ export default class Lottie extends Vue {
   @Prop({default: 'svg'}) renderer: string
   @Prop({default: false}) loop: boolean
   @Prop({default: true}) autoplay: boolean
-  @Prop({default: () => ({})}) rendererSettings: object
+  @Prop({default: false}) progressiveLoad: boolean
+  @Prop({default: true}) hideOnTransparent: boolean
+  @Prop({default: false}) clearCanvas: boolean
+  @Prop({default: 1}) speed: number
   @Prop({default: true}) event: boolean
   @Prop({default: false}) extendEvent: boolean
-  @Prop() controller: (controller) => void
+
+  @Watch('speed') onSpeed(speed: number) {
+    this.$nextTick(() => {
+      this.animation.setSpeed(speed)
+    })
+  }
 
   old: any = {}
 
   animation: any = null
 
-  get watchingProps() {
-    const {animationData, renderer, loop, autoplay, rendererSettings} = this
-    return {animationData, renderer, loop, autoplay, rendererSettings}
-  }
-
   get shouldUpdateAnimation() {
-    const {animationData, renderer, loop, autoplay, rendererSettings} = this
+    const {
+      animationData, renderer, loop, autoplay,
+      progressiveLoad, hideOnTransparent, clearCanvas,
+    } = this
     const {aniSetting} = this.old
     const change = shouldChange(this, aniSetting)
     if(change){
-      this.old.aniSetting = {animationData, renderer, loop, autoplay, rendererSettings}
+      this.old.aniSetting = {
+        animationData, renderer, loop, autoplay, progressiveLoad, hideOnTransparent, clearCanvas,
+      }
     }
     return change
   }
@@ -44,33 +59,33 @@ export default class Lottie extends Vue {
       this.animation.destroy()
     }
     const {renderer, loop, autoplay, animationData} = this
-    const {rendererSettings} = this
+    const {progressiveLoad, hideOnTransparent, clearCanvas} = this
     this.animation = lottie.loadAnimation({
       container, renderer, loop, autoplay, animationData,
-      rendererSettings,
+      rendererSettings: {
+        progressiveLoad, hideOnTransparent, clearCanvas,
+      },
     })
     const {animation} = this
+    animation.setSpeed(this.speed)
     this.$emit(CREATED, animation)
     if(this.event){
-      animation.onComplete = () => (this.$emit(COMPLETE, animation))
-      animation.onLoopComplete = () => (this.$emit(LOOP_COMPLETE, animation))
-      animation.addEventListener('destroy', () => (this.$emit(DESTROY, animation)))
+      animation.onComplete = (event) => (this.$emit(COMPLETE, event))
+      animation.onLoopComplete = (event) => (this.$emit(LOOP_COMPLETE, event))
+      animation.onSegmentStart = (event) => (this.$emit(SEGMENT_START, event))
+      animation.addEventListener('data_ready', (event) => (this.$emit(DATA_READY, event)))
+      animation.addEventListener('loaded_images', (event) => (this.$emit(LOADED_IMAGES, event)))
+      animation.addEventListener('DOMLoaded', (event) => (this.$emit(DOM_LOADED, event)))
     }
     if(this.extendEvent){
-      animation.onEnterFrame = () => (this.$emit(ENTER_FRAME, animation))
-      animation.onSegmentStart = () => (this.$emit(SEGMENT_START, animation))
-      animation.addEventListener('data_ready', () => (this.$emit(DATA_READY, animation)))
-      animation.addEventListener('loaded_images', () => (this.$emit(LOADED_IMAGES, animation)))
-      animation.addEventListener('DOMLoaded', () => (this.$emit(DOM_LOADED, animation)))
-    }
-    if(this.controller){
-      this.controller(animation)
+      animation.onEnterFrame = (event) => (this.$emit(ENTER_FRAME, event))
     }
   }
 
   beforeDestroy() {
     if(this.animation){
       this.animation.destroy()
+      this.$emit(DESTROY)
     }
   }
 
