@@ -7,7 +7,7 @@ export function shouldChange(compare, _origin) {
   return typeof change !== 'undefined'
 }
 
-export function boolean(data) {
+export function boolean(data): boolean {
   switch(data){
     case 'false':
       return false
