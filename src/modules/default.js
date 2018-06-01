@@ -49,6 +49,7 @@ function setEnv({version} = {}) {
 }
 
 function setBuild({lint, vendor, dev, analyzer} = {}) {
+  // {lint vendor dev analyzer} has an init value already so do not need to set init value twice
   const {build} = this.options
   build.vendor = [...build.vendor, ...vendor]
   if(dev){build.analyze = analyzer}
