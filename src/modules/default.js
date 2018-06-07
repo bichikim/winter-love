@@ -38,10 +38,10 @@ async function getOptions() {
   }
 }
 
-function setScript({polyfill} = {}) {
-  if(polyfill){
-    this.options.head.script.push({src: 'https://cdn.polyfill.io/v2/polyfill.min.js'})
-  }
+function setScript(/*{polyfill} = {}*/) {
+  // if(polyfill){
+  //   this.options.head.script.push({src: 'https://cdn.polyfill.io/v2/polyfill.min.js'})
+  // }
 }
 
 function setEnv({version} = {}) {
