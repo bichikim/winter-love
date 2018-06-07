@@ -17,11 +17,8 @@ module.exports = {
     '@/modules/default',
     // store init options from nuxt.config.js > store
     '@/modules/store-init',
-    // 'nuxt-typescript',
     // for typescript
     '@/modules/typescript',
-    // remove all test page on production mode
-    '@/modules/no-test-page',
   ],
 
   // inti store data
@@ -35,8 +32,17 @@ module.exports = {
 
   // 프로젝트 설정
   project: {
+    // toggle using cdn polyfill
+    // default: true
     polyfill: true,
+    // toggle checking lint in building time
+    // default: false
     lint: true,
+    // toggle pwa mode
+    // default: false
     pwa: true,
+    // toggle remove all Test page in production
+    // default: true
+    noTestPage: true,
   },
 }

@@ -4,6 +4,7 @@ const {join} = require('path')
 module.exports = async function defaultModule() {
   proofOptions.call(this)
   const defaultOptions = await getOptions.call(this) || {}
+  setModules.call(this, defaultOptions)
   setScript.call(this, defaultOptions)
   setEnv.call(this, defaultOptions)
   setBuild.call(this, defaultOptions)
@@ -11,7 +12,6 @@ module.exports = async function defaultModule() {
   setTitle.call(this, defaultOptions)
   setPlugins.call(this, defaultOptions)
   setCss.call(this, defaultOptions)
-  setModules.call(this, defaultOptions)
 }
 
 // make sure nuxt options is not empty
@@ -31,12 +31,12 @@ async function getOptions() {
   const root = this.options.rootDir
   const {dev = false} = this.options
   const {project} = this.options
-  const {lint = false, polyfill = true, analyzer = true, pwa = {}} = project
+  const {lint = false, polyfill = true, analyzer = true, pwa = {}, noTestPage = true} = project
   const packageJson = await fs.readJson(join(root, 'package.json')) || {}
   const {name = 'winter love'} = packageJson
   const {vendor = [], title = name, version = 'unknown'} = packageJson
   return {
-    root, lint, polyfill, vendor, title, version, analyzer, dev, pwa,
+    root, lint, polyfill, vendor, title, version, analyzer, dev, pwa, noTestPage,
   }
 }
 
@@ -107,11 +107,15 @@ function setCss() {
 }
 
 function setModules(options = {}) {
-  const {pwa} = options
+  const {pwa, noTestPage} = options
   if(pwa){
     if(pwa.oneSignal){
       this.options.modules.push('@nuxtjs/onesignal')
     }
     this.options.modules.push('@nuxtjs/pwa')
+  }
+  if(noTestPage){
+    // remove all test page on production mode
+    this.options.modules.push('@/modules/no-test-page')
   }
 }
