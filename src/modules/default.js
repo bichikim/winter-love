@@ -11,11 +11,13 @@ module.exports = async function defaultModule() {
   setTitle.call(this, defaultOptions)
   setPlugins.call(this, defaultOptions)
   setCss.call(this, defaultOptions)
+  setModules.call(this, defaultOptions)
 }
 
 // make sure nuxt options is not empty
 function proofOptions() {
   if(!this.options){this.options = {}}
+  if(!this.options.modules){this.options.modules = []}
   if(!this.options.build){this.options.build = {}}
   if(!this.options.build.vendor){this.options.build.vendor = []}
   if(!this.options.build.babel.plugins){this.options.build.babel.plugins = []}
@@ -29,19 +31,19 @@ async function getOptions() {
   const root = this.options.rootDir
   const {dev = false} = this.options
   const {project} = this.options
-  const {lint = false, polyfill = true, analyzer = true} = project
+  const {lint = false, polyfill = true, analyzer = true, pwa = {}} = project
   const packageJson = await fs.readJson(join(root, 'package.json')) || {}
   const {name = 'winter love'} = packageJson
   const {vendor = [], title = name, version = 'unknown'} = packageJson
   return {
-    root, lint, polyfill, vendor, title, version, analyzer, dev,
+    root, lint, polyfill, vendor, title, version, analyzer, dev, pwa,
   }
 }
 
-function setScript(/*{polyfill} = {}*/) {
-  // if(polyfill){
-  //   this.options.head.script.push({src: 'https://cdn.polyfill.io/v2/polyfill.min.js'})
-  // }
+function setScript({polyfill} = {}) {
+  if(polyfill){
+    this.options.head.script.push({src: 'https://cdn.polyfill.io/v2/polyfill.min.js'})
+  }
 }
 
 function setEnv({version} = {}) {
@@ -102,4 +104,14 @@ function setPlugins() {
 function setCss() {
   this.options.css.push('./node_modules/element-ui/lib/theme-chalk/reset.css')
   this.options.css.push('./node_modules/element-ui/lib/theme-chalk/index.css')
+}
+
+function setModules(options = {}) {
+  const {pwa} = options
+  if(pwa){
+    if(pwa.oneSignal){
+      this.options.modules.push('@nuxtjs/onesignal')
+    }
+    this.options.modules.push('@nuxtjs/pwa')
+  }
 }

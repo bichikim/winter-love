@@ -22,9 +22,6 @@ module.exports = {
     '@/modules/typescript',
     // remove all test page on production mode
     '@/modules/no-test-page',
-    // onesignal must be before pwa
-    '@nuxtjs/onesignal',
-    '@nuxtjs/pwa',
   ],
 
   // inti store data
@@ -40,5 +37,6 @@ module.exports = {
   project: {
     polyfill: true,
     lint: true,
+    pwa: true,
   },
 }

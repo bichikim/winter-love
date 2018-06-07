@@ -13,7 +13,6 @@
     "build": "nps build"
   },
   "vendor": [
-    "babel-polyfill"
   ],
   "engines": {
     "node": ">= 8.10",
