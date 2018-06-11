@@ -61,9 +61,9 @@
         "variable-declaration": "onespace"
       }
     ],
-     "max-classes-per-file": [false, 1],
+    "max-classes-per-file": [false, 1],
     "object-literal-sort-keys": false,
-    "space-before-function-paren": [true, "never"],
+    "space-before-function-paren": [true, {"anonymous": "never", "named": "never", "asyncArrow": "always"}],
     "brace-style": ["1tbs", {
       "allowSingleLine": "never"
     }],
