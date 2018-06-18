@@ -5,15 +5,14 @@ const CALL_NAME = '__vuex_init__'
  * Set env in Vuex store
  * @param context
  */
-export default (context) => {
+export default (context: any) => {
+  if(!process.browser){return}
   console.log(context.app)
   const {store, env} = context
-  if(!process.browser){return}
-
   if(env && env.store){
     store.hotUpdate({
       mutations: {
-        [CALL_NAME](state, payload) {
+        [CALL_NAME](state: any, payload: any) {
           assign(state, payload, {safeMode: true})
         },
       },

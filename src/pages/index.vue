@@ -34,7 +34,6 @@
         console.log('click test')
       }
     }
-
   }
 </script>
 

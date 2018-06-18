@@ -11,6 +11,7 @@ module.exports = async function defaultModule() {
   setTitle.call(this, defaultOptions)
   setPlugins.call(this, defaultOptions)
   setCss.call(this, defaultOptions)
+  setMiddleware.call(this, defaultOptions)
 }
 
 // make sure nuxt options is not empty
@@ -23,6 +24,8 @@ function proofOptions() {
   if(!this.options.head){this.options.head = {}}
   if(!this.options.head.meta){this.options.head.meta = []}
   if(!this.options.head.script){this.options.head.script = []}
+  if(!this.options.router){this.options.router = {}}
+  if(!this.options.router.middleware){this.options.router.middleware = []}
   if(!this.options.css){this.options.css = []}
 }
 
@@ -93,6 +96,10 @@ function setPlugins() {
   this.options.plugins.push({src: '@/plugins/vue-plugins-client', ssr: false})
   this.options.plugins.push('@/plugins/vuex-init')
   this.options.css.push({src: '@/assets/styles/bootstrap.styl', lang: 'stylus'})
+}
+
+function setMiddleware() {
+  this.options.router.middleware.push('init-store')
 }
 
 function setCss() {
