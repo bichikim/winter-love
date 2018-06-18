@@ -6,6 +6,7 @@ const CALL_NAME = '__vuex_init__'
  * @param context
  */
 export default (context) => {
+  console.log(context.app)
   const {store, env} = context
   if(!process.browser){return}
 

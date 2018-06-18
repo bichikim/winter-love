@@ -5,7 +5,6 @@ module.exports = async function defaultModule() {
   proofOptions.call(this)
   const defaultOptions = await getOptions.call(this) || {}
   setModules.call(this, defaultOptions)
-  setScript.call(this, defaultOptions)
   setEnv.call(this, defaultOptions)
   setBuild.call(this, defaultOptions)
   setMeta.call(this, defaultOptions)
@@ -37,12 +36,6 @@ async function getOptions() {
   const {vendor = [], title = name, version = 'unknown'} = packageJson
   return {
     root, lint, polyfill, vendor, title, version, analyzer, dev, pwa, noTestPage,
-  }
-}
-
-function setScript({polyfill} = {}) {
-  if(polyfill){
-    this.options.head.script.push({src: 'https://cdn.polyfill.io/v2/polyfill.min.js'})
   }
 }
 
@@ -98,6 +91,7 @@ function setTitle({title} = {}) {
 function setPlugins() {
   this.options.plugins.push('@/plugins/vue-plugins')
   this.options.plugins.push({src: '@/plugins/vue-plugins-client', ssr: false})
+  this.options.plugins.push('@/plugins/vuex-init')
   this.options.css.push({src: '@/assets/styles/bootstrap.styl', lang: 'stylus'})
 }
 

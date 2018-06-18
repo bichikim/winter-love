@@ -5,6 +5,13 @@ module.exports = {
 
   rootDir: './',
 
+  build: {
+    presets: ['vue-app'],
+    babel: {
+      plugins: ['graphql-tag'],
+    },
+  },
+
   /*
    ** Customize the progress bar color
    */
@@ -16,7 +23,7 @@ module.exports = {
   modules: [
     '@/modules/default',
     // store init options from nuxt.config.js > store
-    '@/modules/store-init',
+    // '@/modules/store-init',
     // for typescript
     '@/modules/typescript',
   ],

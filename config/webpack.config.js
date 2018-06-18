@@ -1,8 +1,5 @@
-// this is for test & webStorm
-
 /**
- *
- * @author Bichi Kim <bichi@live.co.kr> <bichi@pjfactory.com>
+ * this is for test & webStorm
  */
 const {join} = require('path')
 const webpack = require('webpack')

@@ -7,7 +7,7 @@ yarn-error.log
 test/unit/coverage
 selenium-debug.log
 .nyc_output
-coverage/
+.coverage/
 
 # Nuxt build
 .nuxt

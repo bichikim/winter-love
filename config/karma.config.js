@@ -1,5 +1,5 @@
 /**
- * @author Bichi Kim <bichi@live.co.kr> <bichi@pjfactory.com>
+ *
  */
 const webpack = require('./webpack.config.js')
 module.exports = function(config) {
@@ -32,7 +32,7 @@ module.exports = function(config) {
       './test/unit/specs/**/*.js': ['webpack', 'sourcemap'],
     },
     coverageReporter: {
-      dir : '../coverage/',
+      dir : '../.coverage/',
       reporters: [
         {type: 'html', subdir: 'html'},
         {type: 'lcovonly', subdir: 'lcov'},

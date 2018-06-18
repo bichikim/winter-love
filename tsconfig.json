@@ -1,14 +1,13 @@
 {
-  "compileOnSave": false,
   "compilerOptions": {
     "module": "esnext",
     "target": "es5",
     "lib": [
-      "dom", "es5", "es6", "es7", "es2015", "es2016", "es2017", "esnext"
+      "dom",
+      "esnext"
     ],
-    "alwaysStrict": true,
     "noEmitHelpers": false,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "allowJs": true,
     "moduleResolution": "node",
     "sourceMap": true,
@@ -24,13 +23,13 @@
     }
   },
   "include": [
-    "**/*.ts",
+    "src/**/*.ts",
     "types/**/*.d.ts"
   ],
   "exclude": [
-    ".nuxt",
     ".keep",
-    "templates",
+    ".templates",
     "node_modules"
-  ]
+  ],
+  "compileOnSave": false
 }
