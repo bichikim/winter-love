@@ -2,9 +2,7 @@ const fs = require('fs-extra')
 const {join} = require('path')
 
 module.exports = async function defaultModule() {
-  // console.log(Object.getOwnPropertyNames(this.nuxt))
   proofOptions.call(this)
-  this.nuxt.hi = 'hi'
   const defaultOptions = await getOptions.call(this) || {}
   setModules.call(this, defaultOptions)
   setEnv.call(this, defaultOptions)

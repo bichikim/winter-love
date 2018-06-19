@@ -16,8 +16,7 @@ export interface IStore extends Store<IState> {
   // empty Interface
 }
 
-type TRootSateFunction = () => IRootState
-
+export type TRootSateFunction = () => IRootState
 export const state: TRootSateFunction = () => ({})
 
 export const plugins = [

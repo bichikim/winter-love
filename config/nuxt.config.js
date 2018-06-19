@@ -22,8 +22,6 @@ module.exports = {
    */
   modules: [
     '@/modules/default',
-    // store init options from nuxt.config.js > store
-    // '@/modules/store-init',
     // for typescript
     '@/modules/typescript',
   ],
