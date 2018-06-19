@@ -7,7 +7,6 @@ const CALL_NAME = '__vuex_init__'
  */
 export default (context: any) => {
   if(!process.browser){return}
-  console.log(context.app)
   const {store, env} = context
   if(env && env.store){
     store.hotUpdate({

@@ -12291,9 +12291,9 @@ vuex-class@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/vuex-class/-/vuex-class-0.3.1.tgz#3c0b946bcff4cf2be1904de5b0cab1a3dd5c41d5"
 
-vuex-keg@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/vuex-keg/-/vuex-keg-1.0.2.tgz#2f4ebd21f85cccac907f6c20fae861545058b87e"
+vuex-keg@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/vuex-keg/-/vuex-keg-1.0.4.tgz#cde34807553f7eb3b4d486bb3ac1bc8e67267406"
   dependencies:
     lodash "^4.17.10"
 

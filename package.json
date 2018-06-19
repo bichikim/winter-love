@@ -51,7 +51,7 @@
     "vue": "^2.5.16",
     "vue-i18n": "^7.7.0",
     "vuex": "^3.0.1",
-    "vuex-keg": "^1.0.2"
+    "vuex-keg": "^1.0.4"
   },
   "devDependencies": {
     "@types/chai": "^4.1.3",

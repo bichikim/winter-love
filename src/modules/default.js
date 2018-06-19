@@ -2,7 +2,9 @@ const fs = require('fs-extra')
 const {join} = require('path')
 
 module.exports = async function defaultModule() {
+  // console.log(Object.getOwnPropertyNames(this.nuxt))
   proofOptions.call(this)
+  this.nuxt.hi = 'hi'
   const defaultOptions = await getOptions.call(this) || {}
   setModules.call(this, defaultOptions)
   setEnv.call(this, defaultOptions)
@@ -11,7 +13,6 @@ module.exports = async function defaultModule() {
   setTitle.call(this, defaultOptions)
   setPlugins.call(this, defaultOptions)
   setCss.call(this, defaultOptions)
-  setMiddleware.call(this, defaultOptions)
 }
 
 // make sure nuxt options is not empty
@@ -96,10 +97,6 @@ function setPlugins() {
   this.options.plugins.push({src: '@/plugins/vue-plugins-client', ssr: false})
   this.options.plugins.push('@/plugins/vuex-init')
   this.options.css.push({src: '@/assets/styles/bootstrap.styl', lang: 'stylus'})
-}
-
-function setMiddleware() {
-  this.options.router.middleware.push('init-store')
 }
 
 function setCss() {

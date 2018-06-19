@@ -28,12 +28,16 @@ module.exports = {
     '@/modules/typescript',
   ],
 
-  // inti store data
-  store: {
-    // use this in vue-plugin
-    version,
-    api: {
-      test: 'hi?',
+  env:{
+    // inti store data
+    store: {
+      // use this in vue-plugin
+      app: {
+        version,
+      },
+      api: {
+        test: 'hi?',
+      },
     },
   },
 

@@ -1,8 +1,24 @@
 import vuexKeg from 'vuex-keg'
+import {Store} from 'vuex'
 import VuexKegRequest from '~/vuex-keg-request'
 import VuexStorage from '~/vuex-storage'
+import IApi from './api'
 
-export const state = () => ({})
+export interface IRootState {
+  // have nothing
+}
+
+export interface IState extends IRootState{
+  api: IApi
+}
+
+export interface IStore extends Store<IState> {
+  // empty Interface
+}
+
+type TRootSateFunction = () => IRootState
+
+export const state: TRootSateFunction = () => ({})
 
 export const plugins = [
   vuexKeg({
