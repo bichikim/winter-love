@@ -1,5 +1,5 @@
 import {PluginObject, VueConstructor} from 'vue'
-import {shouldChange, boolean} from './helpers'
+import {boolean, shouldChange} from './helpers'
 export {
   shouldChange,
   boolean,
@@ -7,8 +7,8 @@ export {
 
 interface IOptions {
   names?: {
-    shouldChange?: string //'shouldChange'
-    boolean?: string // 'boolean'
+    shouldChange?: string, // 'shouldChange'
+    boolean?: string, // 'boolean'
   }
 }
 

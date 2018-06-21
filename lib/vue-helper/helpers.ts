@@ -1,4 +1,4 @@
-export function shouldChange(compare, _origin) {
+export function shouldChange(compare: any, _origin: any) {
   const origin = _origin || this
   if(!origin || !compare){return true}
   const change = Object.keys(compare).find((key) => {
@@ -7,7 +7,7 @@ export function shouldChange(compare, _origin) {
   return typeof change !== 'undefined'
 }
 
-export function boolean(data): boolean {
+export function boolean(data: any): boolean {
   switch(data){
     case 'false':
       return false

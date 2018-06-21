@@ -1,9 +1,9 @@
 import {cloneDeep, omit, pick} from 'lodash'
 import {Store} from 'vuex'
-import assign from '~/assign'
+import assign from 'infinity-assign'
 // saving mutation name
 const CALL_NAME = '__plugin_vuex_storage__'
-const storeExceptOrOnly = (state: any, except, only) => {
+const storeExceptOrOnly = (state: any, except: string[], only: string[]) => {
   let clonedStore = {}
   if(except){
     clonedStore = omit(cloneDeep(state), except)
@@ -62,7 +62,7 @@ export default (options: IVuexStorageOptions = {}) => {
       },
     })
     // saving store
-    const save = (state, session, local) => {
+    const save = (state: any, session: any, local: any) => {
       sessionStorage.setItem(key,
         JSON.stringify(storeExceptOrOnly(store.state, session.except, session.only)))
       localStorage.setItem(key,

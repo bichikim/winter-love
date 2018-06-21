@@ -7,23 +7,24 @@
   import joinPath from 'join-path'
 
   @Component
-  export default class  extends Vue {
+  export default class ElImage extends Vue {
     @Prop src: string
     @Prop basePath: string
+    @Prop ({default: '@assets'})assetsPath: string
 
     // use @/asset instead of ./
     @Prop({default: false}) isFromAssets: boolean
 
-    @Prop({default: '100%'}) width: number
-    @Prop({default: '100%'}) height: number
+    @Prop({default: '100%'}) width: number | string
+    @Prop({default: '100%'}) height: number | string
 
     // description when the mouse is on this image
     @Prop({default: 'Image'}) title: number
 
-
     get path() {
-      const {isFromAssets, basePath, src} = this
-      return isFromAssets ? joinPath('@/assets', basePath, src) : joinPath(basePath, src)
+      return this.isFromAssets ?
+        joinPath(this.assetsPath, this.basePath, this.src) :
+        joinPath(this.basePath, this.src)
     }
   }
 </script>
