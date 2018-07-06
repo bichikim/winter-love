@@ -1,48 +1,46 @@
-/* eslint-disable max-len,no-magic-numbers */
 module.exports = {
-  'plugins': ['html', 'vue', 'typescript',],
-  'env': {
-    'commonjs': true,
-    'browser': true,
-    'es6': true,
-    'amd': true,
-    'node': true,
-    'mocha': true,
+  root: true,
+  env: {
+    browser: true,
+    node: true,
   },
+  plugins: ['html', 'vue', 'typescript'],
   overrides: [
     {
-      files: ['*.spec.js'],
-      "rules": {
-        'max-nested-callbacks': 'off',
-        'no-magic-numbers': 'off',
-      }
-    },
-    {
       files: ['*.js'],
-      "rules": {
-        'indent': 'off',
-      }
+      rules: {
+        indent: 'off',
+      },
     },
     {
       files: ['*.ts'],
-      "rules": {
+      rules: {
+        'no-undef': 'off',
+        'no-unused-vars': 'off',
         'new-cap': 'off',
-      }
+      },
     },
-
   ],
-  'extends': ['eslint:recommended', 'plugin:vue/recommended'],
+  parser: 'vue-eslint-parser',
   parserOptions: {
+    // Babel
+    // parser: 'babel-eslint',
+
+    // TypeScript
     parser: 'typescript-eslint-parser',
-    sourceType: 'module',
+    plugins: ['typescript'],
   },
+  extends: ['eslint:recommended', 'plugin:vue/recommended'],
   rules: {
     /**************************************
      * vue options
      **************************************/
     'no-dupe-keys': 'error',
     'vue/jsx-uses-vars': 'error',
-    'vue/max-attributes-per-line': ['error', {'singleline': 5, 'multiline': {'max': 3, 'allowFirstLine': false}}],
+    'vue/max-attributes-per-line': [
+      'error',
+      { singleline: 5, multiline: { max: 3, allowFirstLine: false } },
+    ],
     'vue/require-default-prop': 'error',
     /**************************************
      * common javascript options
@@ -50,51 +48,53 @@ module.exports = {
     // off
     'one-var': 'off',
     'no-undef': 'off',
-    'no-console': 'off',
+    'no-console': 'warn',
     // 'linebreak-style': ['error', 'unix'],
     // on
     'array-callback-return': 'error',
     'arrow-parens': ['error', 'always'],
-    'arrow-spacing': ['error', {before: true, after: true}],
+    'arrow-spacing': ['error', { before: true, after: true }],
     'block-scoped-var': 'error',
     'block-spacing': ['error', 'never'],
-    'camelcase': ['error', {'properties': 'always'}],
+    camelcase: ['error', { properties: 'always' }],
     'class-methods-use-this': 'error',
     'comma-dangle': ['error', 'always-multiline'],
     'comma-style': ['error', 'last'],
-    'complexity': ['error', 20],
+    complexity: ['error', 20],
     'consistent-this': ['error', 'self'],
     'default-case': 'error',
     'func-name-matching': ['error', 'never'],
     'getter-return': 'error',
     'global-require': 'error',
     'guard-for-in': 'error',
-    'indent': ['error', 2, { "SwitchCase": 1 }],
-    'keyword-spacing': ['error', {
-      'before': false,
-      'after': false,
-      'overrides': {
-        'const' : {before: true, after: true},
-        'let' : {before: true, after: true},
-        'from': {before: true, after: true},
-        'import': {before: true, after: true},
-        'as': {before: true, after: true},
-        'export': {after: true},
-        'return': {before: true, after: true},
-        'this': {before: true, after: true},
-        'case':{after: true},
-        'extends': {before: true},
-        'implements': {before: true},
-        'async': {after: true}
+    indent: ['error', 2, { SwitchCase: 1 }],
+    'keyword-spacing': [
+      'error',
+      {
+        before: false,
+        after: false,
+        overrides: {
+          const: { before: true, after: true },
+          let: { before: true, after: true },
+          from: { before: true, after: true },
+          import: { before: true, after: true },
+          as: { before: true, after: true },
+          export: { after: true },
+          return: { before: true, after: true },
+          this: { before: true, after: true },
+          case: { after: true },
+          extends: { before: true },
+          implements: { before: true },
+        },
       },
-    }],
-    'max-depth': ['error', {'max': 4}],
+    ],
+    'max-depth': ['error', { max: 4 }],
     'max-len': ['error', 100],
-    'max-lines': ['error', 1000],
-    'max-nested-callbacks': ['error', {'max': 3}],
-    'max-params': ['error', {'max': 6}],
-    'max-statements-per-line': ['error', {'max': 2}],
-    'new-cap': ['error', {'newIsCap': true}],
+    'max-lines': 'error',
+    'max-nested-callbacks': ['error', { max: 3 }],
+    'max-params': ['error', { max: 6 }],
+    'max-statements-per-line': ['error', { max: 2 }],
+    'new-cap': ['error', { newIsCap: true }],
     'no-alert': 'error',
     'no-await-in-loop': 'error',
     'no-bitwise': 'error',
@@ -120,7 +120,7 @@ module.exports = {
     'no-lone-blocks': 'error',
     'no-lonely-if': 'error',
     'no-loop-func': 'error',
-    'no-magic-numbers': ['error', {'ignore': [0, 1]}],
+    'no-magic-numbers': ['error', { ignore: [0, 1] }],
     'no-multi-assign': 'error',
     'no-multi-str': 'error',
     'no-multiple-empty-lines': 'error',
@@ -135,7 +135,7 @@ module.exports = {
     'no-proto': 'error',
     'no-prototype-builtins': 'error',
     'no-return-assign': 'error',
-    // 'no-return-await': 'error',
+    'no-return-await': 'error',
     'no-script-url': 'error',
     'no-self-compare': 'error',
     'no-sequences': 'error',
@@ -155,12 +155,15 @@ module.exports = {
     'no-with': 'error',
     'nonblock-statement-body-position': 'error',
     'object-curly-spacing': ['error', 'never'],
-    'quotes': ['error', 'single'],
+    quotes: ['error', 'single'],
     'require-await': 'error',
-    'semi': ['error', 'never'],
+    semi: ['error', 'never'],
     'sort-keys': 'off',
-    'space-before-blocks': ['error', {'functions': 'always', 'keywords': 'never', 'classes': 'always'}],
-    'space-before-function-paren': ['error', {'anonymous': 'never', 'named': 'never', 'asyncArrow': 'always'}],
+    'space-before-blocks': ['error', { functions: 'always', keywords: 'never', classes: 'always' }],
+    'space-before-function-paren': [
+      'error',
+      { anonymous: 'never', named: 'never', asyncArrow: 'always' },
+    ],
     'vars-on-top': 'error',
     // 'consistent-return': 'error', // disable for now
     // 'func-style': ['error', 'expression', {'allowArrowFunctions': true}],
@@ -181,26 +184,17 @@ module.exports = {
      *************************************/
     // off
     'typescript/explicit-member-accessibility': 'off',
-
+    'typescript/member-delimiter-style': 'off',
     'typescript/member-ordering': 'off',
     'typescript/no-empty-interface': 'off',
     'typescript/no-explicit-any': 'off',
     'typescript/no-type-alias': 'off',
     'typescript/no-use-before-define ': 'off',
     // on
-    'typescript/member-delimiter-style': ['error', {
-      delimiter: 'none',
-      overrides: {
-        typeLiteral: {
-          delimiter: "comma",
-          requireLast: true,
-        }
-      }
-    }],
     'typescript/adjacent-overload-signatures': 'error',
     'typescript/class-name-casing': 'error',
     'typescript/interface-name-prefix': ['error', 'always'],
-    'typescript/member-naming': ['error', {'private': '^_'}],
+    'typescript/member-naming': ['error', { private: '^_' }],
     'typescript/no-angle-bracket-type-assertion': 'error',
     'typescript/no-array-constructor': 'error',
     'typescript/no-namespace': 'error',
@@ -208,19 +202,24 @@ module.exports = {
     'typescript/no-triple-slash-reference': 'error',
     'typescript/no-unused-vars': 'error',
     'typescript/type-annotation-spacing': [
-      'error', {
-        'before': false,
-        'after': true,
-        'overrides': {
-          'arrow': {
-            'before': true,
-            'after': true,
+      'error',
+      {
+        before: false,
+        after: false,
+        overrides: {
+          arrow: {
+            before: true,
+            after: true,
           },
-          'colon': {
-            'before': false,
-            'after': true,
+          colon: {
+            before: false,
+            after: true,
           },
         },
-      }],
-  }
-};
+      },
+    ],
+    // TypeScript bugs
+    // 'no-undef': 'off',
+    // 'no-unused-vars': 'off',
+  },
+}

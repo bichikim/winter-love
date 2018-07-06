@@ -1,35 +1,29 @@
 {
   "compilerOptions": {
+    "target": "esnext",
+    "lib": ["dom", "es2015"],
     "module": "esnext",
-    "target": "es5",
-    "lib": [
-      "dom",
-      "esnext"
-    ],
-    "noEmitHelpers": false,
-    "noImplicitAny": true,
-    "allowJs": true,
     "moduleResolution": "node",
+    "strict": true,
     "sourceMap": true,
-    "emitDecoratorMetadata": true,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "noImplicitReturns": true,
+    "strictNullChecks": true,
+    "removeComments": false,
     "experimentalDecorators": true,
+    "suppressImplicitAnyIndexErrors": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./",
+    "allowJs": true,
     "paths": {
+      "~/*": ["./*"],
+      "~~/*": ["./src/*"],
       "@/*": ["./src/*"],
-      "~/*": ["./lib/*"],
       "@@/*": ["./*"],
-      "~~/*": ["./*"]
+      "vueclass": ["./src/vueclass.js"],
+      "assets/*": ["./src/assets/*"],
+      "static/*": ["./src/static/*"]
     }
   },
-  "include": [
-    "src/**/*.ts",
-    "types/**/*.d.ts"
-  ],
-  "exclude": [
-    ".keep",
-    ".templates",
-    "node_modules"
-  ],
-  "compileOnSave": false
+  "include": ["./src/**/*", "./internals/**/*"]
 }
