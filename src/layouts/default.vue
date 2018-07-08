@@ -1,18 +1,16 @@
 <template>
-  <div class="default-layout">
-    <github-corner/>
+  <div>
     <nuxt/>
   </div>
 </template>
+<script lang="ts">
+  import AppLogo from '@/components/AppLogo.vue'
+  import {Component, Vue} from 'nuxt-property-decorator'
 
-<script>
-import { Component, Vue } from 'nuxt-property-decorator'
-import GithubCorner from '../components/GithubCorner'
+  export default class DefaultLayout extends Vue {
 
-@Component({
-  components: {
-    GithubCorner,
-  },
-})
-export default class DefaultLayout extends Vue {}
+  }
 </script>
+<style lang="stylus">
+
+</style>

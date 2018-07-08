@@ -3,7 +3,7 @@ const nps = (name) => {
   return `nps ${name}`
 }
 const nuxt = (name = '') => {
-  return `nuxt ${name} -c config/nuxt.config.js`
+  return `node project ${name}`
 }
 module.exports = {
   scripts: {
@@ -20,7 +20,7 @@ module.exports = {
     deploy: 'gcloud app deploy',
     generate: nuxt('generate'),
     test: {
-      default: 'karma start config/karma.config.js --browsers=PhantomJS --single-run',
+      default: 'jest test',
     },
     doc: {
       default: '',

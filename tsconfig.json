@@ -1,29 +1,39 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
     "target": "esnext",
-    "lib": ["dom", "es2015"],
+    "lib": ["dom", "esnext"],
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
+    "resolveJsonModule": true,
+    "alwaysStrict": true,
+    "noEmitHelpers": false,
+    "noImplicitAny": true,
+    "allowJs": true,
     "sourceMap": true,
-    "noImplicitAny": false,
-    "noImplicitThis": false,
-    "noImplicitReturns": true,
+    "emitDecoratorMetadata": true,
     "strictNullChecks": true,
     "removeComments": false,
     "experimentalDecorators": true,
     "suppressImplicitAnyIndexErrors": true,
     "allowSyntheticDefaultImports": true,
-    "allowJs": true,
+    "baseUrl": "./",
     "paths": {
-      "~/*": ["./*"],
-      "~~/*": ["./src/*"],
       "@/*": ["./src/*"],
+      "~/*": ["./lib/*"],
       "@@/*": ["./*"],
-      "vueclass": ["./src/vueclass.js"],
-      "assets/*": ["./src/assets/*"],
-      "static/*": ["./src/static/*"]
+      "~~/*": ["./*"]
     }
   },
-  "include": ["./src/**/*", "./internals/**/*"]
+  "include": [
+    "**/*.ts",
+    "types/**/*.d.ts"
+  ],
+  "exclude": [
+    ".nuxt",
+    ".keep",
+    "templates",
+    "node_modules"
+  ]
 }
