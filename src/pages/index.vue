@@ -3,8 +3,8 @@
     .content
       app-logo
       .text
-        h1.title Doctor Law
-        h2.subtitle Law management Web service project
+        h1.title Winter Love
+        h2.subtitle Toy project
         .links
           a.button--green(href="https://nuxtjs.org/" target="_blank") Documentation
           div
