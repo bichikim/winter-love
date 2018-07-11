@@ -1,9 +1,6 @@
-# Web
+# Winter Love
 
-> web front-end
-
-## Known problems
- - cannot check *.vue coverage
+> Toy project
 
 ## Build Setup
 

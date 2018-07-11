@@ -1,13 +1,13 @@
 export default {
   'term': {
     'login': '로그인',
-    'production-name': '닥터 로',
+    'production-name': '겨울 사랑',
   },
   'login': {
     'loginTitle': '@:term.login 하세요',
   },
   'intro': {
     'title': '@:term.production-name',
-    'sub-title': '웹 법률 관리 서비스',
+    'sub-title': '장남감 프로젝트',
   },
 }
