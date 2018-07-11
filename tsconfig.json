@@ -6,6 +6,8 @@
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
+    "noImplicitThis": false,
+    "strictPropertyInitialization": false,
     "resolveJsonModule": true,
     "alwaysStrict": true,
     "noEmitHelpers": false,
@@ -33,7 +35,6 @@
   "exclude": [
     ".nuxt",
     ".keep",
-    "templates",
-    "node_modules"
+    "templates"
   ]
 }

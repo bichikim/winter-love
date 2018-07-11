@@ -55,8 +55,6 @@ function setBuild({lint, vendor, dev, analyzer, nuxtVersion} = {}) {
   const {build} = this.options
   build.vendor = [...build.vendor, ...vendor]
   if(dev){build.analyze = analyzer}
-  // todo this is not working for now. this will be able in nuxt 2.0
-  build.babel.plugins = [...build.babel.plugins, 'lodash']
   this.extendBuild((config, {isDev, isClient}) => {
     /*************************************************
      * Run ESLint on save

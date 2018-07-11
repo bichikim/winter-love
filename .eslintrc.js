@@ -42,7 +42,7 @@ module.exports = {
     // off
     'one-var': 'off',
     'no-undef': 'off',
-    'no-console': 'warn',
+    'no-console': ['warn', {allow: ['warn', 'error']}],
     // 'linebreak-style': ['error', 'unix'],
     // on
     'array-callback-return': 'error',

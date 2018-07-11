@@ -1,3 +1,7 @@
+/**
+ * @description Api 통신에 필요한 정보들
+ */
+
 import {keg} from 'vuex-keg'
 
 export interface IApiState {

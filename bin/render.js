@@ -1,5 +1,5 @@
-const {Nuxt, Builder} = require('nuxt')
-const nuxtConfig = require('../config/nuxt.config')
+const {Nuxt, Builder} = require('nuxt-edge')
+const nuxtConfig = require('../project/nuxt.config')
 
 /**
  * Express middleware

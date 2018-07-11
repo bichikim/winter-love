@@ -32,7 +32,11 @@ const defaultConfig = {
    * Webpack build
    */
   build: {
-    babel: babel(), extractCSS: true, cssSourceMap: true, optimization: {
+    vendor: ['vue-i18n'],
+    babel: babel(),
+    extractCSS: true,
+    cssSourceMap: true,
+    optimization: {
       splitChunks: {
         name: true,
       },
@@ -54,12 +58,14 @@ const defaultConfig = {
     project('modules/typescript'),
     // for i18n
     [project('modules/i18n'), {
-        languages: [{locale: 'kr'}],
+        languageRoutes: [
+          {locale: 'kr'},
+        ],
         defaultLocale: 'en',
     }],
     '@nuxtjs/component-cache',
     project('modules/no-test-page'),
-    '@nuxtjs/onesignal',
+    // '@nuxtjs/onesignal',
     '@nuxtjs/pwa',
   ],
 

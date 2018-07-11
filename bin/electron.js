@@ -1,8 +1,8 @@
 /* eslint-disable global-require,no-magic-numbers */
 const http = require('http')
-const {Nuxt, Builder} = require('nuxt')
+const {Nuxt, Builder} = require('nuxt-edge')
 const {resolve} = require('path')
-let config = require('../config/nuxt.config.js')
+let config = require('../project/nuxt.config.js')
 config.rootDir = resolve(__dirname, '../') // for electron-builder
 config.mode = 'spa'
 config.dev = process.env.NODE_ENV !== 'production'

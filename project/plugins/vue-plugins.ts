@@ -1,4 +1,5 @@
 import Element from 'element-ui'
+import VeeValidate from 'vee-validate'
 import Vue from 'vue'
 import VueLottie from '~/vue-lottie'
 import VueWhiteSpace from '~/vue-white-space'
@@ -11,4 +12,6 @@ export default () => {
   Vue.use(VueWhiteSpace)
   // 입력 값 검증 용 플러그인
   Vue.use(VueLottie)
+  // 벨리데이션
+  Vue.use(VeeValidate)
 }

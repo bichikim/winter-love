@@ -3,8 +3,8 @@
     .content
       app-logo
       .text
-        h1.title Winter Love
-        h2.subtitle Toy project
+        h1.title {{$t('intro.title')}}
+        h2.subtitle {{$t('intro.sub-title')}}
         .links
           a.button--green(href="https://nuxtjs.org/" target="_blank") Documentation
           div
@@ -34,7 +34,7 @@
   export default class IndexPage extends Vue {
     listeners: any = {
       click: () => {
-        console.log('click test')
+        console.log(this.$i18n)
       }
     }
 
