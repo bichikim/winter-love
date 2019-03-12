@@ -1,40 +1,55 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "target": "esnext",
-    "lib": ["dom", "esnext"],
+    "jsx": "preserve",
+    "skipLibCheck": true,
+    // language environment
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "lib": ["es2015", "esnext", "dom"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "~/*": ["src/*"],
+      "@@/*": ["*"],
+      "~~/*": ["*"],
+      "vue-ts": ["src/vue-ts"],
+      "types/*": ["src/types/*"]
+    },
+    "allowJs": true,
+    // build environment
     "module": "esnext",
+    "target": "esnext",
     "moduleResolution": "node",
+    "sourceMap": true,
+    "removeComments": false,
+    "typeRoots": [
+      "node_modules/@types",
+      "types"
+    ],
+    // decorators
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    //lint
     "strict": true,
-    "noImplicitThis": false,
+    "noImplicitThis": true,
     "strictPropertyInitialization": false,
-    "resolveJsonModule": true,
     "alwaysStrict": true,
     "noEmitHelpers": false,
-    "noImplicitAny": true,
-    "allowJs": true,
-    "sourceMap": true,
-    "emitDecoratorMetadata": true,
     "strictNullChecks": true,
-    "removeComments": false,
-    "experimentalDecorators": true,
     "suppressImplicitAnyIndexErrors": true,
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": "./",
-    "paths": {
-      "@/*": ["./src/*"],
-      "~/*": ["./lib/*"],
-      "@@/*": ["./*"],
-      "~~/*": ["./*"]
-    }
+    "noImplicitAny": false
   },
   "include": [
     "**/*.ts",
+    "**/*.tsx",
+    "**/*.vue",
     "types/**/*.d.ts"
   ],
   "exclude": [
-    ".nuxt",
-    ".keep",
-    "templates"
+    "lib/**/*",
+    "project/**/*",
+    "test/**/*"
   ]
 }
