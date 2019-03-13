@@ -1,12 +1,11 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import {join} from 'path'
-import webpack, {Configuration} from 'webpack'
-import merge from 'webpack-merge'
-import webpackConfig from './build/webpack.base.config'
-
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const {join} = require('path')
+const webpack = require('webpack')
+const merge = require('webpack-merge')
+const webpackConfig = require('./build/webpack.base.config')
 const mode = process.env.NODE_ENV === 'development' ? 'development' : 'production'
 const outputPath = process.env.DIST || 'dist'
-const config: Configuration = {
+const config = {
   mode,
   entry: {
     main: './src/index.ts',
@@ -31,4 +30,4 @@ const config: Configuration = {
   ],
 }
 
-export default merge(webpackConfig({mode}), config)
+module.exports = merge(webpackConfig({transpileOnly: mode === 'production'}), config)

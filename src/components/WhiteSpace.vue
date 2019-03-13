@@ -1,14 +1,19 @@
 <template lang="pug">
   .white-space(v-html="contentHtml")
 </template>
+
 <script lang="ts">
 import {Component, Prop, Vue} from 'vue-property-decorator'
 
 /**
  * Render white space
+ * @slot default Use this instead of a content prop
  */
 @Component
 export default class WhiteSpace extends Vue {
+  /**
+   * Content to render string
+   */
   @Prop() content: string
 
   get contentHtml() {

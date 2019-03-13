@@ -1,14 +1,23 @@
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
-import VueLoaderPlugin from 'vue-loader/lib/plugin'
-import {Configuration} from 'webpack'
-interface IOptions {
-  mode?: 'production' | 'development'
-}
-const config = (options: IOptions = {}): Configuration => {
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const {resolve} = require('path')
+const TsconfigPathsWebpackPlugin  = require('tsconfig-paths-webpack-plugin')
+const VueLoaderPlugin  = require( 'vue-loader/lib/plugin')
+// fix TsconfigPathsWebpackPlugin bug
+// refer to https://github.com/dividab/tsconfig-paths-webpack-plugin/issues/32
+delete process.env.TS_NODE_PROJECT
+const config = (options = {}) => {
   const {
-    mode = 'production',
+    transpileOnly = false,
   } = options
-  const config: Configuration = {
+  const config = {
+    resolve: {
+      plugins: [
+        new TsconfigPathsWebpackPlugin({
+          configFile: resolve('./tsconfig.json'),
+          baseUrl: resolve('./'),
+        }),
+      ],
+    },
     module: {
       rules: [
         {
@@ -52,18 +61,20 @@ const config = (options: IOptions = {}): Configuration => {
         },
         {
           test: /\.tsx?$/,
+          exclude: [/node_modules/],
           use: [
             {
               loader: 'babel-loader',
               options: {
                 presets: ['@vue/babel-preset-app'],
+                plugins: ['istanbul'],
               },
             },
             {
               loader: 'ts-loader',
               options: {
                 appendTsSuffixTo: [/\.vue$/],
-                transpileOnly: mode === 'development',
+                transpileOnly,
               },
             },
           ],
@@ -74,7 +85,7 @@ const config = (options: IOptions = {}): Configuration => {
       new VueLoaderPlugin(),
     ],
   }
-  if(mode === 'development'){
+  if(transpileOnly){
     if(!config.plugins){
       config.plugins = []
     }
@@ -83,4 +94,4 @@ const config = (options: IOptions = {}): Configuration => {
   return config
 }
 
-export default config
+module.exports = config

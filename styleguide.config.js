@@ -1,7 +1,7 @@
 const {join} = require('path')
 const tsNode = require('ts-node')
 tsNode.register({project: 'tsconfig.test.json'})
-const webpackConfig = require('./webpack.config.ts')
+const webpackConfig = require('./build/webpack.base.config.js')
 const root = process.cwd()
 module.exports = {
   dangerouslyUpdateWebpackConfig(webpackConfig) {
@@ -18,5 +18,5 @@ module.exports = {
   require: [
     join(root, 'src/register.ts'),
   ],
-  webpackConfig: webpackConfig.default || webpackConfig,
+  webpackConfig: webpackConfig({transpileOnly: false}),
 }
