@@ -4,7 +4,6 @@ const TsconfigPathsWebpackPlugin  = require('tsconfig-paths-webpack-plugin')
 const VueLoaderPlugin  = require( 'vue-loader/lib/plugin')
 // fix TsconfigPathsWebpackPlugin bug
 // refer to https://github.com/dividab/tsconfig-paths-webpack-plugin/issues/32
-delete process.env.TS_NODE_PROJECT
 const config = (options = {}) => {
   const {
     transpileOnly = false,
