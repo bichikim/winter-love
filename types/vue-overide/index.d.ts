@@ -1,7 +1,7 @@
-import Vue from 'vue'
 declare module '*.vue' {
-  const content: any
-  export default content
+  import {VueConstructor} from 'vue'
+  const vue: VueConstructor
+  export default vue
 }
 
 declare module 'vue/types/vue' {
@@ -13,6 +13,7 @@ declare module 'vue/types/vue' {
 }
 
 declare module 'vue/types/options' {
+  import Vue from 'vue'
   // noinspection TsLint
   interface ComponentOptions<V extends Vue> {
   }

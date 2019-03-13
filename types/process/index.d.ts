@@ -14,7 +14,6 @@ declare namespace NodeJS {
 
   export interface ProcessEnv {
     PORT?: string
-    readonly NUXT_TS: boolean
-    readonly SSR?: string
+    NODE_ENV?: 'production' | 'development'
   }
 }

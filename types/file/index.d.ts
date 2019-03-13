@@ -18,8 +18,3 @@ declare module '*.svg' {
   const content: any
   export default content
 }
-
-declare module '*.graphql' {
-  const graphql: any
-  export default graphql
-}

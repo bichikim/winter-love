@@ -31,4 +31,4 @@ const config: Configuration = {
   ],
 }
 
-export default merge(webpackConfig, config)
+export default merge(webpackConfig({mode}), config)
