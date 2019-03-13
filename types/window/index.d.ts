@@ -1,16 +1,8 @@
-import Vue from 'vue'
 /* tslint:disable:interface-name */
+import Vue from 'vue'
 declare global {
-  interface Window {
-    process: NodeJS.Process
-    Worker?: Worker
-    preloadTest?: boolean
-    webkitURL?: URL
-    WebGLRenderingContext?: WebGLRenderingContext
-
-    $nuxt: Vue
-
-    onNuxtReady(callback: () => void): void
+  declare interface Window {
+    __vue: Vue
   }
 }
 

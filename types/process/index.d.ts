@@ -15,5 +15,9 @@ declare namespace NodeJS {
   export interface ProcessEnv {
     PORT?: string
     NODE_ENV?: 'production' | 'development'
+    /**
+     * For src/register to run automatically
+     */
+    AUTO_REGISTER?: boolean | 'true'
   }
 }
