@@ -17,7 +17,7 @@ class RouterMock {
 describe('middleware', () => {
   it('should register all middleware', () => {
     const router = new RouterMock()
-    middleware('./test/mock-data/middleware', router as any)
+    middleware(router as any)
     expect(router._beforeEach).to.equal('')
   })
 })

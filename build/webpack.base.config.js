@@ -2,6 +2,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const {resolve} = require('path')
 const TsconfigPathsWebpackPlugin  = require('tsconfig-paths-webpack-plugin')
 const VueLoaderPlugin  = require( 'vue-loader/lib/plugin')
+const webpack = require('webpack')
 // fix TsconfigPathsWebpackPlugin bug
 // refer to https://github.com/dividab/tsconfig-paths-webpack-plugin/issues/32
 const config = (options = {}) => {
@@ -10,6 +11,10 @@ const config = (options = {}) => {
   } = options
   const config = {
     resolve: {
+      extensions: ['.js', '.jsx', '.mjs', '.json', '.ts', '.tsx', '.vue', '.stylus', 'styl'],
+      alias: {
+        'vue$': 'vue/dist/vue.esm.js',
+      },
       plugins: [
         new TsconfigPathsWebpackPlugin({
           configFile: resolve('./tsconfig.json'),
@@ -82,6 +87,10 @@ const config = (options = {}) => {
     },
     plugins: [
       new VueLoaderPlugin(),
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+        'process.env.MIDDLEWARE_PATH': JSON.stringify('middleware'),
+      }),
     ],
   }
   if(transpileOnly){

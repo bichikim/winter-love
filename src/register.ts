@@ -2,15 +2,8 @@ import Quasar from 'quasar'
 import Vue from 'vue'
 import Meta from 'vue-meta'
 import VueRouter from 'vue-router'
-import middleware from './utils/middleware'
-interface Options {
-  middlewarePath?: string
-}
 
-const register = (options: Options = {}) => {
-  const {
-    middlewarePath = './middleware',
-  } = options
+const register = () => {
   Vue.use(Meta)
   Vue.use(Quasar)
   Vue.use(VueRouter)
@@ -18,7 +11,6 @@ const register = (options: Options = {}) => {
   const router = new VueRouter({
 
   })
-  middleware(middlewarePath, router)
 
   return {
     router,

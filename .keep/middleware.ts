@@ -38,8 +38,12 @@ const getter = (resources: __WebpackModuleApi.RequireContext): MiddlewareList =>
     afterEach: afterEachList,
   }
 }
-export default (path: string, router: Router) => {
-  const middlewareList: MiddlewareList = getter(require.context(path, false, /\.ts$/))
+export default (router: Router) => {
+  const middlewareList: MiddlewareList = getter(require.context(
+    `../${process.env.MIDDLEWARE_PATH}/`,
+    false,
+    /\.ts$/,
+    ))
   middlewareList.beforeEach.forEach((beforeEach: BeforeEachFn) => {
     router.beforeEach(beforeEach)
   })

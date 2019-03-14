@@ -7,9 +7,11 @@
 <script lang="ts">
 import {
   Component, Prop, Vue,
-} from 'vue-property-decorator'
+} from '~/vue-ts'
 
-@Component
+@Component({
+  middleware: 'test',
+})
 export default class App extends Vue {
   @Prop() text: string
 }
