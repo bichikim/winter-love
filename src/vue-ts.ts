@@ -9,24 +9,7 @@ export {namespace, State, Mutation, Action, Getter} from 'vuex-class'
 // this list will deal as a hook
 Component.registerHooks([
   'middleware',
+  'layout',
 ])
 
-@Component
-class App extends Vue {
-  middleware?: string
-}
-
-interface AppComponentOptions extends ComponentOptions<App>{
-  middleware?: string
-}
-
-function AppComponent(options: AppComponentOptions | VueClass<App>) {
-  if(typeof options === 'function'){
-    return componentFactory(options)
-  }
-  return function com(component: VueClass<App>) {
-    return componentFactory(component, options)
-  }
-}
-
-export {Component, App as Vue}
+export {Component, Vue}

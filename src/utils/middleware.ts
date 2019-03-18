@@ -26,10 +26,20 @@ export interface ModulePack {
   module: any
 }
 
-const createPack = <S, A>(name: string, middleware: Middleware<S, A>): MiddlewarePack<S, A> => ({
-  name,
-  middleware,
-})
+const getFileName = (path: string): string => {
+  const match = path.match(/\/.*\.ts$/)
+  if(!match || match.length < 1){
+    return path
+  }
+  return match[0].split('/')[1].split('.')[0]
+}
+
+const createPack = <S, A>(name: string, middleware: Middleware<S, A>): MiddlewarePack<S, A> => {
+  return {
+    name: getFileName(name),
+    middleware,
+  }
+}
 
 const getter = <S, A>(resources: __WebpackModuleApi.RequireContext): MiddlewarePackList<S, A> => {
   const afterEachList: Array<MiddlewarePack<S, A>> = []
@@ -102,6 +112,9 @@ export default <S, A = any>(router: Router, store: Store<S>, options: Options<A>
       }
       if(to.matched.some(recordSome)){
         return runMiddleware()
+      }
+      if(next){
+        next()
       }
     }
   }

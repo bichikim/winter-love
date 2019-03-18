@@ -1,23 +1,18 @@
 <template lang="pug">
-  .main
-    div Index
+  .app
+    div Layout
+    router-view
 </template>
 
 <script lang="ts">
-import {
-  Component, Vue, Prop,
-} from 'vue-ts'
+import {Component, Vue} from '~/vue-ts'
 
-@Component({
-  layout: 'default',
-})
+@Component
 export default class Index extends Vue {
-  @Prop() test: string
 }
 </script>
 
 <style scoped lang="stylus">
-  .main
+  .app
     display flex
-    background-color red
 </style>

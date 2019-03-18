@@ -1,4 +1,4 @@
 import {MiddlewareContext} from '~/utils/middleware'
-export function afterEach(ctx: MiddlewareContext<any, any>) {
-  console.log('passed', ctx)
+export function afterEach(ctx: Required<MiddlewareContext<any, any>>) {
+  console.log('ran any', ctx)
 }

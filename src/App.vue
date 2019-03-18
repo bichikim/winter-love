@@ -1,22 +1,19 @@
 <template lang="pug">
   .app
+    div App
     router-view
 </template>
 
 <script lang="ts">
-import {
-  Component, Prop, Vue,
-} from '~/vue-ts'
+import {Component, Vue, Prop} from '~/vue-ts'
 
-@Component<Vue>({
-  middleware: 'test',
-})
-export default class Index extends Vue {
-  @Prop() text: string
+@Component
+export default class App extends Vue {
+  @Prop() test: string
 }
 </script>
 
 <style scoped lang="stylus">
   .app
-    display flex
+    display block
 </style>

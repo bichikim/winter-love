@@ -64,7 +64,7 @@ const config = (options = {}) => {
             },
             // this applies to pug imports inside JavaScript
             {
-              use: ['raw-loader', 'pug-plain-loader'],
+              use: ['pug-loader'],
             },
           ],
         },

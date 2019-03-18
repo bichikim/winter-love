@@ -4,6 +4,7 @@ const {join} = require('path')
 const merge = require('webpack-merge')
 const webpackConfig = require('./build/webpack.base.config')
 const mode = process.env.NODE_ENV === 'development' ? 'development' : 'production'
+console.log(mode)
 const outputPath = process.env.DIST || 'dist'
 const config = {
   mode,
@@ -12,20 +13,29 @@ const config = {
   },
   output: {
     path: join(process.cwd(), outputPath),
+    publicPath: '/',
     filename: '[name].bundle.js',
   },
-  // resolve: {
-  //   extensions: ['.js', '.ts', '.vue', '.json', 'stylus'],
-  //   alias: {
-  //     'vue$': 'vue/dist/vue.esm.js',
-  //   },
-  // },
+
+  devServer: {
+    historyApiFallback: true,
+  },
+
   plugins: [
 
     new HtmlWebpackPlugin({
       template: './src/index.pug',
+      inject: true,
+      title: 'pug demo',
+      metadata: {
+        mode: 'development',
+        devtool: 'http://localhost:8098',
+      },
     }),
   ],
 }
 
-module.exports = merge(webpackConfig({transpileOnly: mode === 'production'}), config)
+module.exports = merge(webpackConfig({
+  transpileOnly: mode === 'production',
+  env: mode,
+}), config)

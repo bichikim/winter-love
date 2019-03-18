@@ -1,6 +1,6 @@
 <template lang="pug">
   .main
-    div Index
+    div foo
 </template>
 
 <script lang="ts">
@@ -10,6 +10,7 @@ import {
 
 @Component({
   layout: 'default',
+  middleware: 'authenticated',
 })
 export default class Index extends Vue {
   @Prop() test: string

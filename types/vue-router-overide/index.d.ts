@@ -4,5 +4,5 @@ declare module 'vue-router/next' {
   import Vue from 'vue`'
 
   export type Next<V extends Vue = Vue> =
-    (to?: RawLocation | false | ((vm: V) => any) | void) => void
+    (to?: RawLocation | false | ((vm: V) => any) | undefined) => void
 }
