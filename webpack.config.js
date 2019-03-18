@@ -4,7 +4,6 @@ const {join} = require('path')
 const merge = require('webpack-merge')
 const webpackConfig = require('./build/webpack.base.config')
 const mode = process.env.NODE_ENV === 'development' ? 'development' : 'production'
-console.log(mode)
 const outputPath = process.env.DIST || 'dist'
 const config = {
   mode,
