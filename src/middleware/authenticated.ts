@@ -1,4 +1,4 @@
 import {MiddlewareContext} from '~/utils/middleware'
-export function beforeEach({}: MiddlewareContext<any, any>) {
-  console.log('passed')
+export function beforeEach(ctx: MiddlewareContext<any, any>) {
+  console.log('authenticated', ctx)
 }

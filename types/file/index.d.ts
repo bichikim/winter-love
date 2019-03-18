@@ -18,3 +18,9 @@ declare module '*.svg' {
   const content: any
   export default content
 }
+
+declare module '*.vue' {
+  import {VueConstructor} from 'vue'
+  const vue: VueConstructor
+  export default vue
+}

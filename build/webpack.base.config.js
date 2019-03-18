@@ -1,6 +1,7 @@
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
-const {resolve} = require('path')
+const {resolve, join} = require('path')
 const TsconfigPathsWebpackPlugin  = require('tsconfig-paths-webpack-plugin')
+const VueAutoRoutingPlugin = require('vue-auto-routing/lib/webpack-plugin')
 const VueLoaderPlugin  = require( 'vue-loader/lib/plugin')
 const webpack = require('webpack')
 // fix TsconfigPathsWebpackPlugin bug
@@ -8,6 +9,10 @@ const webpack = require('webpack')
 const config = (options = {}) => {
   const {
     transpileOnly = false,
+    env = 'production',
+    middlewarePath = 'middleware',
+    pagePath = 'pages',
+    routerHistoryMode = true,
   } = options
   const config = {
     resolve: {
@@ -88,8 +93,12 @@ const config = (options = {}) => {
     plugins: [
       new VueLoaderPlugin(),
       new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-        'process.env.MIDDLEWARE_PATH': JSON.stringify('middleware'),
+        'process.env.NODE_ENV': JSON.stringify(env),
+        'process.env.MIDDLEWARE_PATH': JSON.stringify(middlewarePath),
+        'process.env.ROUTER_HISTORY_MODE': JSON.stringify(routerHistoryMode),
+      }),
+      new VueAutoRoutingPlugin({
+        pages: join('src', pagePath),
       }),
     ],
   }

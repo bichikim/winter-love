@@ -1,5 +1,4 @@
-import {Route} from 'vue-router'
-import {Next} from 'vue-router/next'
-export function beforeEach(to: Route, from: Route, next: Next) {
-  console.log('passed')
+import {MiddlewareContext} from '~/utils/middleware'
+export function afterEach(ctx: MiddlewareContext<any, any>) {
+  console.log('passed', ctx)
 }
