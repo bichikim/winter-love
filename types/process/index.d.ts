@@ -2,22 +2,44 @@
 
 declare namespace NodeJS {
   export interface Process {
-    browser: boolean
-    BROWSER_BUILD: boolean
-    cache: any
-    client: boolean
-    mode: 'universal' | 'spa'
-    modern: boolean
-    server: boolean
-    static: boolean
   }
 
   export interface ProcessEnv {
-    PORT?: string
-    NODE_ENV?: 'production' | 'development'
+    readonly PORT?: string
+
     /**
-     * For src/register to run automatically
+     * a path to router layout folder
+     * @default 'layouts'
      */
-    AUTO_REGISTER?: boolean | 'true'
+    readonly LAYOUTS_PATH?: string
+
+    /**
+     * middleware folder name
+     * @default 'middleware'
+     * @see ./src/utils/middleware
+     */
+    readonly MIDDLEWARE_PATH?: string
+
+    /**
+     * running mode
+     * @default 'production'
+     * @see ./build/webpack.base.js
+     */
+    readonly NODE_ENV?: 'production' | 'development'
+
+    /**
+     * router mode
+     * @default 'history'
+     * @see ./src/router.ts
+     */
+    readonly ROUTER_MODE?: 'history'
+
+    /**
+     * webpack alias for the src
+     * @default '@'
+     * @see ./build/webpack.base.config.js
+     */
+    readonly SRC_ALIAS?: string
+
   }
 }

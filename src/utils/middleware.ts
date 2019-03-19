@@ -86,7 +86,7 @@ export default <S, A = any>(router: Router, store: Store<S>, options: Options<A>
     app = {} as A,
   } = options
   const middlewareList: MiddlewarePackList<S, A> = getter<S, A>(require.context(
-    `../${process.env.MIDDLEWARE_PATH}/`,
+    `${process.env.SRC_ALIAS}/${process.env.MIDDLEWARE_PATH}/`,
     false,
     /\.ts$/,
     ))

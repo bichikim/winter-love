@@ -11,18 +11,23 @@ const config = (options = {}) => {
     transpileOnly = false,
     env = 'production',
     middlewarePath = 'middleware',
+    layoutsPath = 'layouts',
     pagePath = 'pages',
-    routerHistoryMode = true,
+    srcAlias = '@',
+    routerMode = 'history',
+    tsconfigPath = 'tsconfig.json',
+    src = 'src',
   } = options
   const config = {
     resolve: {
       extensions: ['.js', '.jsx', '.mjs', '.json', '.ts', '.tsx', '.vue', '.stylus', 'styl'],
       alias: {
         'vue$': 'vue/dist/vue.esm.js',
+        [srcAlias]: resolve('./', src),
       },
       plugins: [
         new TsconfigPathsWebpackPlugin({
-          configFile: resolve('./tsconfig.json'),
+          configFile: resolve('./', tsconfigPath),
           baseUrl: resolve('./'),
         }),
       ],
@@ -93,12 +98,15 @@ const config = (options = {}) => {
     plugins: [
       new VueLoaderPlugin(),
       new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(env),
+        'process.env.LAYOUTS_PATH': JSON.stringify(layoutsPath),
         'process.env.MIDDLEWARE_PATH': JSON.stringify(middlewarePath),
-        'process.env.ROUTER_HISTORY_MODE': JSON.stringify(routerHistoryMode),
+        'process.env.NODE_ENV': JSON.stringify(env),
+        'process.env.ROUTER_MODE': JSON.stringify(routerMode),
+        'process.env.SRC_ALIAS': JSON.stringify(srcAlias),
       }),
       new VueAutoRoutingPlugin({
-        pages: join('src', pagePath),
+        pages: join(src, pagePath),
+        importPrefix: `${srcAlias}/${pagePath}/`,
       }),
     ],
   }

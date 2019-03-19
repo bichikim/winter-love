@@ -21,7 +21,6 @@ const config = {
   },
 
   plugins: [
-
     new HtmlWebpackPlugin({
       template: './src/index.pug',
       inject: true,

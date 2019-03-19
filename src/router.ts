@@ -7,11 +7,11 @@ Vue.use(VueRouter)
 Vue.use(VueMeta)
 
 const routerLayout = createRouterLayout((layout) => {
-  return import('./layouts/' + layout + '.vue')
+  return import(`./${process.env.LAYOUTS_PATH}/${layout}.vue`)
 })
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: (process.env.ROUTER_MODE || 'history') as any,
   routes: [
     {
       path: '/',
