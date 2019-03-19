@@ -1,12 +1,12 @@
-// - var metadata = htmlWebpackPlugin.options.metadata
-// - var title = htmlWebpackPlugin.options.title
+- var metadata = htmlWebpackPlugin.options.metadata
+- var title = htmlWebpackPlugin.options.title
 doctype html
 html(lang="en")
   head
-    //title= title
+    title= title
     meta(charset="UTF-8")
     //meta(CONTENT=htmlWebpackPlugin.options)
-    //if metadata.mode === 'development'
-    //  script(src=metadata.devtool)
+    if metadata.mode === 'development'
+      script(src=metadata.devtool)
   body
     #app(data-vue="root") If You see this message Vue is not loaded
