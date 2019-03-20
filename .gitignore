@@ -1,5 +1,6 @@
 #docs
 .vuepress
+.styleguidist
 
 # dependencies
 node_modules
