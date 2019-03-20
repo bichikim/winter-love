@@ -1,3 +1,6 @@
+#docs
+.vuepress
+
 # dependencies
 node_modules
 
@@ -9,27 +12,14 @@ selenium-debug.log
 .nyc_output
 .coverage/
 
-# Nuxt build
-.nuxt
-/src/static/OneSignalSDKUpdaterWorker.js
-/src/static/OneSignalSDKWorker.js
-/src/static/sw.js
-
-# Nuxt generate
+# project compile results
 dist
 
-#nuxtjs pwa
-sw.*
-
 # .lock
-#yarn.lock
 package-lock.json
 
 # tests
-tests/e2e/logs
-tests/e2e/screenshots
-tests/e2e/reports
-tests/unit/coverage
+test
 
 # Editor directories and files
 .elasticbeanstalk/
@@ -40,4 +30,4 @@ tests/unit/coverage
 *.njsproj
 
 # env config
-defront.config.js
+.env

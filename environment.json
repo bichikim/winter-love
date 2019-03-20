@@ -1,0 +1,13 @@
+{
+  "styleguidist": {
+    "script": "",
+    "styleguideDir": ".styleguidist",
+    "components": ["./src/components/**/*.vue"],
+    "serverHost": "localhost",
+    "require": ["./build/styleguidist.register.ts"]
+  },
+  "typescript": {
+    "bundleProject": "tsconfig.json",
+    "nodeProject": "tsconfig.node.json"
+  }
+}

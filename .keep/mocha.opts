@@ -1,4 +1,4 @@
---require build/ts-node-config
+--require test/ts-node-config
 --require ts-node/register
 --require tsconfig-paths/register
 

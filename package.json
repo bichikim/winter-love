@@ -6,11 +6,12 @@
   "private": true,
   "main": "bin/render.js",
   "scripts": {
-    "dev": "cross-env TS_NODE_PROJECT=\"tsconfig.test.json\" NODE_ENV=\"development\" webpack-dev-server",
-    "build": "cross-env TS_NODE_PROJECT=\"tsconfig.test.json\" NODE_ENV=\"development\" webpack",
-    "styleguide": "vue-styleguidist server --config build/styleguide.config.js",
-    "vue-devtools": "vue-devtools",
-    "test": "karma start build/karma.config.js --browsers=PhantomJS --single-run"
+    "build": "cross-env TS_NODE_PROJECT=\"tsconfig.node.json\" NODE_ENV=\"development\" webpack",
+    "dev": "cross-env TS_NODE_PROJECT=\"tsconfig.node.json\" NODE_ENV=\"development\" webpack-dev-server",
+    "styleguide": "vue-styleguidist server --config build/styleguidist.config.js",
+    "styleguide:build": "vue-styleguidist build --config build/styleguidist.config.js",
+    "test": "karma start build/karma.config.js --browsers=PhantomJS --single-run",
+    "vue-devtools": "vue-devtools"
   },
   "engines": {
     "node": ">= 8.10",
@@ -89,7 +90,6 @@
     "pug": "^2.0.3",
     "pug-loader": "^2.4.0",
     "pug-plain-loader": "^1.0.0",
-    "raw-loader": "^1.0.0",
     "require-from-string": "^2.0.2",
     "sinon": "^7.2.7",
     "stylus": "^0.54.5",
