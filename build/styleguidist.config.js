@@ -1,12 +1,13 @@
+const environment = require('./read-environment')
 // ts setting
 const tsNode = require('ts-node')
 tsNode.register({
   project: environment.typescript.nodeProject,
+  transpileOnly: true,
 })
 
 // importing
 const {resolve} = require('path')
-const environment = require('./read-environment')
 
 // map configs
 const styleguidist = environment || {}

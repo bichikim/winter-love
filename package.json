@@ -6,11 +6,12 @@
   "private": true,
   "main": "bin/render.js",
   "scripts": {
-    "build": "cross-env TS_NODE_PROJECT=\"tsconfig.node.json\" NODE_ENV=\"development\" webpack",
-    "dev": "cross-env TS_NODE_PROJECT=\"tsconfig.node.json\" NODE_ENV=\"development\" webpack-dev-server",
+    "build": "cross-env TS_NODE_PROJECT=\"tsconfig.node.json\" TS_NODE_TRANSPILE_ONLY=true NODE_ENV=\"development\" webpack",
+    "dev": "cross-env TS_NODE_PROJECT=\"tsconfig.node.json\" TS_NODE_TRANSPILE_ONLY=true NODE_ENV=\"development\" webpack-dev-server",
     "styleguide": "vue-styleguidist server --config build/styleguidist.config.js",
     "styleguide:build": "vue-styleguidist build --config build/styleguidist.config.js",
     "test": "karma start build/karma.config.js --browsers=PhantomJS --single-run",
+    "test:build": "mocha -r test-build/register -r ts-node/register -r tsconfig-paths/register test-build/**/*.spec.ts ",
     "vue-devtools": "vue-devtools"
   },
   "engines": {

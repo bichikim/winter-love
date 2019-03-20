@@ -1,6 +1,6 @@
 import fs from 'fs'
 import {endsWith} from 'lodash'
-import * as path from 'path'
+import {join} from 'path'
 import {readConfigFile} from 'typescript'
 
 function fromTsAlias(tsAlias: string) {
@@ -17,9 +17,9 @@ function fromTsPath(tsPath: string) {
 
 export function tsPathsToAlias(
   appRoot: string,
-  tsconfig: string,
+  tsconfig: string = 'tsconfig.json',
 ) {
-  const paths = readConfigFile('../tsconfig.json', (path: string) => {
+  const paths = readConfigFile(join(appRoot, tsconfig), (path: string) => {
     return fs.readFileSync(path).toString()
   })
 
