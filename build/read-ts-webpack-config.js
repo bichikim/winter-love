@@ -4,6 +4,7 @@ const {join} = require('path')
 const requireFromString = require('require-from-string')
 
 module.exports = () => {
+  // compile typescript
   const myModule = ts.transpileModule(
     fs.readFileSync(join(__dirname, './webpack.base.config.ts')).toString(), {
       compilerOptions: {
@@ -13,14 +14,17 @@ module.exports = () => {
       },
     })
 
+  // getting module paths
   const appendPaths = [
     ...module.paths,
   ]
 
+  // load module from compiled js code
   const webpackBaseConfigModule = requireFromString(myModule.outputText, 'webpack.base.config.js', {
     appendPaths,
   })
 
+  // check ES module & return webpack base config
   if(
     typeof webpackBaseConfigModule === 'object'
     && webpackBaseConfigModule.__esModule
