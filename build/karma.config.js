@@ -5,7 +5,7 @@
  * (mocha, chai, karma-coverage)
  * @author Bichi Kim <bichi@live.co.kr>
  */
-const webpack = require('./webpack.test.config.js')
+const webpack = require('./webpack.test.config')
 module.exports = function(config) {
   config.set({
     basePath: '../',

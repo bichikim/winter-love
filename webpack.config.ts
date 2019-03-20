@@ -1,11 +1,11 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const {join} = require('path')
-
-const merge = require('webpack-merge')
-const webpackConfig = require('./build/webpack.base.config')
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import {join} from 'path'
+import {Configuration} from 'webpack'
+import merge from 'webpack-merge'
+import webpackConfig from './build/webpack.base.config'
 const mode = process.env.NODE_ENV === 'development' ? 'development' : 'production'
 const outputPath = process.env.DIST || 'dist'
-const config = {
+const config: Configuration = {
   mode,
   entry: {
     main: './src/index.ts',

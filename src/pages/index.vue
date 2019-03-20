@@ -6,7 +6,7 @@
 <script lang="ts">
 import {
   Component, Vue, Prop,
-} from 'vue-ts'
+} from '~/vue-ts'
 
 @Component({
   layout: 'default',
