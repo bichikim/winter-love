@@ -1,4 +1,4 @@
-import Router, {NavigationGuard, Route} from 'vue-router'
+import Router, {Route} from 'vue-router'
 import {Next} from 'vue-router/next'
 import {Store} from 'vuex'
 export type RouterHook = (to: Route, from: Route, next?: Next) => any
