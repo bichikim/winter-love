@@ -34,5 +34,3 @@ module.exports = () => {
 
   throw new Error('error cannot read config')
 }
-
-

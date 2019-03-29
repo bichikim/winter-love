@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Touch, {Options as TouchOption} from '~/plugins/touch'
 import App from './App.vue'
+import middleware from './middleware'
 import router from './router'
 import store from './store'
-import middleware from './utils/middleware'
 
 Vue.use<TouchOption>(Touch, {
   longPress: {

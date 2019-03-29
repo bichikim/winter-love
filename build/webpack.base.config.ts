@@ -4,7 +4,7 @@ import TsconfigPathsWebpackPlugin from 'tsconfig-paths-webpack-plugin'
 import VueAutoRoutingPlugin from 'vue-auto-routing/lib/webpack-plugin'
 import VueLoaderPlugin from 'vue-loader/lib/plugin'
 import webpack from 'webpack'
-
+delete process.env.TS_NODE_PROJECT
 const config = (options: any = {}) => {
   const {
     transpileOnly = false,
@@ -25,12 +25,11 @@ const config = (options: any = {}) => {
         [srcAlias]: resolve('./', src),
         '~': resolve('./', src),
       },
-      // plugins: [
-      //   new TsconfigPathsWebpackPlugin({
-      //     configFile: resolve('./', tsconfigPath),
-      //     baseUrl: resolve('./'),
-      //   }),
-      // ],
+      plugins: [
+        new TsconfigPathsWebpackPlugin({
+          configFile: tsconfigPath,
+        }),
+      ],
     },
     module: {
       rules: [
@@ -89,6 +88,7 @@ const config = (options: any = {}) => {
               options: {
                 appendTsSuffixTo: [/\.vue$/],
                 transpileOnly,
+                configFile: tsconfigPath,
               },
             },
           ],
@@ -98,10 +98,14 @@ const config = (options: any = {}) => {
     plugins: [
       new VueLoaderPlugin(),
       new webpack.DefinePlugin({
+        // src/router.ts
         'process.env.LAYOUTS_PATH': JSON.stringify(layoutsPath),
+        // src/middleware
         'process.env.MIDDLEWARE_PATH': JSON.stringify(middlewarePath),
         'process.env.NODE_ENV': JSON.stringify(env),
+        // src/router.ts
         'process.env.ROUTER_MODE': JSON.stringify(routerMode),
+        // src/middleware
         'process.env.SRC_ALIAS': JSON.stringify(srcAlias),
       }),
       new VueAutoRoutingPlugin({

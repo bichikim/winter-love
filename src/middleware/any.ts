@@ -1,4 +1,4 @@
-import {MiddlewareContext} from '~/utils/middleware'
+import {MiddlewareContext} from '@/middleware'
 export function afterEach(ctx: Required<MiddlewareContext<any, any>>) {
   console.log('ran any', ctx)
 }

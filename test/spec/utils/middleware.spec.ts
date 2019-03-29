@@ -1,5 +1,5 @@
 import {expect} from 'chai'
-import middleware from '~/utils/middleware'
+import middleware from 'src/middleware'
 class RouterMock {
   _beforeEach: any[] = []
   _beforeResolve: any[] = []

@@ -11,7 +11,7 @@
     "styleguide": "vue-styleguidist server --config build/styleguidist.config.js",
     "styleguide:build": "vue-styleguidist build --config build/styleguidist.config.js",
     "test": "karma start build/karma.config.js --browsers=PhantomJS --single-run",
-    "test:build": "mocha -r test-build/register -r ts-node/register -r tsconfig-paths/register test-build/**/*.spec.ts ",
+    "test:build": "mocha -r test-build/register -r ts-node/register -r tsconfig-paths/register test-build/**/*.spec.ts",
     "vue-devtools": "vue-devtools"
   },
   "engines": {

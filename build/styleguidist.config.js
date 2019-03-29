@@ -10,11 +10,12 @@ tsNode.register({
 const {resolve} = require('path')
 
 // map configs
-const styleguidist = environment || {}
+const {styleguidist} = environment
 const {
   styleguideDir = '.styleguidist',
   serverHost = 'localhost',
 } = styleguidist || {}
+
 const components = (styleguidist.components || ['./src/components/**/*.vue'])
   .map((path) => (resolve(path)))
 
