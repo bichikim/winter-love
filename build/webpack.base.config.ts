@@ -1,21 +1,62 @@
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
+
 import {join, resolve} from 'path'
 import TsconfigPathsWebpackPlugin from 'tsconfig-paths-webpack-plugin'
 import VueAutoRoutingPlugin from 'vue-auto-routing/lib/webpack-plugin'
 import VueLoaderPlugin from 'vue-loader/lib/plugin'
 import webpack from 'webpack'
+// import {defineProcessEnv} from './utils/define-process-env'
+export interface Environment {
+  typescript?: {
+    bundleProject?: string,
+  },
+  path?: {
+    middleware?: string,
+    layouts?: string
+    pages?: string,
+    src?: string,
+  },
+  styleguidist?: {
+    script: string
+    styleguideDir: string,
+    components: string[],
+    serverHost: string,
+    require: string[],
+  },
+  firebase?: {
+    apiKey: string,
+    authDomain: string,
+    databaseURL: string,
+    projectId: string,
+    storageBucket: string,
+    messagingSenderId: string,
+  }
+}
+
+export interface Options {
+  transpileOnly: boolean,
+  env: 'production' | 'development',
+  srcAlias: string | '@' | '~',
+}
+
 delete process.env.TS_NODE_PROJECT
-const config = (options: any = {}) => {
+const config = (options: any = {}, environment: Environment = {}) => {
+  const {
+    typescript: {
+      bundleProject = 'tsconfig.bundle.json',
+    } = {},
+    path: {
+      middleware = 'middleware',
+      layouts = 'layouts',
+      pages = 'pages',
+      src = 'src',
+    } = {},
+  } = environment
   const {
     transpileOnly = false,
     env = 'production',
-    middlewarePath = 'middleware',
-    layoutsPath = 'layouts',
-    pagePath = 'pages',
     srcAlias = '@',
     routerMode = 'history',
-    tsconfigPath = 'tsconfig.json',
-    src = 'src',
   } = options
   const config = {
     resolve: {
@@ -27,7 +68,7 @@ const config = (options: any = {}) => {
       },
       plugins: [
         new TsconfigPathsWebpackPlugin({
-          configFile: tsconfigPath,
+          configFile: bundleProject,
         }),
       ],
     },
@@ -88,7 +129,7 @@ const config = (options: any = {}) => {
               options: {
                 appendTsSuffixTo: [/\.vue$/],
                 transpileOnly,
-                configFile: tsconfigPath,
+                configFile: bundleProject,
               },
             },
           ],
@@ -99,9 +140,9 @@ const config = (options: any = {}) => {
       new VueLoaderPlugin(),
       new webpack.DefinePlugin({
         // src/router.ts
-        'process.env.LAYOUTS_PATH': JSON.stringify(layoutsPath),
+        'process.env.LAYOUTS_PATH': JSON.stringify(layouts),
         // src/middleware
-        'process.env.MIDDLEWARE_PATH': JSON.stringify(middlewarePath),
+        'process.env.MIDDLEWARE_PATH': JSON.stringify(middleware),
         'process.env.NODE_ENV': JSON.stringify(env),
         // src/router.ts
         'process.env.ROUTER_MODE': JSON.stringify(routerMode),
@@ -109,8 +150,8 @@ const config = (options: any = {}) => {
         'process.env.SRC_ALIAS': JSON.stringify(srcAlias),
       }),
       new VueAutoRoutingPlugin({
-        pages: join(src, pagePath),
-        importPrefix: `${srcAlias}/${pagePath}/`,
+        pages: join(src, pages),
+        importPrefix: `${srcAlias}/${pages}/`,
       }),
     ],
   }

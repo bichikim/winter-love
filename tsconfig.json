@@ -48,8 +48,6 @@
   ],
   "exclude": [
     "lib/**/*",
-    "project/**/*",
-    "test/**/*",
-    "test-build/**/*"
+    "project/**/*"
   ]
 }

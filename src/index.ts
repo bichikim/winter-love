@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Touch, {Options as TouchOption} from '~/plugins/touch'
 import App from './App.vue'
+import './firebase'
 import middleware from './middleware'
 import router from './router'
 import store from './store'
