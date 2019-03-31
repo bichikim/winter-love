@@ -1,12 +1,13 @@
-const ts = require('typescript')
+const ts = require('typescript/lib/typescript')
 const fs = require('fs')
-const {join} = require('path')
+const {resolve} = require('path')
 const requireFromString = require('require-from-string')
 
-module.exports = () => {
+// read typescript webpack config file by js
+module.exports = (path) => {
   // compile typescript
   const myModule = ts.transpileModule(
-    fs.readFileSync(join(__dirname, './webpack.base.config.ts')).toString(), {
+    fs.readFileSync(resolve(path)).toString(), {
       compilerOptions: {
         module: ts.ModuleKind.CommonJS,
         target: ts.ScriptTarget.ES2015,
@@ -20,9 +21,11 @@ module.exports = () => {
   ]
 
   // load module from compiled js code
-  const webpackBaseConfigModule = requireFromString(myModule.outputText, 'webpack.base.config.js', {
-    appendPaths,
-  })
+  const webpackBaseConfigModule = requireFromString(
+    myModule.outputText,
+    'webpack.base.config.js',
+    {appendPaths},
+    )
 
   // check ES module & return webpack base config
   if(
@@ -32,5 +35,5 @@ module.exports = () => {
     return webpackBaseConfigModule.default || webpackBaseConfigModule
   }
 
-  throw new Error('error cannot read config')
+  throw new Error('Error cannot read config')
 }

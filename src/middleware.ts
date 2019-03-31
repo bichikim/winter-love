@@ -3,14 +3,19 @@ import {Next} from 'vue-router/next'
 import {Store} from 'vuex'
 export type RouterHook = (to: Route, from: Route, next?: Next) => any
 export type RouterAfterHook = (to: Route, from: Route) => any
-export interface MiddlewareContext<S, A> {
+export interface AfterMiddlewareContext<S = any, A = any> {
   to: Route
   from: Route
   next?: Next
   app: A
   store?: Store<S>
 }
-export type Middleware<S, A> = (context: MiddlewareContext<S, A>) => any
+
+export interface MiddlewareContext<S = any, A = any> extends AfterMiddlewareContext {
+  next: Next
+}
+
+export type Middleware<S, A> = (context: AfterMiddlewareContext<S, A>) => any
 export interface MiddlewarePack<S, A> {
   name: string
   middleware: Middleware<S, A>
@@ -95,7 +100,13 @@ export default <S, A = any>(router: Router, store: Store<S>, options: Options<A>
     middleware: Middleware<S, A>,
   ): RouterHook | RouterAfterHook => {
     return (to: Route, from: Route, next?: Next) => {
-      const runMiddleware = () => (middleware({to, from, next, store, app}))
+      const runMiddleware = () => {
+        const ctx: any = {to, from, store, app}
+        if(next){
+          ctx.next = next
+        }
+        return middleware(ctx)
+      }
       const alwaysSome = (requireName): boolean => (name === requireName)
       const recordSome = (record): boolean => {
         if(!record.meta || !record.meta.middleware){
@@ -113,6 +124,7 @@ export default <S, A = any>(router: Router, store: Store<S>, options: Options<A>
       if(to.matched.some(recordSome)){
         return runMiddleware()
       }
+      // skip
       if(next){
         next()
       }

@@ -8,34 +8,34 @@ declare namespace NodeJS {
     readonly PORT?: string
 
     /**
-     * a path to router layout folder
+     * A path to router layout folder
      * @default 'layouts'
      */
     readonly LAYOUTS_PATH?: string
 
     /**
-     * middleware folder name
+     * Middleware folder name
      * @default 'middleware'
      * @see ./src/utils/middleware
      */
     readonly MIDDLEWARE_PATH?: string
 
     /**
-     * running mode
+     * Running mode
      * @default 'production'
      * @see ./build/webpack.base.js
      */
     readonly NODE_ENV?: 'production' | 'development'
 
     /**
-     * router mode
+     * Router mode
      * @default 'history'
      * @see ./src/router.ts
      */
     readonly ROUTER_MODE?: 'history'
 
     /**
-     * webpack alias for the src
+     * Webpack alias for the src
      * @default '@'
      * @see ./build/webpack.base.config.js
      */
