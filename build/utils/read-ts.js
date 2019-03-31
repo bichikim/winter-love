@@ -5,9 +5,10 @@ const requireFromString = require('require-from-string')
 
 // read typescript webpack config file by js
 module.exports = (path) => {
+  const filename = resolve(path)
   // compile typescript
   const myModule = ts.transpileModule(
-    fs.readFileSync(resolve(path)).toString(), {
+    fs.readFileSync(filename).toString(), {
       compilerOptions: {
         module: ts.ModuleKind.CommonJS,
         target: ts.ScriptTarget.ES2015,
@@ -23,7 +24,7 @@ module.exports = (path) => {
   // load module from compiled js code
   const webpackBaseConfigModule = requireFromString(
     myModule.outputText,
-    'webpack.base.config.js',
+    filename,
     {appendPaths},
     )
 

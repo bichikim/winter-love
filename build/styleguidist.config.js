@@ -1,4 +1,4 @@
-const environment = require.resolve('build/utils/read-environment')
+const environment = require('./utils/read-environment')
 // ts setting
 const tsNode = require('ts-node')
 tsNode.register({

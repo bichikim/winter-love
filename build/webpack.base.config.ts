@@ -36,7 +36,7 @@ delete process.env.TS_NODE_PROJECT
 const config = (options: any = {}, environment: Environment = {}) => {
   const {
     typescript: {
-      bundleProject = 'tsconfig.bundle.json',
+      bundleProject = 'tsconfig.json',
     } = {},
     path: {
       middleware = 'middleware',

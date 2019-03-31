@@ -7,8 +7,14 @@
     "require": ["./build/styleguidist.register.ts"]
   },
   "typescript": {
-    "bundleProject": "tsconfig.json",
+    "bundleProject": "tsconfig.bundle.json",
     "nodeProject": "tsconfig.node.json"
+  },
+  "path": {
+    "middleware": "middleware",
+    "layouts": "layouts",
+    "pages": "pages",
+    "src": "src"
   },
   "env": {
     "firebase": {

@@ -1,11 +1,13 @@
 const webpack =  require('webpack')
 const webpackMerge  = require('webpack-merge')
 const webpackBaseConfigFn = require('./utils/read-ts')('build/webpack.base.config.ts')
+const environment = require('./utils/read-environment')
 const webpackBaseConfig = webpackBaseConfigFn(
   {
     transpileOnly: true,
   },
   {
+    ...environment,
     path: {
       middleware: 'mock-data/middleware',
       layouts: 'mock-data/layouts',
