@@ -85,58 +85,62 @@ export interface Options<A> {
   always?: string[]
   app?: A
 }
-export default <S, A = any>(router: Router, store: Store<S>, options: Options<A> = {}) => {
+
+const capsule = <S, A>(
+  name: string,
+  middleware: Middleware<S, A>,
+  store: Store<S>,
+  options: Options<A> = {},
+): RouterHook | RouterAfterHook => {
   const {
     always = [],
     app = {} as A,
   } = options
+  return (to: Route, from: Route, next?: Next) => {
+    const runMiddleware = () => {
+      const ctx: any = {to, from, store, app}
+      if(next){
+        ctx.next = next
+      }
+      return middleware(ctx)
+    }
+    const alwaysSome = (requireName): boolean => (name === requireName)
+    const recordSome = (record): boolean => {
+      if(!record.meta || !record.meta.middleware){
+        return false
+      }
+      const {middleware} = record.meta
+      if(Array.isArray(middleware)){
+        return middleware.some((mid: string) => (mid === name))
+      }
+      return middleware === name
+    }
+    if(always.some(alwaysSome)){
+      return runMiddleware()
+    }
+    if(to.matched.some(recordSome)){
+      return runMiddleware()
+    }
+    // skip
+    if(next){
+      next()
+    }
+  }
+}
+
+export default <S, A = any>(router: Router, store: Store<S>, options: Options<A> = {}) => {
   const middlewareList: MiddlewarePackList<S, A> = getter<S, A>(require.context(
     `${process.env.SRC_ALIAS}/${process.env.MIDDLEWARE_PATH}/`,
     false,
     /\.ts$/,
     ))
-  const capsule = (
-    name: string,
-    middleware: Middleware<S, A>,
-  ): RouterHook | RouterAfterHook => {
-    return (to: Route, from: Route, next?: Next) => {
-      const runMiddleware = () => {
-        const ctx: any = {to, from, store, app}
-        if(next){
-          ctx.next = next
-        }
-        return middleware(ctx)
-      }
-      const alwaysSome = (requireName): boolean => (name === requireName)
-      const recordSome = (record): boolean => {
-        if(!record.meta || !record.meta.middleware){
-          return false
-        }
-        const {middleware} = record.meta
-        if(Array.isArray(middleware)){
-          return middleware.some((mid: string) => (mid === name))
-        }
-        return middleware === name
-      }
-      if(always.some(alwaysSome)){
-        return runMiddleware()
-      }
-      if(to.matched.some(recordSome)){
-        return runMiddleware()
-      }
-      // skip
-      if(next){
-        next()
-      }
-    }
-  }
   middlewareList.beforeEach.forEach(({name, middleware}: MiddlewarePack<S, A>) => {
-    router.beforeEach(capsule(name, middleware))
+    router.beforeEach(capsule(name, middleware, store, options))
   })
   middlewareList.beforeResolve.forEach(({name, middleware}: MiddlewarePack<S, A>) => {
-    router.beforeResolve(capsule(name, middleware))
+    router.beforeResolve(capsule(name, middleware, store, options))
   })
   middlewareList.afterEach.forEach(({name, middleware}: MiddlewarePack<S, A>) => {
-    router.afterEach(capsule(name, middleware))
+    router.afterEach(capsule(name, middleware, store, options))
   })
 }

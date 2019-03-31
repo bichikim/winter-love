@@ -1,10 +1,9 @@
 /* tslint:disable:callable-types */
-import {Vue} from 'vue/types/vue'
+import Vue from 'vue'
+
 declare module 'vue/types/vue' {
   interface Vue {
-  }
-
-  interface VueConstructor{
+    $env: Project.ENV
   }
 }
 
@@ -13,5 +12,6 @@ declare module 'vue/types/options' {
   interface ComponentOptions<V extends Vue> {
     middleware?: string
     layout?: string
+    env?: Project.ENV
   }
 }

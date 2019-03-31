@@ -23,14 +23,7 @@ export interface Environment {
     serverHost: string,
     require: string[],
   },
-  firebase?: {
-    apiKey: string,
-    authDomain: string,
-    databaseURL: string,
-    projectId: string,
-    storageBucket: string,
-    messagingSenderId: string,
-  }
+  env?: Project.ENV,
 }
 
 export interface Options {
@@ -51,6 +44,7 @@ const config = (options: any = {}, environment: Environment = {}) => {
       pages = 'pages',
       src = 'src',
     } = {},
+    env: envData = {} as any,
   } = environment
   const {
     transpileOnly = false,
@@ -148,6 +142,7 @@ const config = (options: any = {}, environment: Environment = {}) => {
         'process.env.ROUTER_MODE': JSON.stringify(routerMode),
         // src/middleware
         'process.env.SRC_ALIAS': JSON.stringify(srcAlias),
+        'process.env.ENV': JSON.stringify(envData),
       }),
       new VueAutoRoutingPlugin({
         pages: join(src, pages),

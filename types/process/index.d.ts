@@ -1,10 +1,13 @@
 /* tslint:disable:interface-name no-namespace */
 
 declare namespace NodeJS {
+
   export interface Process {
   }
 
   export interface ProcessEnv {
+    readonly ENV: Project.ENV
+
     readonly PORT?: string
 
     /**
