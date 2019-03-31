@@ -20,7 +20,9 @@ dist
 package-lock.json
 
 # tests
-test
+#test
+cypress
+
 
 # Editor directories and files
 .elasticbeanstalk/
