@@ -1,12 +1,17 @@
-import {Component, Prop, Vue} from '~/vue-ts'
+import {Component, Mixins, Prop} from '~/vue-ts'
+import ContainerMixin from './container.mixin'
 import {State, StateInfo, StateOptions} from './types'
 
 @Component
-export default class StateMixin<O extends StateOptions = StateOptions> extends Vue {
-  nativeStates: StateInfo[]
+export default class StateMixin<
+  O extends StateOptions = StateOptions
+  > extends Mixins(ContainerMixin) {
+  static EV_UPDATE_STATES = 'update-states'
+
+  @Prop({default: () => ([])}) states: StateInfo[]
 
   findStateIndex(id: string): number {
-    return this.nativeStates.findIndex((value: StateInfo) => (value.id === id))
+    return this.states.findIndex((value: StateInfo) => (value.id === id))
   }
 
   findState(id: string): StateInfo | undefined {
@@ -14,18 +19,28 @@ export default class StateMixin<O extends StateOptions = StateOptions> extends V
     if(index < 0){
       return
     }
-    return this.nativeStates[index]
+    return this.states[index]
   }
 
-  updateStates(state: State, options: O, ids: string[]) {
-    ids.forEach((id: string) => {
-      const newState = {id, ...state}
-      const index = this.findStateIndex(id)
-      if(index < 0){
-        this.nativeStates.push(newState)
-      }else{
-        this.nativeStates.splice(index, 1, newState)
-      }
-    })
+  resetStates() {
+    this.states.splice(0)
+    this.$emit(StateMixin.EV_UPDATE_STATES, this.id, {}, this.states)
+  }
+
+  updateStates(id: string, state: State, options?: O, children?: StateInfo[]) {
+    const index = this.findStateIndex(id)
+    const {bubble = false, multi = false} = options || {}
+    const newState: StateInfo = {id, ...state}
+    if(children){
+      newState.children = children
+    }
+    if(index < 0){
+      this.states.push(newState)
+    }else{
+      this.states.splice(index, 1, newState)
+    }
+
+    const nextState = bubble ? state : {}
+    this.$emit(StateMixin.EV_UPDATE_STATES, this.id, nextState, options, this.states)
   }
 }

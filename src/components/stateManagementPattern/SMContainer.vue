@@ -1,15 +1,21 @@
 <template lang="pug">
-  .main
-    s-m-content {{content}}
-    s-m-container(v-if="items" v-for="(item) in items" v-bind="item")
+  .s-m-container
+    s-m-content(v-bind="content")
+    s-m-container(
+      v-if="items"
+      v-for="(item) in items"
+      v-bind="item"
+      :states="states.children"
+      @update-states="updateStates"
+      )
 </template>
 
 <script lang="ts">
 import {
   Component, Prop, Mixins,
 } from 'vue-property-decorator'
-import ContainerMixin from './container.mixin'
 import SMContent from './SMContent.vue'
+import StateMixin from './state.mixin'
 
 @Component({
   components: {
@@ -17,12 +23,12 @@ import SMContent from './SMContent.vue'
     SMContent,
   },
 })
-export default class SMContainer extends Mixins(ContainerMixin) {
+export default class SMContainer extends Mixins(StateMixin) {
 
 }
 </script>
 
 <style scoped lang="stylus">
-  .main
+  .s-m-container
     display flex
 </style>
