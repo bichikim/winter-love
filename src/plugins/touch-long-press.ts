@@ -1,5 +1,6 @@
 import {VNode, VNodeDirective} from 'vue/types/vnode'
-import {eventNameFactory} from './touch'
+import {copyPointEvent} from './copy-point-event'
+import {createEventName} from './create-event-name'
 const DEFAULT_LONG_PRESS_TIME_INTERVAL = 400
 const EV_LONG_PRESS = 'long-press'
 
@@ -21,38 +22,8 @@ export interface Options {
   timeInterval?: number
 }
 
-const copyPointEvent = (event: PointerEvent, newName, el: LongPressHTMLElement): PointerEvent => {
-  return new PointerEvent(newName, {
-    altKey: event.altKey,
-    bubbles: event.bubbles,
-    button: event.button,
-    cancelable: event.cancelable,
-    clientX: event.clientX,
-    clientY: event.clientY,
-    ctrlKey: event.ctrlKey,
-    composed: event.composed,
-    detail: event.detail,
-    height: event.height,
-    isPrimary: event.isPrimary,
-    metaKey: event.metaKey,
-    pointerId: event.pointerId,
-    pointerType: event.pointerType,
-    pressure: event.pressure,
-    relatedTarget: el,
-    screenX: event.screenX,
-    screenY: event.screenY,
-    shiftKey: event.shiftKey,
-    tangentialPressure: event.tangentialPressure,
-    tiltX: event.tiltX,
-    tiltY: event.tiltY,
-    twist: event.twist,
-    view: event.view,
-    width: event.width,
-  })
-}
-
 export const longPress = (name: string, options: Options = {}) => {
-  const eventName = eventNameFactory(EV_LONG_PRESS, name)
+  const eventName = createEventName(EV_LONG_PRESS, name)
   return {
     bind(el: LongPressHTMLElement, binding: VNodeDirective, vnode: VNode) {
       if(!el[longPressSymbol]){

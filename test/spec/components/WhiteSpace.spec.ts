@@ -1,7 +1,7 @@
 import {createLocalVue, mount} from '@vue/test-utils'
 import {expect} from 'chai'
 import WhiteSpace from '../../../src/components/WhiteSpace.vue'
-describe('test.spec.js', () => {
+describe('WhiteSpace.vue', () => {
   it('should add <dr> with a content of props ', () => {
     const localVue = createLocalVue()
     const content = 'foo\n bar\n'

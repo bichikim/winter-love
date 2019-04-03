@@ -1,5 +1,5 @@
 import {VNode, VNodeDirective} from '@@/node_modules/vue'
-import {eventNameFactory} from './touch'
+import {createEventName} from './create-event-name'
 
 const DEFAULT_TRIGGER_TIMEOUT = 100
 const DEFAULT_SWIPE_TOLERANCE = 30
@@ -27,8 +27,9 @@ export interface SwipeHTMLElement extends HTMLElement {
   [swipeSymbol]?: {[key: string]: SwipeSate}
 }
 
+// todo working
 export const swipe = (name: string, options: Options = {}) => {
-  const eventName = eventNameFactory(EV_SWIPE, name)
+  const eventName = createEventName(EV_SWIPE, name)
   return {
     bind(el: SwipeHTMLElement, binding: VNodeDirective, vnode: VNode) {
       const eventState: SwipeSate = {}

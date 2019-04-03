@@ -1,4 +1,3 @@
-import {kebabCase} from 'lodash'
 import {DirectiveOptions, VueConstructor} from 'vue'
 import {longPress, Options as LongPressOption} from './touch-long-press'
 import {Options as SwipeOption, swipe} from './touch-swipe'
@@ -15,23 +14,22 @@ interface Directives {
   longPress?: {[key: string]: DirectiveOptions}
 }
 
-export const eventNameFactory = (name: string, subName: string) => {
-  let eventName = name
-  if(subName !== defaultName){
-    eventName = [eventName, kebabCase(subName)].join('-')
-  }
-  return eventName
+type DirectiveFactory = (name: string, options: any) => DirectiveOptions
+
+interface DirectiveFactories {
+  longPress: DirectiveFactory
+  swipe: DirectiveFactory
 }
 
-const directiveFactories = {
+const directiveFactories: DirectiveFactories = {
   longPress,
   swipe,
 }
 
 const createDirectives = (
-  directiveFactories: any,
-  options: {[key: string]: any},
   directiveName: string,
+  directiveFactories: DirectiveFactories,
+  options: {[key: string]: any},
 ) => {
   const directives: {[key: string]: DirectiveOptions} = {}
   const directiveFactory = directiveFactories[directiveName]
@@ -65,7 +63,7 @@ export const touch = (options: Options = {}) => {
   const directives: Directives = {}
 
   Object.keys(directiveFactories).forEach((directiveName: string) => {
-    directives[directiveName] = createDirectives(directiveFactories, options, directiveName)
+    directives[directiveName] = createDirectives(directiveName, directiveFactories, options)
   })
 
   return {
