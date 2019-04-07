@@ -1,13 +1,12 @@
-- var metadata = htmlWebpackPlugin.options.metadata
 - var title = htmlWebpackPlugin.options.title
 doctype html
 html(lang="en")
   head
     title= title
     meta(charset="UTF-8")
-    //meta(CONTENT=htmlWebpackPlugin.options)
-    if metadata.mode === 'development'
-      script(src=metadata.devtool)
     script(src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js")
+    link(href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet")
+    link(href="https://cdn.jsdelivr.net/npm/ionicons@^4.0.0/dist/css/ionicons.min.css" rel="stylesheet")
+    link(href="https://cdn.jsdelivr.net/npm/quasar-framework@0.17.20/dist/umd/quasar.mat.min.css" rel="stylesheet" type="text/css")
   body
     #app(data-vue="root") If You see this message Vue is not loaded

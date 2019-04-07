@@ -20,5 +20,4 @@ export default class Index extends Vue {
 <style scoped lang="stylus">
   .main
     display flex
-    background-color red
 </style>

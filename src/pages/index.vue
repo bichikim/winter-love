@@ -2,6 +2,9 @@
   .main
     white-space(v-eex @long-press="handleLongPress('default', $event)" ) {{text}}
     div(v-eex @long-press-vary-long="handleLongPress('vary long', $event)") new ! !!!!!!!!!!!
+    q-btn(icon="fas fa-id-card")
+    q-icon(name="fas fa-ad")
+    q-icon(name="ion-flame")
 </template>
 
 <script lang="ts">
@@ -29,5 +32,4 @@ export default class Index extends Vue {
   .main
     display flex
     flex-direction column
-    background-color red
 </style>
