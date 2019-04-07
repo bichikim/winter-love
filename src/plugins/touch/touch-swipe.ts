@@ -1,5 +1,5 @@
 import {VNode, VNodeDirective} from '@@/node_modules/vue'
-import {createEventName} from './create-event-name'
+import {createEventName} from '@/plugins/touch/create-event-name'
 
 const DEFAULT_TRIGGER_TIMEOUT = 100
 const DEFAULT_SWIPE_TOLERANCE = 30

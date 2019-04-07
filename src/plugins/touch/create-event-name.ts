@@ -1,5 +1,5 @@
 import {kebabCase} from 'lodash'
-import {defaultName} from './touch'
+import {defaultName} from './'
 
 export const createEventName = (name: string, subName: string) => {
   let eventName = name

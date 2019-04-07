@@ -89,7 +89,7 @@ export interface Options<A> {
 const capsule = <S, A>(
   name: string,
   middleware: Middleware<S, A>,
-  store: Store<S>,
+  store?: Store<S>,
   options: Options<A> = {},
 ): RouterHook | RouterAfterHook => {
   const {
@@ -128,7 +128,10 @@ const capsule = <S, A>(
   }
 }
 
-export default <S, A = any>(router: Router, store: Store<S>, options: Options<A> = {}) => {
+export default <S, A = any>(router?: Router, store?: Store<S>, options: Options<A> = {}) => {
+  if(!router){
+    return console.warn('[middleware] no router')
+  }
   const middlewareList: MiddlewarePackList<S, A> = getter<S, A>(require.context(
     `${process.env.SRC_ALIAS}/${process.env.MIDDLEWARE_PATH}/`,
     false,

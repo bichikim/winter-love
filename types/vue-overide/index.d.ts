@@ -12,6 +12,7 @@ declare module 'vue/types/options' {
   interface ComponentOptions<V extends Vue> {
     middleware?: string
     layout?: string
+    firebase?: any
     env?: Project.ENV
   }
 }
