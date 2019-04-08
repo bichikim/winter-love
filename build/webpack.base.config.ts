@@ -15,6 +15,7 @@ export interface Environment {
     layouts?: string
     pages?: string,
     src?: string,
+    plugins?: string,
   },
   styleguidist?: {
     script: string
@@ -42,6 +43,7 @@ const config = (options: any = {}, environment: Environment = {}) => {
       middleware = 'middleware',
       layouts = 'layouts',
       pages = 'pages',
+      plugins = 'plugins',
       src = 'src',
     } = {},
     env: envData = {} as any,
@@ -143,6 +145,7 @@ const config = (options: any = {}, environment: Environment = {}) => {
         // src/middleware
         'process.env.SRC_ALIAS': JSON.stringify(srcAlias),
         'process.env.ENV': JSON.stringify(envData),
+        'process.env.PLUGINS_PATH': JSON.stringify(plugins),
       }),
       new VueAutoRoutingPlugin({
         pages: join(src, pages),

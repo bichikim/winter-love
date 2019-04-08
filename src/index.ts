@@ -1,16 +1,20 @@
-import Touch, {Options as TouchOption} from '@/plugins/touch'
-import quasar from 'quasar'
+import element from '@/plugins/element'
+import firebase from '@/plugins/firebase'
+import touch from '@/plugins/touch'
 import Vue, {ComponentOptions} from 'vue'
 import App from './App.vue'
-import firebase from './firebase'
 import middleware from './middleware'
 import router from './router'
 import store from './store'
 
 const env: Project.ENV = process.env.ENV
 
-Vue.use(quasar)
-Vue.use<TouchOption>(Touch, {
+const app: ComponentOptions<Vue> = {
+  render: (h) => (h(App)),
+  env,
+}
+
+touch(app, {
   longPress: {
     default: {},
     varyLong: {
@@ -18,18 +22,14 @@ Vue.use<TouchOption>(Touch, {
     },
   },
 })
+firebase<Vue>(app, env.firebase)
+store<Vue>(app)
+router<Vue>(app)
+element()
 
-const vueOptions: ComponentOptions<Vue> = {
-  render: (h) => (h(App)),
-  router: router(),
-  store: store(),
-  firebase: firebase(env.firebase),
-  env,
-}
+const vue = new Vue(app)
 
-const vue = new Vue(vueOptions)
-
-middleware<any, any>(vueOptions.router, vueOptions.store, {
+middleware<any, any>(app.router, app.store, {
   always: ['any'],
   app: vue,
 })

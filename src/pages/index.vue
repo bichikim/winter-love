@@ -1,10 +1,8 @@
 <template lang="pug">
   .main
-    white-space(v-eex @long-press="handleLongPress('default', $event)" ) {{text}}
-    div(v-eex @long-press-vary-long="handleLongPress('vary long', $event)") new ! !!!!!!!!!!!
-    q-btn(icon="fas fa-id-card")
-    q-icon(name="fas fa-ad")
-    q-icon(name="ion-flame")
+    q-toolbar(color="primary")
+    q-toobar-title title
+      q-btn(round color="secondary" label="npm" icon="ion-heart")
 </template>
 
 <script lang="ts">
@@ -30,6 +28,5 @@ export default class Index extends Vue {
 
 <style scoped lang="stylus">
   .main
-    display flex
-    flex-direction column
+    display block
 </style>

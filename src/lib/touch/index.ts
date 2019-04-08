@@ -1,6 +1,6 @@
-import {DirectiveOptions, VueConstructor} from 'vue'
-import {longPress, Options as LongPressOption} from './touch-long-press'
-import {Options as SwipeOption, swipe} from './touch-swipe'
+import {DirectiveOptions, VueConstructor} from '@@/node_modules/vue'
+import {longPress, Options as LongPressOption} from '@/lib/touch/touch-long-press'
+import {Options as SwipeOption, swipe} from '@/lib/touch/touch-swipe'
 
 export const defaultName = 'default'
 
