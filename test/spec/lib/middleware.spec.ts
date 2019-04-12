@@ -1,10 +1,10 @@
 /* tslint:disable:no-unused-expression */
 /* eslint-disable no-new */
-import middleware from '@/middleware'
+import middleware from '@/lib/middleware'
+import Vue from '@@/node_modules/vue'
+import {TestApp} from '@@/test/types'
 import {expect} from 'chai'
-import Vue from 'vue'
 import VueRouter from 'vue-router'
-import {TestApp} from '../types'
 const component = Vue.extend({
   template: '<div>hi</div>',
 })

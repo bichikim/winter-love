@@ -136,7 +136,7 @@ export default <S, A = any>(router?: Router, store?: Store<S>, options: Options<
     `${process.env.SRC_ALIAS}/${process.env.MIDDLEWARE_PATH}/`,
     false,
     /\.ts$/,
-    ))
+  ))
   middlewareList.beforeEach.forEach(({name, middleware}: MiddlewarePack<S, A>) => {
     router.beforeEach(capsule(name, middleware, store, options))
   })

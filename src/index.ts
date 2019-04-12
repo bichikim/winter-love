@@ -1,9 +1,9 @@
 import element from '@/plugins/element'
 import firebase from '@/plugins/firebase'
+import middleware from '@/plugins/middleware'
 import touch from '@/plugins/touch'
 import Vue, {ComponentOptions} from 'vue'
 import App from './App.vue'
-import middleware from './middleware'
 import router from './router'
 import store from './store'
 
@@ -26,13 +26,11 @@ firebase<Vue>(app, env.firebase)
 store<Vue>(app)
 router<Vue>(app)
 element()
+middleware<Vue>(app, {
+  always: ['any'],
+})
 
 const vue = new Vue(app)
-
-middleware<any, any>(app.router, app.store, {
-  always: ['any'],
-  app: vue,
-})
 
 window.__vue = vue
 vue.$mount('#app')
