@@ -11,6 +11,7 @@ import {Component, Vue, Prop} from '~/vue-ts'
 export default class App extends Vue {
   @Prop() test: string
 }
+
 </script>
 
 <style scoped lang="stylus">

@@ -1,5 +1,5 @@
-import quasar from 'quasar'
+import Quasar from 'quasar'
 import Vue from 'vue'
 export default () => {
-  Vue.use(quasar)
+  Vue.use(Quasar)
 }
