@@ -22,5 +22,5 @@ export default <V extends Vue>(app: ComponentOptions<V>) => {
     ],
   })
 
-  return app
+  return app.router
 }

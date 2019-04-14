@@ -1,11 +1,11 @@
-import element from '@/plugins/element'
+import {Context} from '@/lib/type'
 // import firebase from '@/plugins/firebase'
 import middleware from '@/plugins/middleware'
-import touch from '@/plugins/touch'
 import Vue, {ComponentOptions} from 'vue'
 import App from './App.vue'
-import router from './router'
-import store from './store'
+import plugin from './plugin'
+import routerFactory from './router'
+import storeFactory, {State} from './store'
 
 const env: Project.ENV = process.env.ENV
 
@@ -13,23 +13,37 @@ const app: ComponentOptions<Vue> = {
   render: (h) => (h(App)),
   env,
 }
-element()
-touch(app, {
-  longPress: {
-    default: {},
-    varyLong: {
-      timeInterval: 1000,
+
+// firebase<Vue>(app, env.firebase)
+const store = storeFactory<Vue>(app)
+const router = routerFactory<Vue>(app)
+
+const context: Context<Vue, State> = {
+  app,
+  store,
+  router,
+}
+
+plugin(context, [
+  {
+    path: 'element',
+  },
+  {
+    path: 'touch',
+    options: {
+      longPress: {
+        default: {},
+        varyLong: {
+          timeInterval: 1000,
+        },
+      },
     },
   },
+]).then(() => {
+  middleware<Vue, any>(context, {
+    always: ['any'],
+  })
+  const vue = new Vue(app)
+  window.__vue = vue
+  vue.$mount('#app')
 })
-// firebase<Vue>(app, env.firebase)
-store<Vue>(app)
-router<Vue>(app)
-middleware<Vue>(app, {
-  always: ['any'],
-})
-
-const vue = new Vue(app)
-
-window.__vue = vue
-vue.$mount('#app')

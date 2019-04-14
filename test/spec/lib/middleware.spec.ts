@@ -29,7 +29,11 @@ describe('middleware', () => {
 
       ],
     })
-    middleware(router as any, {} as any)
+    middleware({
+      app: {} as any,
+      router,
+      store: {} as any,
+    })
     expect(router.beforeHooks).to.length(2)
     expect(router.resolveHooks).to.length(2)
     expect(router.afterHooks).to.length(2)
@@ -55,8 +59,11 @@ describe('middleware', () => {
       returnAfCtx: (ctx) => (afCtxs.push(ctx)),
     }
 
-    middleware(router, {} as any, {
-      app,
+    middleware({
+      app: app as any,
+      router,
+      store: {} as any,
+    }, {
       always: ['md1', 'md2'],
     })
     expect(router.beforeHooks.length).to.equal(2)
@@ -96,8 +103,10 @@ describe('middleware', () => {
       router,
     })
 
-    middleware(router, {} as any, {
-      app,
+    middleware({
+      app: app as any,
+      router,
+      store: {} as any,
     })
     expect(router.beforeHooks.length).to.equal(2)
     expect(router.resolveHooks.length).to.equal(2)

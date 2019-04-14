@@ -1,11 +1,9 @@
-import Vue, {ComponentOptions} from 'vue'
+import Vue from 'vue'
 import middleware, {Options} from '~/lib/middleware'
-export default <V extends Vue>(
-  app: ComponentOptions<V>,
-  options: Options<any>,
+import {Context} from '~/lib/type'
+export default <V extends Vue, S>(
+  context: Context<V, S>,
+  options: Options,
   ) => {
-  if(!app.store || !app.router){
-    throw new Error('app should have store and router')
-  }
-  middleware<any, any>(app.router, app.store, {...options, app})
+  middleware<any, any>(context, {...options})
 }

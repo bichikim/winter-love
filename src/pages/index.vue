@@ -2,7 +2,7 @@
   .main
     q-toolbar(color="primary")
     q-toolbar-title title
-      q-btn(color="secondary" label="npm" icon="ion-heart")
+      q-btn(color="primary" label="npm" icon="ion-heart")
 </template>
 
 <script lang="ts">
