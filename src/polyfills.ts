@@ -12,7 +12,7 @@ import {
   forEach,
   List,
   ObjectIterator,
-  ValueIteratee} from 'lodash'
+} from 'lodash'
 import polyfify, {polyfifyStatic} from '~/lib/polyfify'
 
 // Array
@@ -61,22 +61,36 @@ polyfify<any[]>(
 polyfify<string>(
   String,
   'camelCase',
-  function(this: string) {
+  function(this: string): string {
     return camelCase(this)
   },
 )
 polyfify<string>(
   String,
   'capitalize',
-  function(this: string) {
+  function(this: string): string {
     return capitalize(this)
   },
 )
 polyfify<string>(
   String,
   'deburr',
-  function(this: string) {
+  function(this: string): string {
     return deburr(this)
+  },
+)
+polyfify<string>(
+  String,
+  'endsWith',
+  function(this: string): boolean {
+    return endsWith(this)
+  },
+)
+polyfify<string>(
+  String,
+  'escape',
+  function(this: string): string {
+    return escape(this)
   },
 )
 

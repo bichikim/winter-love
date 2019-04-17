@@ -31,5 +31,7 @@ declare global {
     camelCase(): string
     capitalize(): string
     deburr(): string
+    endsWith(): boolean
+    escape(): string
   }
 }

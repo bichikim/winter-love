@@ -55,5 +55,8 @@ describe('polyfills', function test() {
     it('should have deburr', function test() {
       expect('déjà vu'.deburr()).to.equal('deja vu')
     })
+    it('should have deburr', function test() {
+      expect('fred, barney, & pebbles'.escape()).to.equal('fred, barney, &amp; pebbles')
+    })
   })
 })
