@@ -7,6 +7,13 @@ import plugin from './plugin'
 import routerFactory from './router'
 import storeFactory, {State} from './store'
 
+// test
+
+const test = {foo: 'foo', bar: 'bar'}
+test.forEach(() => {
+
+})
+
 const env: Project.ENV = process.env.ENV
 
 const app: ComponentOptions<Vue> = {
