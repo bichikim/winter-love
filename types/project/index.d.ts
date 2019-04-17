@@ -1,4 +1,5 @@
 /* tslint:disable:no-namespace */
+
 declare namespace Project {
   export interface ENVFirebase {
     apiKey: string,
