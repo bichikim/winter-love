@@ -1,8 +1,8 @@
 import {createLocalVue, mount, Wrapper} from '@vue/test-utils'
 import {expect} from 'chai'
 import pretty from 'pretty'
-import SMContainer from '~/components/stateManagementPattern/SMContainer.vue'
-import SMContent from '~/components/stateManagementPattern/SMContent.vue'
+import SMContainer from '@/components/stateManagementPattern/SmContainer.vue'
+import SMContent from '@/components/stateManagementPattern/SmContent.vue'
 import {Item} from '~/components/stateManagementPattern/types'
 
 declare global {

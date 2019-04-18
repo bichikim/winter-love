@@ -1,9 +1,14 @@
-import Quasar from 'quasar/dist/quasar.esm'
+import Quasar from 'quasar/dist/quasar.common'
+import iconSet from 'quasar/icon-set/ionicons-v4'
 import Vue from 'vue'
 
 export default () => {
-  window.quasarConfig = {
-    primary: '#e46262',
-  }
-  Vue.use(Quasar)
+  Vue.use(Quasar, {
+    config: {
+      brand: {
+        primary: '#e46262',
+      },
+    },
+    iconSet,
+  })
 }

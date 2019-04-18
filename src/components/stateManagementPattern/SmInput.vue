@@ -7,7 +7,11 @@ import {
   Component, Prop, Vue,
 } from '~/vue-ts'
 
-@Component
+@Component({
+  components: {
+
+  },
+})
 export default class SMInput extends Vue {
   @Prop() value: string
 }

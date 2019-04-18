@@ -1,5 +1,6 @@
 export interface State {
-  active?: boolean
+  actives?: Item[]
+  [key: string]: any[] | undefined
 }
 
 export type ContentKind = 'label' | 'input'
@@ -9,18 +10,22 @@ export interface Content {
   value: string
 }
 
-export interface Item {
+export interface ItemData {
   id?: string
   content?: Content
-  items?: Item[]
+  items?: ItemData[]
 }
 
-export interface StateInfo extends State{
-  id: string
-  children?: StateInfo[]
+export interface Item extends ItemData{
+  items?: Item[]
+  parent: Item
 }
 
 export interface StateOptions {
   bubble?: boolean
+  multi?: boolean
+}
+
+export interface UpdateStateOptions {
   multi?: boolean
 }

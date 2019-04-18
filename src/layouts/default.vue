@@ -8,12 +8,15 @@
           | Winter Love Project
         div() {{$q.version}}
     q-drawer(v-model='leftDrawerOpen' bordered)
-      q-list()
-        q-item-label(header) Essential Links
-        q-item(@click.native="launch('http://quasar-framework.org')")
-          q-item-section(avatar)
-            q-icon(name='ion-university')
-          q-item-section Docs
+      q-scroll-area.fit.q-pa-sm
+        q-list
+          q-item-label(header) Essential Links
+          q-expansion-item(label="Reservations" group="essential" icon="ion-bookmarks" header-class="text-primary")
+            q-list
+              q-item(@click.native="launch('http://quasar-framework.org')")
+                q-item-section(avatar)
+                  q-icon(name='ion-infinite')
+                q-item-section All
     q-page-container
       router-view
 
