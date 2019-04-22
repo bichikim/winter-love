@@ -1,9 +1,9 @@
 <template lang="pug">
-  q-expansion-item(v-if="item.items" :label="item.title")
+  q-expansion-item(v-if="item.items" :label="item.title" @click="handleClick")
     q-list
       template(v-for="(nextItem) in item.items")
         q-dynamic-item(:item="nextItem")
-  q-item(v-else @click="handleClick")
+  q-item(v-else to="item.to")
     q-item-section(v-if="item.icon" avatar)
       q-icon(:name="item.icon")
     q-item-section {{item.title}}
