@@ -1,8 +1,8 @@
+import SmContainer from '@/components/stateManagementPattern/SmContainer.vue'
+import SmContent from '@/components/stateManagementPattern/SmContent.vue'
 import {createLocalVue, mount, Wrapper} from '@vue/test-utils'
 import {expect} from 'chai'
 import pretty from 'pretty'
-import SMContainer from '@/components/stateManagementPattern/SmContainer.vue'
-import SMContent from '@/components/stateManagementPattern/SmContent.vue'
 import {Item} from '~/components/stateManagementPattern/types'
 
 declare global {
@@ -56,85 +56,77 @@ describe('SMRoot.vue', function test() {
   it('should render deep structure data', function test() {
     const _content: any = content
     const localVue = createLocalVue()
-    const wrapper = mount(SMContainer, {
+    const wrapper = mount(SmContainer, {
       localVue, propsData: content,
     })
     expect(wrapper.props().items).to.equal(content.items)
-    const labelElement: HTMLLabelElement = wrapper.find(SMContent).element as any
+    const labelElement: HTMLLabelElement = wrapper.find(SmContent).element as any
     expect(labelElement.tagName).to.equal(document.createElement('label').tagName)
     expect(labelElement.textContent).to.equal(_content.content.value)
-    const containers = wrapper.findAll(SMContainer).wrappers
+    const containers = wrapper.findAll(SmContainer).wrappers
     const childContainers = containers.filter(childrenFilterFactory(wrapper))
     expect(childContainers).length(1)
     const grandChildContainers = containers.filter(childrenFilterFactory(childContainers[0]))
     expect(grandChildContainers).length(3)
-    const inputElement: HTMLInputElement = grandChildContainers[1].find(SMContent).element as any
+    const inputElement: HTMLInputElement = grandChildContainers[1].find(SmContent).element as any
     expect(inputElement.tagName).to.equal(document.createElement('input').tagName)
     expect(inputElement.value).to.equal(_content.items[0].items[1].content.value)
   })
   it('should change State', function test() {
     const localVue = createLocalVue()
-    const wrapper = mount(SMContainer, {
+    const wrapper = mount(SmContainer, {
       localVue, propsData: content,
     })
-    expect(wrapper.props().states).to.be.an('array')
-    const containers = wrapper.findAll(SMContainer).wrappers
+    expect(wrapper.props().state).to.be.an('object')
+    const containers = wrapper.findAll(SmContainer).wrappers
     containers.forEach((_wrapper) => {
-      expect(_wrapper.props().states).to.be.an('array')
+      expect(_wrapper.props().state).to.be.an('object')
     })
     expect(containers).length(6)
     const container: Wrapper<any> = containers[containers.length - 1]
-    const parentContainer: Wrapper<any> = containers
-      .filter((wrapper: Wrapper<any>) => {
+    const firstContainer: Wrapper<any> | undefined = containers
+      .find((wrapper: Wrapper<any>) => {
       return wrapper.vm === container.vm.$parent
-    })[0]
+    }) as Wrapper<any>
+
+    expect(firstContainer).to.be.an('object')
 
     // change state
-    parentContainer.vm.updateStates(container.props().id, {active: true})
+    firstContainer.vm.updateState('active', true)
     {
-      const states = parentContainer.props().states
-      expect(states).to.length(1)
-      expect(states[0]).to.deep.equal({id: container.props().id, active: true})
+      const state = firstContainer.props().state
+      expect(state.active).to.be.an('array')
+      expect(state.active).to.length(1)
+      expect(state.active[0].id).to.equal(firstContainer.props().id)
     }
     // change state twice
-    parentContainer.vm.updateStates(container.props().id, {active: true})
+    firstContainer.vm.updateState('active', true)
     {
-      const states = parentContainer.props().states
-      expect(states).to.length(1)
-      expect(states[0]).to.deep.equal({id: container.props().id, active: true})
+      const state = firstContainer.props().state
+      expect(state.active).to.be.an('array')
+      expect(state.active).to.length(1)
+      expect(state.active[0].id).to.equal(firstContainer.props().id)
     }
-    // check updating parents
+    // check sharing state
     {
-      const rootStates = containers[0].props().states
-      expect(rootStates[0].active).to.equal(undefined)
-      expect(rootStates[0].id).to.equal(containers[1].props().id)
-      expect(rootStates[0].children).to.equal(containers[1].props().states)
-      const nextStates = containers[1].props().states
-      expect(nextStates[0].active).to.equal(undefined)
-      expect(nextStates[0].id).to.equal(containers[4].props().id)
-      expect(nextStates[0].children).to.equal(containers[4].props().states)
-    }
-
-    // change state bubble
-    parentContainer.vm.resetStates()
-    parentContainer.vm.updateStates(container.props().id, {active: true}, {bubble: true})
-
-    // check updating parents
-    {
-      const rootStates = containers[0].props().states
-      expect(rootStates[0].active).to.equal(true)
-      expect(rootStates[0].id).to.equal(containers[1].props().id)
-      expect(rootStates[0].children).to.equal(containers[1].props().states)
-      const nextStates = containers[1].props().states
-      expect(nextStates[0].active).to.equal(true)
-      expect(nextStates[0].id).to.equal(containers[4].props().id)
-      expect(nextStates[0].children).to.equal(containers[4].props().states)
+      const state = wrapper.props().state
+      expect(state.active).to.be.an('array')
+      expect(state.active).to.length(1)
+      expect(state.active[0].id).to.equal(firstContainer.props().id)
+      containers.forEach((_wrapper) => {
+        const state = _wrapper.props().state
+        expect(state.active).to.be.an('array')
+        expect(state.active).to.length(1)
+        expect(state.active[0].id).to.equal(firstContainer.props().id)
+      })
     }
 
-    parentContainer.vm.resetStates()
-    containers.forEach((wrapper) => {
-      console.log(wrapper.props().content, wrapper.props().states)
-    })
+    // change single state only
+    // change state
+    const lastContainer: Wrapper<any> = containers[containers.length - 1]
+    lastContainer.vm.updateState('active', true)
+
+
     // change state multi
   })
 })

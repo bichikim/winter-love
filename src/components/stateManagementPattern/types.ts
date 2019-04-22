@@ -18,7 +18,7 @@ export interface ItemData {
 
 export interface Item extends ItemData{
   items?: Item[]
-  parent: Item
+  parent?: Item
 }
 
 export interface StateOptions {
