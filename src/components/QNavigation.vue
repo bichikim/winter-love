@@ -8,8 +8,13 @@
 <script lang="ts">
 import {Component, Vue, Prop} from '~/vue-ts'
 import {NavItem} from '~/types/navigation'
+import QDynamicItem from './QDynamicItem.vue'
 
-@Component
+@Component({
+  components: {
+    QDynamicItem,
+  },
+})
 export default class Navigation extends Vue {
 
   @Prop() items: NavItem[]

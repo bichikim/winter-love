@@ -1,7 +1,8 @@
-import {MutationTree} from 'vuex'
+import {Module, MutationTree} from 'vuex'
 import {NavItem} from '~/types/navigation'
+import {State} from './'
 
-interface AsideState {
+export interface AsideState {
   items: NavItem[]
 }
 
@@ -24,7 +25,10 @@ const state: AsideState = {
 const mutations: MutationTree<AsideState> = {
 }
 
-export default {
+const storeModule: Module<AsideState, State> = {
+  namespaced: true,
   state,
   mutations,
 }
+
+export default storeModule
