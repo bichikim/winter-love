@@ -9,7 +9,6 @@ import WhiteSpace from '@/components/WhiteSpace.vue'
 import SmContainer from '@/components/stateManagementPattern/SmContainer.vue'
 import SmContent from '@/components/stateManagementPattern/SmContent.vue'
 import {ItemData} from '@/components/stateManagementPattern/types'
-import uuid from 'uuid/v1'
 import {
   Component, Vue, Prop,
 } from '~/vue-ts'

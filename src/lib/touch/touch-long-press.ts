@@ -1,6 +1,6 @@
-import {VNode, VNodeDirective} from '@@/node_modules/vue/types/vnode'
 import {copyPointEvent} from '@/lib/touch/copy-point-event'
 import {createEventName} from '@/lib/touch/create-event-name'
+import {VNode, VNodeDirective} from '@@/node_modules/vue/types/vnode'
 const DEFAULT_LONG_PRESS_TIME_INTERVAL = 400
 const EV_LONG_PRESS = 'long-press'
 

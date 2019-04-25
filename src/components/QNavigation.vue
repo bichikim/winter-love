@@ -7,7 +7,7 @@
 </template>
 <script lang="ts">
 import {Component, Vue, Prop} from '~/vue-ts'
-import {NavItem} from '~/types/navigation'
+import {NavItem} from './types/navigation'
 import QDynamicItem from './QDynamicItem.vue'
 
 @Component({

@@ -1,7 +1,7 @@
-import {AfterMiddlewareContext, MiddlewareContext} from '@/middleware'
+import {AfterMiddlewareContext, MiddlewareContext} from '@/lib/middleware'
 
 export interface TestApp {
-  returnBfCtx: (ctx: MiddlewareContext, name?: string) => void
-  returnBfrCtx: (ctx: MiddlewareContext, name?: string) => void
-  returnAfCtx: (ctx: AfterMiddlewareContext, name?: string) => void
+  returnBfCtx: (ctx: MiddlewareContext<any, any>, name?: string) => void
+  returnBfrCtx: (ctx: MiddlewareContext<any, any>, name?: string) => void
+  returnAfCtx: (ctx: AfterMiddlewareContext<any, any>, name?: string) => void
 }

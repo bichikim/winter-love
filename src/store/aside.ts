@@ -1,5 +1,5 @@
+import {NavItem} from '@/components/types/navigation'
 import {Module, MutationTree} from 'vuex'
-import {NavItem} from '~/types/navigation'
 import {State} from './'
 
 export interface AsideState {

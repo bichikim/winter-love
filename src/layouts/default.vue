@@ -14,8 +14,8 @@
 </template>
 
 <script lang="ts">
-import {Component, Vue, namespace, State} from '~/vue-ts'
-import {NavItem} from '~/types/navigation'
+import {Component, Vue, namespace} from '~/vue-ts'
+import {NavItem} from '@/components/types/navigation'
 import QNavigation from '@/components/QNavigation.vue'
 const aside = namespace('aside')
 

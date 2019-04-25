@@ -1,4 +1,3 @@
-
 import Vue, {ComponentOptions} from 'vue'
 import {Context} from '~/lib/type'
 
