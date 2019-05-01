@@ -1,8 +1,8 @@
+import {Context} from '@/types/project'
 import Vue from 'vue'
 import middleware, {Options} from '~/lib/middleware'
-import {Context} from '~/lib/type'
-export default <V extends Vue, S>(
-  context: Context<V, S>,
+export default <A, S, V extends Vue = Vue>(
+  context: Context<A, S, V>,
   options: Options,
   ) => {
   middleware<any, any>(context, {...options})

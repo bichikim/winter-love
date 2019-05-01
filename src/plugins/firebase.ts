@@ -1,10 +1,16 @@
 import firebase from 'firebase'
 import Vue, {ComponentOptions} from 'vue'
-import VueFire from 'vuefire'
+// import VueFire from 'vuefire'
 
 type VueFireOptions = VueFireObjectOptions & Project.ENVFirebase
 
-interface VueFireObjectOptions {
+export interface VueFireObjectOptions {
+  apiKey: string
+  authDomain: string
+  databaseURL: string
+  projectId: string
+  storageBucket: string
+  messagingSenderId: string
 }
 
 export default <V extends Vue>(
@@ -13,9 +19,8 @@ export default <V extends Vue>(
   ) => {
   if(options){
     firebase.initializeApp(options)
-    Vue.use(VueFire)
-    app.firebase = options
+    // Vue.use(VueFire)
+    // app.firebase = options
     return app
   }
-  console.warn('no firebase')
 }

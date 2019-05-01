@@ -1,5 +1,8 @@
 // read a env file
-const path = require('path')
-const environment = require(path.join(process.cwd(), 'environment.json'))
+const {join} = require('path')
 // export config
-module.exports = environment
+module.exports = (path) => {
+  const _path = path || 'environment.json'
+  // eslint-disable-next-line global-require
+  return require(join(process.cwd(), _path))
+}
