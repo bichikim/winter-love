@@ -28,6 +28,7 @@
     "bowser": "^2.1.2",
     "class-transformer": "^0.2.0",
     "firebase": "^5.9.3",
+    "interactjs": "^1.4.0",
     "lodash": "^4.17.11",
     "lottie-web": "^5.5.0",
     "masonry-layout": "^4.2.2",
@@ -50,6 +51,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
+    "@interactjs/types": "^1.4.0",
     "@types/animejs": "^2.0.2",
     "@types/chai": "^4.1.7",
     "@types/es6-shim": "^0.31.39",
