@@ -7,7 +7,7 @@
         q-toolbar-title
           | Winter Love Project
         div() {{$q.version}}
-    q-navigation(:items="items")
+    q-navigation(:items="items" @input="handleNav")
     q-page-container
       router-view
 
@@ -29,7 +29,7 @@ export default class Index extends Vue {
   leftDrawerOpen: boolean = true
   version: string = 'version'
 
-  launch(url) {
+  handleNav(url) {
     console.log(url)
   }
 }
