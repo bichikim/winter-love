@@ -21,6 +21,8 @@ export default <A, S, V extends Vue = Vue>(
   if(options){
     const {app} = context
     app.fireBase  = firebase.initializeApp(options)
+    app.fireStore = firebase.firestore()
+    app.fireAuth = firebase.auth()
     return context
   }
 }
