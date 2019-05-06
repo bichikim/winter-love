@@ -3,7 +3,7 @@
     white-space {{text}}
     sm-container(:items="smData.items" :parent="smData")
     q-nested-dragable(:items="nest")
-    q-block.block
+    q-block.block hello foo
     q-block.block2
 </template>
 

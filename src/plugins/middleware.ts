@@ -5,5 +5,5 @@ export default <A, S, V extends Vue = Vue>(
   context: Context<A, S, V>,
   options: Options,
   ) => {
-  middleware<any, any>(context, {...options})
+  middleware<A, S, V, Context<A, S, V>>(context, {...options})
 }

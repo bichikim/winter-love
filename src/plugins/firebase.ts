@@ -1,8 +1,7 @@
+import {Context} from '@/types/project'
 import firebase from 'firebase'
-import Vue, {ComponentOptions} from 'vue'
+import Vue from 'vue'
 // import VueFire from 'vuefire'
-
-type VueFireOptions = VueFireObjectOptions & Project.ENVFirebase
 
 export interface VueFireObjectOptions {
   apiKey: string
@@ -13,14 +12,14 @@ export interface VueFireObjectOptions {
   messagingSenderId: string
 }
 
-export default <V extends Vue>(
-  app: ComponentOptions<V>,
-  options: VueFireOptions,
+export default <A, S, V extends Vue = Vue>(
+  context: Context<A, S , V>,
+  options: VueFireObjectOptions,
   ) => {
   if(options){
     firebase.initializeApp(options)
     // Vue.use(VueFire)
     // app.firebase = options
-    return app
+    return context
   }
 }
