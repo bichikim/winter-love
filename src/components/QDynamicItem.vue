@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Vue, Prop} from '~/vue-ts'
+import {Component, Vue, Prop} from 'vue-property-decorator'
 import {NavItem, NavTo} from './types/navigation'
 @Component
 export default class QDynamicItem extends Vue {

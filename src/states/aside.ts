@@ -1,7 +1,7 @@
 import {NavItem} from '@/components/types/navigation'
+import {State} from '@/store'
 import Vue, {ComponentOptions} from 'vue'
 import {Module} from 'vuex'
-import {State} from './'
 
 export interface AsideState {
   items: NavItem[]

@@ -6,7 +6,7 @@
 <script lang="ts">
 import {
   Component, Prop, Vue,
-} from '~/vue-ts'
+} from 'vue-property-decorator'
 import SmLabel from './SmLabel.vue'
 import SmInput from './SmInput.vue'
 

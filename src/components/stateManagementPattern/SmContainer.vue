@@ -15,7 +15,7 @@
 import {
   Component, Mixins,
 } from 'vue-property-decorator'
-import SmContent from '@/components/stateManagementPattern/SmContent.vue'
+import SmContent from './SmContent.vue'
 import ContainerMixin from './container.mixin'
 
 @Component({

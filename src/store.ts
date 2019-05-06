@@ -1,7 +1,7 @@
+import {AsideState} from '@/states/aside'
 import {dropRight, last} from 'lodash'
 import Vue, {ComponentOptions} from 'vue'
 import Vuex, {Store} from 'vuex'
-import {AsideState} from './aside'
 Vue.use(Vuex)
 
 export interface State {
@@ -9,7 +9,7 @@ export interface State {
 }
 
 const getModules = <V extends Vue>(app: ComponentOptions<V>) => {
-  const context = require.context('./', false, /\.ts$/)
+  const context = require.context('@/states', false, /\.ts$/)
   const modules = {}
   context.keys().forEach((path: string) => {
     if(!/\/index\.ts$/.test(path)){

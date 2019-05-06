@@ -6,7 +6,7 @@
 import {ItemData} from '@/components/stateManagementPattern/types'
 import {
   Component, Vue, Prop,
-} from '~/vue-ts'
+} from 'vue-property-decorator'
 import {Item} from '@/components/types/nested'
 
 @Component({
