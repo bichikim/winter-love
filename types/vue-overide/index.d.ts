@@ -10,11 +10,13 @@ declare module 'vue/types/vue' {
 }
 
 declare module 'vue/types/options' {
-  // noinspection TsLint
+
   interface ComponentOptions<V extends Vue> {
     middleware?: string
     layout?: string
-    firebase?: any
+    fireBase?: firestore.App
+    fireStore?: firestore.Firestore
+    fireAuth?: firestore.auth
     env?: Project.ENV
     axios?: AxiosInstance
   }

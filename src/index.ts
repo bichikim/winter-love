@@ -3,7 +3,7 @@ import {Context} from '@/types/project'
 import Vue, {ComponentOptions} from 'vue'
 import App from './App.vue'
 import plugin from './plugin'
-import './polyfills'
+// import './polyfills'
 import routerFactory from './router'
 import storeFactory, {State} from './store'
 // test

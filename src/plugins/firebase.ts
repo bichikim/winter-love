@@ -1,5 +1,7 @@
 import {Context} from '@/types/project'
-import firebase from 'firebase'
+import * as firebase from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/firestore'
 import Vue from 'vue'
 // import VueFire from 'vuefire'
 
@@ -13,13 +15,12 @@ export interface VueFireObjectOptions {
 }
 
 export default <A, S, V extends Vue = Vue>(
-  context: Context<A, S , V>,
+  context: Context<A, S, V>,
   options: VueFireObjectOptions,
   ) => {
   if(options){
-    firebase.initializeApp(options)
-    // Vue.use(VueFire)
-    // app.firebase = options
+    const {app} = context
+    app.fireBase  = firebase.initializeApp(options)
     return context
   }
 }
