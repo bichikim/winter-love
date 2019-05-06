@@ -20,6 +20,10 @@ const state: AsideState = {
         },
       ],
     },
+    {
+      title: 'Smootie',
+      icon: 'ion-snow',
+    },
   ],
 }
 const mutations: MutationTree<AsideState> = {

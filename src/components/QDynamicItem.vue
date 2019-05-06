@@ -1,13 +1,18 @@
 <template lang="pug">
   q-expansion-item(
-    v-if="item.items"
-    :label="item.title"
     @click="handleClick"
-    )
+    v-bind="{contentInsetLevel, expandSeparator, label: title, icon}"
+    v-if="item.items"
+  )
     q-list
       template(v-for="(nextItem, index) in item.items")
         q-dynamic-item(:item="nextItem" :key="index" @to="handleTo")
-  q-item(v-else clickable v-ripple @click="handleClick")
+  q-item(
+    @click="handleClick"
+    clickable
+    v-else
+    v-ripple
+  )
     q-item-section(v-if="item.icon" avatar)
       q-icon(:name="item.icon")
     q-item-section {{item.title}}
@@ -19,6 +24,16 @@ import {NavItem, NavTo} from './types/navigation'
 @Component
 export default class QDynamicItem extends Vue {
   @Prop() item: NavItem
+  @Prop({default: 0.5}) contentInsetLevel: number
+  @Prop({default: true}) expandSeparator: boolean
+
+  get title() {
+    return this.item.title
+  }
+
+  get icon() {
+    return this.item.icon
+  }
 
   get path() {
     const {to, title} = this.item

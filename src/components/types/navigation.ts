@@ -12,6 +12,6 @@ export interface NavTo {
 export interface NavItem {
   title: string
   icon: string
-  to: string | NavTo
+  to?: string | NavTo
   items?: NavItem[]
 }

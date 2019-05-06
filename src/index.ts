@@ -15,14 +15,11 @@ interface ExContext {
 const env: Project.ENV = process.env.ENV
 const firebaseOptions = process.env.FIREBASE
 
-console.log('fire', firebaseOptions)
-
 const app: ComponentOptions<Vue> = {
   render: (h) => (h(App)),
   env,
 }
 
-// firebase<Vue>(app, env.firebase)
 const store = storeFactory<Vue>(app)
 const router = routerFactory<Vue>(app)
 const context: Context<ExContext, State> = {app, store, router}
