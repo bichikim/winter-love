@@ -1,4 +1,2 @@
 /dist
-/.nuxt
 /node_modules
-/types/vuex
