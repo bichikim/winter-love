@@ -6,32 +6,7 @@ import VueLoaderPlugin from 'vue-loader/lib/plugin'
 import {RouterMode} from 'vue-router'
 import webpack, {Configuration} from 'webpack'
 // noinspection TypeScriptPreferShortImport
-import {VueFireObjectOptions} from '../src/plugins/firebase'
-
 export type RunMode = 'production' | 'test' | 'development'
-
-// import {defineProcessEnv} from './utils/define-process-env'
-export interface Environment {
-  typescript?: {
-    bundleProject?: string,
-  },
-  path?: {
-    middleware?: string,
-    layouts?: string
-    pages?: string,
-    src?: string,
-    plugins?: string,
-  },
-  styleguidist?: {
-    script: string
-    styleguideDir: string,
-    components: string[],
-    serverHost: string,
-    require: string[],
-  },
-  firebase?: VueFireObjectOptions,
-  env?: Project.ENV,
-}
 
 export interface Options {
   transpileOnly?: boolean
@@ -48,7 +23,7 @@ const babel = {
 delete process.env.TS_NODE_PROJECT
 const config = (
   options: Options = {},
-  environment: Environment = {},
+  environment: Project.Environment = {},
   ): Configuration => {
   const {
     typescript: {

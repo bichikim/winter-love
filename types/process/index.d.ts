@@ -45,6 +45,5 @@ declare namespace NodeJS {
     readonly SRC_ALIAS?: string
 
     readonly PLUGINS_PATH?: string
-
   }
 }
