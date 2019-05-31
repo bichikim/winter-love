@@ -6,7 +6,6 @@ import VueLoaderPlugin from 'vue-loader/lib/plugin'
 import {RouterMode} from 'vue-router'
 import webpack, {Configuration} from 'webpack'
 // noinspection TypeScriptPreferShortImport
-import {VueFireObjectOptions} from '../src/plugins/firebase'
 
 export type RunMode = 'production' | 'test' | 'development'
 
@@ -29,7 +28,6 @@ export interface Environment {
     serverHost: string,
     require: string[],
   },
-  firebase?: VueFireObjectOptions,
   env?: Project.ENV,
 }
 
@@ -61,7 +59,6 @@ const config = (
       plugins = 'plugins',
       src = 'src',
     } = {},
-    firebase,
     env: envData = {} as any,
   } = environment
   const {
@@ -160,7 +157,6 @@ const config = (
         'process.env.SRC_ALIAS': JSON.stringify(srcAlias),
         'process.env.ENV': JSON.stringify(envData),
         'process.env.PLUGINS_PATH': JSON.stringify(plugins),
-        'process.env.FIREBASE': JSON.stringify(firebase),
       }),
       new VueAutoRoutingPlugin({
         pages: join(src, pages),

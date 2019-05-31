@@ -13,7 +13,6 @@ interface ExContext {
 }
 
 const env: Project.ENV = process.env.ENV
-const firebaseOptions = process.env.FIREBASE
 
 const app: ComponentOptions<Vue> = {
   render: (h) => (h(App)),
@@ -25,22 +24,6 @@ const router = routerFactory<Vue>(app)
 const context: Context<ExContext, State> = {app, store, router}
 
 plugin(context, [
-  'element',
-  {
-    path: 'firebase',
-    options: firebaseOptions,
-  },
-  {
-    path: 'touch',
-    options: {
-      longPress: {
-        default: {},
-        varyLong: {
-          timeInterval: 1000,
-        },
-      },
-    },
-  },
 ]).then(() => {
   middleware<ExContext, State>(context, {
     always: ['any'],

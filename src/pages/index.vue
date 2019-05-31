@@ -1,13 +1,12 @@
 <template lang="pug">
-  .main
+  .main Vue
 </template>
 
 <script lang="ts">
-import {ItemData} from '@/components/stateManagementPattern/types'
 import {
   Component, Vue, Prop,
 } from 'vue-property-decorator'
-import {Item} from '@/components/types/nested'
+
 
 @Component({
   components: {},
