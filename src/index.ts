@@ -1,4 +1,4 @@
-import middleware from '@/plugins/middleware'
+import middleware from '@/middleware'
 import {Context} from '@/types/project'
 import Vue, {ComponentOptions} from 'vue'
 import App from './App.vue'
@@ -24,6 +24,10 @@ const router = routerFactory<Vue>(app)
 const context: Context<ExContext, State> = {app, store, router}
 
 plugin(context, [
+  {
+    path: 'axios',
+    options: {},
+  },
 ]).then(() => {
   middleware<ExContext, State>(context, {
     always: ['any'],
