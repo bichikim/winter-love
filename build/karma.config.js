@@ -14,7 +14,7 @@ module.exports = function(config) {
     reporters: ['spec', 'coverage', 'remap-coverage'],
     files: [
       'node_modules/@babel/polyfill/dist/polyfill.js',
-      // {pattern: '../src/**/*.spec.ts', watched: false},
+      {pattern: 'test/spec/**/*.spec.js', watched: false},
       {pattern: 'test/spec/**/*.spec.ts', watched: false},
     ],
     exclude: [
