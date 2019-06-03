@@ -1,5 +1,6 @@
 <template lang="pug">
-  .main Vue
+  .main
+    .test222 Vue
 </template>
 
 <script lang="ts">

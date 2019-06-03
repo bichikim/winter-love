@@ -106,7 +106,12 @@ const config = (
           use: [
             'vue-style-loader',
             'css-loader',
-            'stylus-loader',
+            {
+              loader: 'stylus-loader',
+              options: {
+                import: [resolve(src, 'styles/index.styl')],
+              },
+            },
           ],
         },
         {
