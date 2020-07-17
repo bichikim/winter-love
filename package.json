@@ -35,7 +35,7 @@
     "graphql-js-query": "^0.0.9",
     "infinity-assign": "^0.0.4",
     "join-path": "^1.1.1",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.19",
     "lottie-web": "^5.1.20",
     "masonry-layout": "^4.2.2",
     "nuxt-class-component": "^1.2.1",
