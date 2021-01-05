@@ -25,7 +25,7 @@
     "apollo-cache-inmemory": "^1.2.5",
     "apollo-client": "^2.3.5",
     "apollo-link-http": "^1.5.4",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bowser": "^1.9.3",
     "consola": "^1.4.1",
     "element-ui": "^2.4.1",
