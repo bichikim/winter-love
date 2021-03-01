@@ -41,7 +41,7 @@
     "nuxt-class-component": "^1.2.1",
     "nuxt-edge": "^2.0.0-25513462.d31aeaa",
     "nuxt-property-decorator": "^1.2.0",
-    "three": "^0.94.0",
+    "three": "^0.125.0",
     "vee-validate": "^2.1.0-beta.6",
     "vue": "^2.5.16",
     "vue-class-component": "^6.2.0",
