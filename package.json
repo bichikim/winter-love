@@ -101,7 +101,7 @@
     "jest-vue-preprocessor": "^1.4.0",
     "nps": "^5.9.2",
     "nps-utils": "^1.6.0",
-    "pug": "^2.0.3",
+    "pug": "^3.0.1",
     "pug-plain-loader": "^1.0.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
